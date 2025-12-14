@@ -27,8 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const metadataBase = new URL(BASE_URL);
 
   const title = isSpanish
-    ? "DiffSheets - Comparar Archivos Excel y CSV Online"
-    : "DiffSheets - Compare Excel & CSV Files Online";
+    ? "Compara Hojas | Gratis, Privado y Open-Source | DiffSheets"
+    : "Compare Sheets | Free, Private & Open-Source | DiffSheets";
 
   const description = isSpanish
     ? "Herramienta gratuita online para comparar archivos Excel, hojas de cálculo CSV y más. 100% del lado del cliente, tus datos nunca salen de tu navegador."
@@ -61,8 +61,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ];
 
   const ogTitle = isSpanish
-    ? "DiffSheets - Comparar Archivos Excel y CSV Online"
-    : "DiffSheets - Compare Excel & CSV Files Online";
+    ? "Compara Hojas | Gratis, Privado y Open-Source | DiffSheets"
+    : "Compare Sheets | Free, Private & Open-Source | DiffSheets";
 
   const ogDescription = isSpanish
     ? "Herramienta gratuita para comparar archivos Excel y CSV. 100% privado, tus datos nunca salen de tu navegador."
