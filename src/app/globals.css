@@ -6,12 +6,23 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-brand-emerald: var(--brand-emerald);
-  --color-brand-cyan: var(--brand-cyan);
+  /* Brand colors */
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-light: var(--brand-green-light);
+  --color-brand-green-dark: var(--brand-green-dark);
   --color-brand-glow: var(--brand-glow);
   --color-brand-glow-hover: var(--brand-glow-hover);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Semantic diff colors */
+  --color-diff-added: var(--diff-added);
+  --color-diff-added-bg: var(--diff-added-bg);
+  --color-diff-removed: var(--diff-removed);
+  --color-diff-removed-bg: var(--diff-removed-bg);
+  --color-diff-changed: var(--diff-changed);
+  --color-diff-changed-bg: var(--diff-changed-bg);
+  /* Fonts */
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-display: var(--font-space-grotesk);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -52,11 +63,53 @@
 
 :root {
   --radius: 0.625rem;
+
+  /*
+   * DiffSheets Brand System
+   * Primary: Green (#22c55e) - represents diff/comparison
+   * Neutrals: Slate scale - dark theme focused
+   * Semantic: Green (added), Red (removed), Amber (changed)
+   */
+
+  /* Primary Green Scale */
+  --green-50: #f0fdf4;
+  --green-100: #dcfce7;
+  --green-200: #bbf7d0;
+  --green-300: #86efac;
+  --green-400: #4ade80;
+  --green-500: #22c55e;
+  --green-600: #16a34a;
+  --green-700: #15803d;
+  --green-800: #166534;
+  --green-900: #14532d;
+
+  /* Slate Neutrals */
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --slate-950: #020617;
+
   /* Brand colors */
-  --brand-emerald: oklch(0.696 0.17 162.48);
-  --brand-cyan: oklch(0.715 0.143 215.221);
-  --brand-glow: oklch(0.696 0.17 162.48 / 25%);
-  --brand-glow-hover: oklch(0.696 0.17 162.48 / 40%);
+  --brand-green: var(--green-500);
+  --brand-green-light: var(--green-400);
+  --brand-green-dark: var(--green-600);
+  --brand-glow: rgba(34, 197, 94, 0.25);
+  --brand-glow-hover: rgba(34, 197, 94, 0.40);
+
+  /* Semantic Diff Colors */
+  --diff-added: #22c55e;
+  --diff-added-bg: rgba(34, 197, 94, 0.15);
+  --diff-removed: #ef4444;
+  --diff-removed-bg: rgba(239, 68, 68, 0.15);
+  --diff-changed: #f59e0b;
+  --diff-changed-bg: rgba(245, 158, 11, 0.15);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -92,10 +145,11 @@
 
 .dark {
   /* Brand colors (slightly brighter for dark mode) */
-  --brand-emerald: oklch(0.75 0.18 162.48);
-  --brand-cyan: oklch(0.77 0.15 215.221);
-  --brand-glow: oklch(0.696 0.17 162.48 / 30%);
-  --brand-glow-hover: oklch(0.696 0.17 162.48 / 50%);
+  --brand-green: var(--green-400);
+  --brand-green-light: var(--green-300);
+  --brand-green-dark: var(--green-500);
+  --brand-glow: rgba(34, 197, 94, 0.30);
+  --brand-glow-hover: rgba(34, 197, 94, 0.50);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -135,6 +189,12 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-space-grotesk), var(--font-inter), system-ui, sans-serif;
   }
 }
 

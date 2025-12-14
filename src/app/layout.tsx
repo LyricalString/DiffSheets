@@ -1,21 +1,37 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/**
+ * DiffSheets Brand Typography
+ * - Space Grotesk: Display/headlines, logo text
+ * - Inter: Body text, UI elements
+ * - JetBrains Mono: Code, data, technical content
+ */
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
   preload: true,
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
   preload: true,
+  weight: ["400", "500"],
 });
 
 export const viewport: Viewport = {
@@ -36,7 +52,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} antialiased`}
+      >
         {children}
         <Analytics />
       </body>

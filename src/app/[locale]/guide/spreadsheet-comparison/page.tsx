@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { Footer, Header } from "@/components/layout";
 import { ArrowLeft, Clock, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Prose } from "@/components/ui/prose";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -1675,112 +1676,158 @@ export default async function SpreadsheetComparisonGuidePage({ params }: Props) 
   const tCommon = await getTranslations({ locale, namespace: "common" });
 
   const content = guideContent[locale as "en" | "es"];
+  const isSpanish = locale === "es";
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <main className="flex-1 px-4 py-12 sm:px-6 lg:px-8">
-        <article className="mx-auto max-w-4xl">
-          {/* Back Link */}
-          <div className="mb-8">
-            <Button variant="ghost" asChild className="gap-2">
-              <Link href="/">
-                <ArrowLeft className="h-4 w-4" />
-                {tCommon("backToHome")}
-              </Link>
-            </Button>
-          </div>
+      <main className="flex-1">
+        {/* Hero */}
+        <section className="relative min-h-[40vh] flex flex-col items-center justify-center px-4 py-16 overflow-hidden">
+          {/* Background glow */}
+          <div
+            className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px]"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
+            }}
+          />
 
-          {/* Header */}
-          <header className="mb-12">
-            <h1 className="font-bold text-4xl tracking-tight sm:text-5xl">{t("h1")}</h1>
-            <p className="mt-4 text-lg text-muted-foreground sm:text-xl">{t("subtitle")}</p>
-            <div className="mt-4 flex items-center gap-4 text-muted-foreground text-sm">
-              <span className="flex items-center gap-1">
-                <Clock className="h-4 w-4" />
-                {t("readTime")}
+          <div className="relative z-10 max-w-4xl text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2.5 px-5 py-2.5 mb-8 rounded-full bg-green-500/10 border border-green-500/25">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              <span className="flex items-center gap-1">
-                <BookOpen className="h-4 w-4" />
-                {locale === "es" ? "Guía Completa" : "Complete Guide"}
+              <span className="text-sm font-medium text-green-400">
+                {isSpanish ? "Guía Completa" : "Complete Guide"}
               </span>
             </div>
-          </header>
 
-          {/* Table of Contents */}
-          <nav className="mb-12 rounded-xl border bg-card p-6">
-            <h2 className="mb-4 font-semibold text-lg">{t("toc")}</h2>
-            <ol className="space-y-2 text-sm">
-              {content.sections.map((section, index) => (
-                <li key={section.id}>
-                  <a
-                    href={`#${section.id}`}
-                    className="text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    {index + 1}. {section.heading}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
+            {/* Headline */}
+            <h1 className="font-display font-bold text-4xl md:text-5xl tracking-tight leading-[1.1] mb-6">
+              <span className="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent">
+                {t("h1")}
+              </span>
+            </h1>
 
-          {/* Content Sections */}
-          <div className="prose prose-neutral dark:prose-invert max-w-none">
-            {content.sections.map((section) => (
-              <section key={section.id} id={section.id} className="mb-16 scroll-mt-20">
-                <h2 className="font-bold text-3xl">{section.heading}</h2>
-                <div className="mt-6 space-y-4 text-muted-foreground whitespace-pre-line leading-relaxed">
-                  {section.content}
-                </div>
-              </section>
-            ))}
-          </div>
-
-          {/* Internal Links Section */}
-          <div className="my-16 rounded-xl border bg-muted/50 p-8">
-            <h3 className="mb-4 font-semibold text-xl">
-              {locale === "es" ? "Recursos Relacionados" : "Related Resources"}
-            </h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link
-                  href="/compare-excel-files"
-                  className="text-primary transition-colors hover:underline"
-                >
-                  {locale === "es"
-                    ? "Comparar Archivos Excel Online"
-                    : "Compare Excel Files Online"}
-                </Link>
-              </li>
-              <li>
-                <Link href="/csv-diff" className="text-primary transition-colors hover:underline">
-                  {locale === "es" ? "Comparar Archivos CSV" : "CSV Diff Tool"}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog/how-to-compare-excel"
-                  className="text-primary transition-colors hover:underline"
-                >
-                  {locale === "es"
-                    ? "Cómo Comparar Dos Archivos Excel: 5 Métodos Fáciles"
-                    : "How to Compare Two Excel Files: 5 Easy Methods"}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* CTA Section */}
-          <div className="mt-16 rounded-xl border bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 p-8 text-center">
-            <h3 className="font-semibold text-2xl">{t("cta")}</h3>
-            <p className="mt-2 text-muted-foreground">
-              {locale === "es"
-                ? "Compara tus hojas de cálculo en segundos con nuestra herramienta gratuita. Sin instalación, 100% privado."
-                : "Compare your spreadsheets in seconds with our free tool. No installation, 100% private."}
+            {/* Subtitle */}
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6">
+              {t("subtitle")}
             </p>
-            <Button asChild className="mt-6" size="lg">
-              <Link href="/compare">{t("ctaButton")}</Link>
-            </Button>
+
+            {/* Meta info */}
+            <div className="flex items-center justify-center gap-6 text-muted-foreground text-sm">
+              <span className="flex items-center gap-1.5">
+                <Clock className="h-4 w-4 text-green-500" />
+                {t("readTime")}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <BookOpen className="h-4 w-4 text-green-500" />
+                {isSpanish ? "Guía Completa" : "Complete Guide"}
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* Content */}
+        <article className="px-4 py-16">
+          <div className="mx-auto max-w-4xl">
+            {/* Back Link */}
+            <div className="mb-8">
+              <Button variant="ghost" asChild className="gap-2 text-muted-foreground hover:text-green-500">
+                <Link href="/">
+                  <ArrowLeft className="h-4 w-4" />
+                  {tCommon("backToHome")}
+                </Link>
+              </Button>
+            </div>
+
+            {/* Table of Contents */}
+            <nav className="mb-16 rounded-2xl border border-border bg-card p-8">
+              <h2 className="mb-6 font-display font-semibold text-xl">{t("toc")}</h2>
+              <ol className="space-y-3">
+                {content.sections.map((section, index) => (
+                  <li key={section.id}>
+                    <a
+                      href={`#${section.id}`}
+                      className="flex items-center gap-3 text-muted-foreground transition-colors hover:text-green-500"
+                    >
+                      <span className="flex h-7 w-7 items-center justify-center rounded-full bg-green-500/10 font-display font-semibold text-sm text-green-500">
+                        {index + 1}
+                      </span>
+                      {section.heading}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+
+            {/* Content Sections */}
+            <div className="max-w-none">
+              {content.sections.map((section) => (
+                <section key={section.id} id={section.id} className="mb-20 scroll-mt-20">
+                  <h2 className="font-display font-bold text-2xl md:text-3xl mb-6">{section.heading}</h2>
+                  <Prose content={section.content} />
+                </section>
+              ))}
+            </div>
+
+            {/* Internal Links Section */}
+            <div className="my-16 rounded-2xl border border-border bg-card p-8">
+              <h3 className="mb-6 font-display font-semibold text-xl">
+                {isSpanish ? "Recursos Relacionados" : "Related Resources"}
+              </h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link
+                    href="/compare-excel-files"
+                    className="flex items-center gap-2 text-green-500 transition-colors hover:text-green-400"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                    {isSpanish ? "Comparar Archivos Excel Online" : "Compare Excel Files Online"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/csv-diff"
+                    className="flex items-center gap-2 text-green-500 transition-colors hover:text-green-400"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                    {isSpanish ? "Comparar Archivos CSV" : "CSV Diff Tool"}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/blog/how-to-compare-excel"
+                    className="flex items-center gap-2 text-green-500 transition-colors hover:text-green-400"
+                  >
+                    <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
+                    {isSpanish
+                      ? "Cómo Comparar Dos Archivos Excel: 5 Métodos Fáciles"
+                      : "How to Compare Two Excel Files: 5 Easy Methods"}
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* CTA Section */}
+            <div className="mt-16 text-center">
+              <h3 className="font-display font-bold text-2xl md:text-3xl mb-4">{t("cta")}</h3>
+              <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+                {isSpanish
+                  ? "Compara tus hojas de cálculo en segundos con nuestra herramienta gratuita. Sin instalación, 100% privado."
+                  : "Compare your spreadsheets in seconds with our free tool. No installation, 100% private."}
+              </p>
+              <Button
+                asChild
+                size="lg"
+                className="gap-2 bg-green-500 hover:bg-green-400 text-slate-950 font-semibold px-8 shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all hover:-translate-y-0.5"
+              >
+                <Link href="/compare">{t("ctaButton")}</Link>
+              </Button>
+            </div>
           </div>
         </article>
       </main>

@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiffSheets - Brand System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Primary Colors */
+            --green-50: #f0fdf4;
+            --green-100: #dcfce7;
+            --green-200: #bbf7d0;
+            --green-300: #86efac;
+            --green-400: #4ade80;
+            --green-500: #22c55e;
+            --green-600: #16a34a;
+            --green-700: #15803d;
+            --green-800: #166534;
+            --green-900: #14532d;
+            
+            /* Semantic Colors */
+            --added: #22c55e;
+            --added-bg: rgba(34, 197, 94, 0.15);
+            --removed: #ef4444;
+            --removed-bg: rgba(239, 68, 68, 0.15);
+            --changed: #f59e0b;
+            --changed-bg: rgba(245, 158, 11, 0.15);
+            
+            /* Neutrals */
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            --slate-950: #020617;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--slate-950);
+            color: var(--slate-200);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .brand-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--slate-900);
+            border-right: 1px solid var(--slate-800);
+            padding: 32px 24px;
+            overflow-y: auto;
+        }
+
+        .brand-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .brand-nav-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .brand-nav-logo span {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--slate-100);
+        }
+
+        .brand-nav-logo span em {
+            font-style: normal;
+            color: var(--green-500);
+        }
+
+        .nav-section {
+            margin-bottom: 32px;
+        }
+
+        .nav-section-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--slate-500);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 10px 12px;
+            color: var(--slate-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+            margin-bottom: 4px;
+        }
+
+        .nav-link:hover {
+            background: var(--slate-800);
+            color: var(--slate-100);
+        }
+
+        .nav-link.active {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--green-400);
+        }
+
+        /* Main Content */
+        .brand-content {
+            margin-left: 280px;
+            padding: 48px 64px;
+            max-width: 1200px;
+        }
+
+        .brand-section {
+            margin-bottom: 120px;
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--slate-800);
+        }
+
+        .section-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--green-500);
+            letter-spacing: 0.15em;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--slate-50);
+            letter-spacing: -0.02em;
+        }
+
+        .section-desc {
+            color: var(--slate-400);
+            font-size: 1.1rem;
+            margin-top: 12px;
+            max-width: 600px;
+        }
+
+        /* Logo Section */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .logo-card {
+            padding: 48px;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 280px;
+        }
+
+        .logo-card.dark {
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+        }
+
+        .logo-card.light {
+            background: var(--slate-50);
+        }
+
+        .logo-card.green {
+            background: var(--green-500);
+        }
+
+        .logo-card.gradient {
+            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 100%);
+            border: 1px solid var(--slate-700);
+        }
+
+        .logo-card-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--slate-500);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 24px;
+        }
+
+        .logo-card.light .logo-card-label {
+            color: var(--slate-600);
+        }
+
+        .logo-card.green .logo-card-label {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .logo-horizontal {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text.dark { color: var(--slate-900); }
+        .logo-text.light { color: var(--slate-50); }
+        .logo-text em { font-style: normal; color: var(--green-500); }
+        .logo-text.on-green em { color: var(--green-900); }
+
+        /* Logo Construction */
+        .logo-construction {
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 48px;
+        }
+
+        .construction-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--slate-300);
+            margin-bottom: 32px;
+        }
+
+        .construction-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .construction-item {
+            text-align: center;
+        }
+
+        .construction-visual {
+            background: var(--slate-800);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 160px;
+        }
+
+        .construction-label {
+            font-size: 0.85rem;
+            color: var(--slate-400);
+        }
+
+        /* Clear Space */
+        .clear-space-demo {
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+            border-radius: 16px;
+            padding: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .clear-space-box {
+            position: relative;
+            padding: 48px;
+            border: 2px dashed var(--green-500);
+            border-radius: 8px;
+        }
+
+        .clear-space-label {
+            position: absolute;
+            font-size: 0.7rem;
+            color: var(--green-500);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .clear-space-label.top { top: -20px; left: 50%; transform: translateX(-50%); }
+        .clear-space-label.bottom { bottom: -20px; left: 50%; transform: translateX(-50%); }
+        .clear-space-label.left { left: -30px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+        .clear-space-label.right { right: -30px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+
+        /* Colors Section */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .color-group {
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .color-group-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--slate-800);
+        }
+
+        .color-group-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--slate-100);
+            margin-bottom: 4px;
+        }
+
+        .color-group-desc {
+            font-size: 0.85rem;
+            color: var(--slate-500);
+        }
+
+        .color-swatches {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .color-swatch {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .swatch-color {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .swatch-info {
+            flex: 1;
+        }
+
+        .swatch-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--slate-200);
+        }
+
+        .swatch-values {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--slate-500);
+        }
+
+        /* Semantic Colors */
+        .semantic-colors {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .semantic-card {
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .semantic-preview {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .semantic-preview.added {
+            background: var(--added-bg);
+            color: var(--added);
+            border-bottom: 2px solid var(--added);
+        }
+
+        .semantic-preview.removed {
+            background: var(--removed-bg);
+            color: var(--removed);
+            border-bottom: 2px solid var(--removed);
+        }
+
+        .semantic-preview.changed {
+            background: var(--changed-bg);
+            color: var(--changed);
+            border-bottom: 2px solid var(--changed);
+        }
+
+        .semantic-info {
+            padding: 20px;
+        }
+
+        .semantic-title {
+            font-weight: 600;
+            color: var(--slate-200);
+            margin-bottom: 4px;
+        }
+
+        .semantic-hex {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--slate-500);
+        }
+
+        /* Typography Section */
+        .type-specimen {
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+            border-radius: 16px;
+            padding: 48px;
+            margin-bottom: 32px;
+        }
+
+        .type-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--slate-800);
+        }
+
+        .type-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--slate-100);
+        }
+
+        .type-usage {
+            font-size: 0.85rem;
+            color: var(--slate-500);
+            margin-top: 4px;
+        }
+
+        .type-download {
+            font-size: 0.8rem;
+            color: var(--green-500);
+            text-decoration: none;
+        }
+
+        .type-sample {
+            margin-bottom: 24px;
+        }
+
+        .type-sample-label {
+            font-size: 0.7rem;
+            color: var(--slate-500);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        .type-sample.display {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--slate-100);
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .type-sample.heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--slate-200);
+            letter-spacing: -0.02em;
+        }
+
+        .type-sample.body {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--slate-300);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .type-sample.mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--green-400);
+            background: var(--slate-800);
+            padding: 16px 20px;
+            border-radius: 8px;
+        }
+
+        .type-weights {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .type-weight {
+            text-align: center;
+        }
+
+        .type-weight-sample {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--slate-200);
+            margin-bottom: 8px;
+        }
+
+        .type-weight-name {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+        }
+
+        /* Icon System */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .icon-item {
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+        }
+
+        .icon-item:hover {
+            border-color: var(--slate-700);
+            background: var(--slate-800);
+        }
+
+        .icon-item svg {
+            width: 24px;
+            height: 24px;
+            color: var(--slate-300);
+        }
+
+        .icon-item span {
+            font-size: 0.7rem;
+            color: var(--slate-500);
+        }
+
+        /* Buttons */
+        .button-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .button-row-label {
+            width: 120px;
+            font-size: 0.8rem;
+            color: var(--slate-500);
+            flex-shrink: 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--green-500);
+            color: var(--slate-950);
+        }
+
+        .btn-primary:hover {
+            background: var(--green-400);
+        }
+
+        .btn-secondary {
+            background: var(--slate-800);
+            color: var(--slate-100);
+            border: 1px solid var(--slate-700);
+        }
+
+        .btn-secondary:hover {
+            background: var(--slate-700);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--slate-300);
+        }
+
+        .btn-ghost:hover {
+            background: var(--slate-800);
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.8rem;
+        }
+
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 1rem;
+        }
+
+        /* Application Examples */
+        .app-examples {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .app-example {
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .app-example-header {
+            padding: 16px 20px;
+            background: var(--slate-800);
+            border-bottom: 1px solid var(--slate-700);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-example-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .app-example-dot.r { background: #ef4444; }
+        .app-example-dot.y { background: #f59e0b; }
+        .app-example-dot.g { background: #22c55e; }
+
+        .app-example-content {
+            padding: 24px;
+        }
+
+        .app-example-title {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        /* Mini diff preview */
+        .mini-diff {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .mini-diff-row {
+            display: flex;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+        }
+
+        .mini-diff-row.added {
+            background: var(--added-bg);
+            color: var(--added);
+        }
+
+        .mini-diff-row.removed {
+            background: var(--removed-bg);
+            color: var(--removed);
+        }
+
+        .mini-diff-row.unchanged {
+            color: var(--slate-500);
+        }
+
+        .mini-diff-prefix {
+            width: 24px;
+            flex-shrink: 0;
+        }
+
+        /* Do's and Don'ts */
+        .dos-donts {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .do-dont-card {
+            background: var(--slate-900);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .do-dont-visual {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .do-dont-visual.do {
+            background: rgba(34, 197, 94, 0.05);
+            border-bottom: 2px solid var(--green-500);
+        }
+
+        .do-dont-visual.dont {
+            background: rgba(239, 68, 68, 0.05);
+            border-bottom: 2px solid var(--removed);
+        }
+
+        .do-dont-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .do-dont-badge.do {
+            background: var(--added-bg);
+            color: var(--added);
+        }
+
+        .do-dont-badge.dont {
+            background: var(--removed-bg);
+            color: var(--removed);
+        }
+
+        .do-dont-info {
+            padding: 20px;
+        }
+
+        .do-dont-text {
+            font-size: 0.9rem;
+            color: var(--slate-400);
+        }
+
+        /* Downloads */
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .download-card {
+            background: var(--slate-900);
+            border: 1px solid var(--slate-800);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .download-card:hover {
+            border-color: var(--green-500);
+            background: rgba(34, 197, 94, 0.05);
+        }
+
+        .download-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--slate-800);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .download-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--slate-400);
+        }
+
+        .download-name {
+            font-weight: 600;
+            color: var(--slate-200);
+            margin-bottom: 4px;
+        }
+
+        .download-format {
+            font-size: 0.8rem;
+            color: var(--slate-500);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .brand-nav {
+                display: none;
+            }
+            .brand-content {
+                margin-left: 0;
+                padding: 32px 24px;
+            }
+            .logo-grid,
+            .color-palette,
+            .app-examples,
+            .dos-donts {
+                grid-template-columns: 1fr;
+            }
+            .construction-grid {
+                grid-template-columns: 1fr;
+            }
+            .icon-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="brand-nav">
+        <div class="brand-nav-logo">
+            <svg viewBox="0 0 48 48" fill="none">
+                <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+            </svg>
+            <span>Diff<em>Sheets</em></span>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Brand Identity</div>
+            <a href="#logo" class="nav-link active">Logo</a>
+            <a href="#colors" class="nav-link">Colors</a>
+            <a href="#typography" class="nav-link">Typography</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Components</div>
+            <a href="#icons" class="nav-link">Icons</a>
+            <a href="#buttons" class="nav-link">Buttons</a>
+            <a href="#examples" class="nav-link">Examples</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Guidelines</div>
+            <a href="#usage" class="nav-link">Usage Rules</a>
+            <a href="#downloads" class="nav-link">Downloads</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="brand-content">
+        <!-- Logo Section -->
+        <section class="brand-section" id="logo">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h1 class="section-title">Logo</h1>
+                <p class="section-desc">The DiffSheets logo represents the core action of comparing two spreadsheets. Two overlapping sheets with a highlighted intersection zone.</p>
+            </div>
+
+            <!-- Logo Variations -->
+            <div class="logo-grid">
+                <div class="logo-card dark">
+                    <div class="logo-horizontal">
+                        <svg width="56" height="56" viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                            <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                            <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                            <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        </svg>
+                        <span class="logo-text light">Diff<em>Sheets</em></span>
+                    </div>
+                    <span class="logo-card-label">On Dark Background</span>
+                </div>
+
+                <div class="logo-card light">
+                    <div class="logo-horizontal">
+                        <svg width="56" height="56" viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="4" width="28" height="36" rx="4" fill="#d4d4d8"/>
+                            <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                            <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.4"/>
+                            <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        </svg>
+                        <span class="logo-text dark">Diff<em>Sheets</em></span>
+                    </div>
+                    <span class="logo-card-label">On Light Background</span>
+                </div>
+
+                <div class="logo-card green">
+                    <div class="logo-horizontal">
+                        <svg width="56" height="56" viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="4" width="28" height="36" rx="4" fill="rgba(255,255,255,0.3)"/>
+                            <rect x="14" y="8" width="28" height="36" rx="4" fill="#fafafa"/>
+                            <rect x="14" y="8" width="20" height="32" rx="4" fill="rgba(255,255,255,0.5)"/>
+                            <rect x="18" y="14" width="12" height="3" rx="1" fill="#16a34a"/>
+                            <rect x="18" y="20" width="8" height="3" rx="1" fill="#16a34a"/>
+                            <rect x="18" y="26" width="10" height="3" rx="1" fill="#16a34a"/>
+                        </svg>
+                        <span class="logo-text light on-green">Diff<em>Sheets</em></span>
+                    </div>
+                    <span class="logo-card-label">On Brand Color</span>
+                </div>
+
+                <div class="logo-card gradient">
+                    <svg width="72" height="72" viewBox="0 0 48 48" fill="none">
+                        <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                        <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                        <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                        <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                    </svg>
+                    <span class="logo-card-label">Icon Only</span>
+                </div>
+            </div>
+
+            <!-- Logo Construction -->
+            <div class="logo-construction">
+                <h3 class="construction-title">Logo Construction</h3>
+                <div class="construction-grid">
+                    <div class="construction-item">
+                        <div class="construction-visual">
+                            <svg width="80" height="80" viewBox="0 0 48 48" fill="none">
+                                <rect x="8" y="6" width="24" height="32" rx="3" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4 2"/>
+                            </svg>
+                        </div>
+                        <span class="construction-label">Base sheet (background)</span>
+                    </div>
+                    <div class="construction-item">
+                        <div class="construction-visual">
+                            <svg width="80" height="80" viewBox="0 0 48 48" fill="none">
+                                <rect x="16" y="10" width="24" height="32" rx="3" fill="none" stroke="#22c55e" stroke-width="2"/>
+                                <rect x="20" y="16" width="10" height="2.5" rx="1" fill="#22c55e"/>
+                                <rect x="20" y="21" width="7" height="2.5" rx="1" fill="#22c55e"/>
+                                <rect x="20" y="26" width="8" height="2.5" rx="1" fill="#22c55e"/>
+                            </svg>
+                        </div>
+                        <span class="construction-label">Comparison sheet (foreground)</span>
+                    </div>
+                    <div class="construction-item">
+                        <div class="construction-visual">
+                            <svg width="80" height="80" viewBox="0 0 48 48" fill="none">
+                                <rect x="8" y="6" width="24" height="32" rx="3" fill="#3f3f46"/>
+                                <rect x="16" y="10" width="24" height="32" rx="3" fill="#22c55e"/>
+                                <rect x="16" y="10" width="16" height="28" rx="3" fill="#16a34a" fill-opacity="0.6"/>
+                                <rect x="20" y="16" width="10" height="2.5" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                                <rect x="20" y="21" width="7" height="2.5" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                                <rect x="20" y="26" width="8" height="2.5" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            </svg>
+                        </div>
+                        <span class="construction-label">Intersection zone (overlap)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clear Space -->
+            <div class="clear-space-demo">
+                <div class="clear-space-box">
+                    <span class="clear-space-label top">1x</span>
+                    <span class="clear-space-label bottom">1x</span>
+                    <span class="clear-space-label left">1x</span>
+                    <span class="clear-space-label right">1x</span>
+                    <svg width="64" height="64" viewBox="0 0 48 48" fill="none">
+                        <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                        <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                        <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                        <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                    </svg>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 16px; font-size: 0.85rem; color: var(--slate-500);">Minimum clear space = 1x icon width on all sides</p>
+        </section>
+
+        <!-- Colors Section -->
+        <section class="brand-section" id="colors">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h1 class="section-title">Colors</h1>
+                <p class="section-desc">A purposeful palette built around the universal language of diff: green for added, red for removed, amber for changed.</p>
+            </div>
+
+            <div class="color-palette">
+                <div class="color-group">
+                    <div class="color-group-header">
+                        <h3 class="color-group-title">Primary Green</h3>
+                        <p class="color-group-desc">Main brand color, CTAs, positive actions</p>
+                    </div>
+                    <div class="color-swatches">
+                        <div class="color-swatch">
+                            <div class="swatch-color" style="background: var(--green-400);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Green 400</div>
+                                <div class="swatch-values">#4ade80 • rgb(74, 222, 128)</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch-color" style="background: var(--green-500);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Green 500 (Primary)</div>
+                                <div class="swatch-values">#22c55e • rgb(34, 197, 94)</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch-color" style="background: var(--green-600);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Green 600</div>
+                                <div class="swatch-values">#16a34a • rgb(22, 163, 74)</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch-color" style="background: var(--green-700);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Green 700</div>
+                                <div class="swatch-values">#15803d • rgb(21, 128, 61)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-group">
+                    <div class="color-group-header">
+                        <h3 class="color-group-title">Neutrals</h3>
+                        <p class="color-group-desc">Backgrounds, text, borders</p>
+                    </div>
+                    <div class="color-swatches">
+                        <div class="color-swatch">
+                            <div class="swatch-color" style="background: var(--slate-50);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Slate 50</div>
+                                <div class="swatch-values">#f8fafc • Light background</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch-color" style="background: var(--slate-400);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Slate 400</div>
+                                <div class="swatch-values">#94a3b8 • Secondary text</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch-color" style="background: var(--slate-800);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Slate 800</div>
+                                <div class="swatch-values">#1e293b • Card backgrounds</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch">
+                            <div class="swatch-color" style="background: var(--slate-950);"></div>
+                            <div class="swatch-info">
+                                <div class="swatch-name">Slate 950</div>
+                                <div class="swatch-values">#020617 • Page background</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semantic Colors -->
+            <h3 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; color: var(--slate-200); margin-bottom: 24px;">Semantic Colors</h3>
+            <div class="semantic-colors">
+                <div class="semantic-card">
+                    <div class="semantic-preview added">+ Added content</div>
+                    <div class="semantic-info">
+                        <div class="semantic-title">Added</div>
+                        <div class="semantic-hex">#22c55e • rgba(34, 197, 94, 0.15)</div>
+                    </div>
+                </div>
+                <div class="semantic-card">
+                    <div class="semantic-preview removed">- Removed content</div>
+                    <div class="semantic-info">
+                        <div class="semantic-title">Removed</div>
+                        <div class="semantic-hex">#ef4444 • rgba(239, 68, 68, 0.15)</div>
+                    </div>
+                </div>
+                <div class="semantic-card">
+                    <div class="semantic-preview changed">~ Changed content</div>
+                    <div class="semantic-info">
+                        <div class="semantic-title">Changed</div>
+                        <div class="semantic-hex">#f59e0b • rgba(245, 158, 11, 0.15)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography Section -->
+        <section class="brand-section" id="typography">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h1 class="section-title">Typography</h1>
+                <p class="section-desc">A type system built for clarity. Space Grotesk for headings, Inter for body, JetBrains Mono for data.</p>
+            </div>
+
+            <div class="type-specimen">
+                <div class="type-header">
+                    <div>
+                        <h3 class="type-name">Space Grotesk</h3>
+                        <p class="type-usage">Headlines, logo, emphasis</p>
+                    </div>
+                    <a href="https://fonts.google.com/specimen/Space+Grotesk" class="type-download">Google Fonts ↗</a>
+                </div>
+                <div class="type-sample">
+                    <div class="type-sample-label">Display</div>
+                    <div class="type-sample display">Compare. Visualize. Done.</div>
+                </div>
+                <div class="type-sample">
+                    <div class="type-sample-label">Heading</div>
+                    <div class="type-sample heading">See what changed between spreadsheets</div>
+                </div>
+                <div class="type-weights">
+                    <div class="type-weight">
+                        <div class="type-weight-sample" style="font-weight: 300;">Aa</div>
+                        <div class="type-weight-name">Light 300</div>
+                    </div>
+                    <div class="type-weight">
+                        <div class="type-weight-sample" style="font-weight: 400;">Aa</div>
+                        <div class="type-weight-name">Regular 400</div>
+                    </div>
+                    <div class="type-weight">
+                        <div class="type-weight-sample" style="font-weight: 500;">Aa</div>
+                        <div class="type-weight-name">Medium 500</div>
+                    </div>
+                    <div class="type-weight">
+                        <div class="type-weight-sample" style="font-weight: 600;">Aa</div>
+                        <div class="type-weight-name">SemiBold 600</div>
+                    </div>
+                    <div class="type-weight">
+                        <div class="type-weight-sample" style="font-weight: 700;">Aa</div>
+                        <div class="type-weight-name">Bold 700</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="type-specimen">
+                <div class="type-header">
+                    <div>
+                        <h3 class="type-name">Inter</h3>
+                        <p class="type-usage">Body text, UI elements</p>
+                    </div>
+                    <a href="https://fonts.google.com/specimen/Inter" class="type-download">Google Fonts ↗</a>
+                </div>
+                <div class="type-sample">
+                    <div class="type-sample-label">Body</div>
+                    <div class="type-sample body">Upload two Excel, CSV, or ODS files and instantly see every difference highlighted. Your data never leaves your browser — all processing happens locally on your machine.</div>
+                </div>
+            </div>
+
+            <div class="type-specimen">
+                <div class="type-header">
+                    <div>
+                        <h3 class="type-name">JetBrains Mono</h3>
+                        <p class="type-usage">Data, code, technical content</p>
+                    </div>
+                    <a href="https://fonts.google.com/specimen/JetBrains+Mono" class="type-download">Google Fonts ↗</a>
+                </div>
+                <div class="type-sample">
+                    <div class="type-sample-label">Monospace</div>
+                    <div class="type-sample mono">budget_2024.xlsx → budget_2024_v2.xlsx | 12 changes found</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buttons Section -->
+        <section class="brand-section" id="buttons">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h1 class="section-title">Buttons</h1>
+                <p class="section-desc">Consistent, accessible button styles for all interactions.</p>
+            </div>
+
+            <div class="button-showcase">
+                <div class="button-row">
+                    <span class="button-row-label">Primary</span>
+                    <button class="btn btn-primary btn-sm">Small</button>
+                    <button class="btn btn-primary">Default</button>
+                    <button class="btn btn-primary btn-lg">Large</button>
+                </div>
+                <div class="button-row">
+                    <span class="button-row-label">Secondary</span>
+                    <button class="btn btn-secondary btn-sm">Small</button>
+                    <button class="btn btn-secondary">Default</button>
+                    <button class="btn btn-secondary btn-lg">Large</button>
+                </div>
+                <div class="button-row">
+                    <span class="button-row-label">Ghost</span>
+                    <button class="btn btn-ghost btn-sm">Small</button>
+                    <button class="btn btn-ghost">Default</button>
+                    <button class="btn btn-ghost btn-lg">Large</button>
+                </div>
+                <div class="button-row">
+                    <span class="button-row-label">With Icon</span>
+                    <button class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                        </svg>
+                        Upload Files
+                    </button>
+                    <button class="btn btn-secondary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        GitHub
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Application Examples -->
+        <section class="brand-section" id="examples">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h1 class="section-title">Application</h1>
+                <p class="section-desc">How the brand system comes together in the product.</p>
+            </div>
+
+            <div class="app-examples">
+                <div class="app-example">
+                    <div class="app-example-header">
+                        <div class="app-example-dot r"></div>
+                        <div class="app-example-dot y"></div>
+                        <div class="app-example-dot g"></div>
+                    </div>
+                    <div class="app-example-content">
+                        <div class="app-example-title">Diff View</div>
+                        <div class="mini-diff">
+                            <div class="mini-diff-row unchanged"><span class="mini-diff-prefix"></span>Engineering | $120,000</div>
+                            <div class="mini-diff-row removed"><span class="mini-diff-prefix">-</span>Marketing | $50,000</div>
+                            <div class="mini-diff-row added"><span class="mini-diff-prefix">+</span>Marketing | $65,000</div>
+                            <div class="mini-diff-row added"><span class="mini-diff-prefix">+</span>Operations | $45,000</div>
+                            <div class="mini-diff-row unchanged"><span class="mini-diff-prefix"></span>Support | $30,000</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-example">
+                    <div class="app-example-header">
+                        <div class="app-example-dot r"></div>
+                        <div class="app-example-dot y"></div>
+                        <div class="app-example-dot g"></div>
+                    </div>
+                    <div class="app-example-content">
+                        <div class="app-example-title">Upload Zone</div>
+                        <div style="border: 2px dashed var(--slate-700); border-radius: 12px; padding: 32px; text-align: center; margin-top: 8px;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--slate-500)" stroke-width="1.5" style="margin: 0 auto 12px;">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                            </svg>
+                            <p style="color: var(--slate-400); font-size: 0.9rem; margin-bottom: 8px;">Drop your file here</p>
+                            <p style="color: var(--slate-600); font-size: 0.8rem;">.xlsx, .xls, .csv, .ods</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage Rules -->
+        <section class="brand-section" id="usage">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h1 class="section-title">Usage Rules</h1>
+                <p class="section-desc">Keep the brand consistent. Here's what to do and what to avoid.</p>
+            </div>
+
+            <div class="dos-donts">
+                <div class="do-dont-card">
+                    <div class="do-dont-visual do">
+                        <span class="do-dont-badge do">✓ Do</span>
+                        <div class="logo-horizontal">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                                <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                                <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                                <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                                <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                                <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            </svg>
+                            <span class="logo-text light">Diff<em>Sheets</em></span>
+                        </div>
+                    </div>
+                    <div class="do-dont-info">
+                        <p class="do-dont-text">Use the logo with proper clear space and on appropriate backgrounds.</p>
+                    </div>
+                </div>
+
+                <div class="do-dont-card">
+                    <div class="do-dont-visual dont">
+                        <span class="do-dont-badge dont">✗ Don't</span>
+                        <div class="logo-horizontal" style="transform: skewX(-10deg);">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" style="opacity: 0.5;">
+                                <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                                <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                                <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                            </svg>
+                            <span class="logo-text light" style="color: #ff6b6b;">Diff<em style="color: #ff6b6b;">Sheets</em></span>
+                        </div>
+                    </div>
+                    <div class="do-dont-info">
+                        <p class="do-dont-text">Don't distort, recolor, or apply effects to the logo.</p>
+                    </div>
+                </div>
+
+                <div class="do-dont-card">
+                    <div class="do-dont-visual do">
+                        <span class="do-dont-badge do">✓ Do</span>
+                        <div style="display: flex; gap: 8px;">
+                            <div style="padding: 8px 12px; background: var(--added-bg); color: var(--added); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">+ Added</div>
+                            <div style="padding: 8px 12px; background: var(--removed-bg); color: var(--removed); border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">- Removed</div>
+                        </div>
+                    </div>
+                    <div class="do-dont-info">
+                        <p class="do-dont-text">Use semantic colors consistently for diff states.</p>
+                    </div>
+                </div>
+
+                <div class="do-dont-card">
+                    <div class="do-dont-visual dont">
+                        <span class="do-dont-badge dont">✗ Don't</span>
+                        <div style="display: flex; gap: 8px;">
+                            <div style="padding: 8px 12px; background: #3b82f6; color: white; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">+ Added</div>
+                            <div style="padding: 8px 12px; background: #8b5cf6; color: white; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">- Removed</div>
+                        </div>
+                    </div>
+                    <div class="do-dont-info">
+                        <p class="do-dont-text">Don't use arbitrary colors for diff states.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Downloads -->
+        <section class="brand-section" id="downloads">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h1 class="section-title">Downloads</h1>
+                <p class="section-desc">All brand assets ready for use.</p>
+            </div>
+
+            <div class="downloads-grid">
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                    </div>
+                    <div class="download-name">Logo Package</div>
+                    <div class="download-format">SVG, PNG, PDF</div>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="download-name">Icon Set</div>
+                    <div class="download-format">SVG, ICO, ICNS</div>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <div class="download-name">Social Media</div>
+                    <div class="download-format">OG, Twitter, PH</div>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <path d="M22 6l-10 7L2 6"/>
+                        </svg>
+                    </div>
+                    <div class="download-name">Email Signature</div>
+                    <div class="download-format">HTML, PNG</div>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                            <path d="M14 2v6h6"/>
+                            <path d="M16 13H8"/>
+                            <path d="M16 17H8"/>
+                            <path d="M10 9H8"/>
+                        </svg>
+                    </div>
+                    <div class="download-name">Brand Guidelines</div>
+                    <div class="download-format">PDF</div>
+                </div>
+                <div class="download-card">
+                    <div class="download-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                        </svg>
+                    </div>
+                    <div class="download-name">Figma Kit</div>
+                    <div class="download-format">.fig</div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

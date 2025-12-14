@@ -54,7 +54,8 @@
     "headerRow": "Fila de encabezado",
     "findDifference": "Encontrar Diferencias",
     "processing": "Procesando...",
-    "fileInfo": "{rows} filas, {cols} columnas"
+    "fileInfo": "{rows} filas, {cols} columnas",
+    "clear": "Limpiar archivo"
   },
   "diff": {
     "title": "Resultados de la Comparación",
@@ -100,6 +101,14 @@
         "opensource": {
           "title": "Código Abierto",
           "description": "Gratuito y de código abierto. Sin registro necesario."
+        },
+        "smart": {
+          "title": "Detección Inteligente",
+          "description": "Múltiples modos de comparación: fila por fila, columna clave, o algoritmo LCS inteligente."
+        },
+        "works": {
+          "title": "Funciona Offline",
+          "description": "No necesita internet después de la primera carga. Úsalo donde sea, cuando sea."
         }
       },
       "steps": {

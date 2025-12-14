@@ -54,7 +54,8 @@
     "headerRow": "Header row",
     "findDifference": "Find Difference",
     "processing": "Processing...",
-    "fileInfo": "{rows} rows, {cols} columns"
+    "fileInfo": "{rows} rows, {cols} columns",
+    "clear": "Clear file"
   },
   "diff": {
     "title": "Comparison Results",
@@ -100,6 +101,14 @@
         "opensource": {
           "title": "Open Source",
           "description": "Free and open source. No sign-up required."
+        },
+        "smart": {
+          "title": "Smart Detection",
+          "description": "Multiple comparison modes: row-by-row, key column, or intelligent LCS algorithm."
+        },
+        "works": {
+          "title": "Works Offline",
+          "description": "No internet needed after first load. Use it anywhere, anytime."
         }
       },
       "steps": {

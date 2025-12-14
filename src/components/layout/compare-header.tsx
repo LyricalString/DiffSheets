@@ -1,8 +1,9 @@
 "use client";
 
-import { ArrowLeft, FileSpreadsheet, RotateCcw } from "lucide-react";
+import { ArrowLeft, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { LogoIcon } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import { useSpreadsheetStore } from "@/store";
@@ -23,7 +24,12 @@ export function CompareHeader({ locale }: CompareHeaderProps) {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Back + Logo */}
         <div className="flex items-center gap-3">
-          <Button variant="ghost" size="sm" className="gap-2" asChild>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="gap-2 text-muted-foreground hover:text-green-500"
+            asChild
+          >
             <Link href={`/${locale}`}>
               <ArrowLeft className="h-4 w-4" />
               <span className="hidden sm:inline">{t("header.back")}</span>
@@ -32,11 +38,14 @@ export function CompareHeader({ locale }: CompareHeaderProps) {
 
           <div className="h-5 w-px bg-border" aria-hidden="true" />
 
-          <Link href={`/${locale}`} className="group flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500 shadow-md shadow-emerald-500/20 transition-all duration-200 group-hover:shadow-emerald-500/30 group-hover:scale-105">
-              <FileSpreadsheet className="h-4 w-4 text-white" />
-            </div>
-            <span className="font-semibold tracking-tight">DiffSheets</span>
+          <Link
+            href={`/${locale}`}
+            className="flex items-center gap-2 transition-opacity hover:opacity-80"
+          >
+            <LogoIcon size={28} />
+            <span className="font-display font-bold text-base hidden sm:block">
+              Diff<span className="text-green-500">Sheets</span>
+            </span>
           </Link>
         </div>
 
@@ -47,12 +56,14 @@ export function CompareHeader({ locale }: CompareHeaderProps) {
               variant="outline"
               size="sm"
               onClick={() => reset()}
-              className="gap-2"
+              className="gap-2 border-green-500/30 text-green-500 hover:bg-green-500/10 hover:text-green-400 hover:border-green-500/50"
             >
               <RotateCcw className="h-4 w-4" />
               <span className="hidden sm:inline">{t("header.newComparison")}</span>
             </Button>
           )}
+
+          <div className="h-5 w-px bg-border mx-1" aria-hidden="true" />
 
           <ThemeToggle />
         </div>

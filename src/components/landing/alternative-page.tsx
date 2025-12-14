@@ -24,70 +24,118 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
       ? (["price", "installation", "privacy", "availability"] as const)
       : (["price", "setup", "privacy", "formats"] as const);
 
+  // Detect locale
+  const isSpanish =
+    tCommon("h1Prefix").includes("Alternativa") ||
+    tCommon("h1Prefix").includes("alternativa");
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-background to-muted/30 px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#8882_1px,transparent_1px),linear-gradient(to_bottom,#8882_1px,transparent_1px)] bg-[size:24px_24px]" />
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-4 text-muted-foreground text-sm font-medium uppercase tracking-wide">
-              {tCommon("h1Prefix")}
+        <section className="relative min-h-[60vh] flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
+          {/* Background glow */}
+          <div
+            className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px]"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
+            }}
+          />
+
+          <div className="relative z-10 max-w-4xl text-center">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2.5 px-5 py-2.5 mb-8 rounded-full bg-green-500/10 border border-green-500/25">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+              </span>
+              <span className="text-sm font-medium text-green-400">
+                {tCommon("h1Prefix")}
+              </span>
             </div>
-            <h1 className="font-bold text-4xl tracking-tight sm:text-5xl md:text-6xl">
-              <span className="bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent">
+
+            {/* Headline */}
+            <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[1.1] mb-6">
+              <span className="bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent">
                 {t("name")}
               </span>
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground sm:text-xl">
+
+            {/* Subtitle */}
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
               {t("intro")}
             </p>
-            <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <Button asChild size="lg" className="min-w-[200px]">
-                <Link href="/compare">
-                  {tCommon("tryFree")}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+
+            {/* CTA */}
+            <Button
+              asChild
+              size="lg"
+              className="gap-2 bg-green-500 hover:bg-green-400 text-slate-950 font-semibold px-8 shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all hover:-translate-y-0.5"
+            >
+              <Link href="/compare">
+                {tCommon("tryFree")}
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </section>
 
         {/* Comparison Table Section */}
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <section className="py-24 px-4" aria-labelledby="comparison-heading">
           <div className="mx-auto max-w-5xl">
-            <h2 className="text-center font-bold text-3xl tracking-tight">
-              {tCommon("comparison")}
-            </h2>
-            <div className="mt-12 overflow-hidden rounded-xl border bg-card shadow-sm">
+            <div className="text-center mb-16">
+              <span className="font-display text-sm font-semibold text-green-500 uppercase tracking-widest mb-4 block">
+                {isSpanish ? "Comparativa" : "Comparison"}
+              </span>
+              <h2
+                id="comparison-heading"
+                className="font-display font-bold text-3xl md:text-4xl"
+              >
+                {tCommon("comparison")}
+              </h2>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-lg">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead>
                     <tr className="border-b bg-muted/50">
-                      <th className="px-6 py-4 text-left font-semibold text-sm">
+                      <th className="px-6 py-5 text-left font-display font-semibold">
                         {tCommon("feature")}
                       </th>
-                      <th className="px-6 py-4 text-center font-semibold text-sm">{t("name")}</th>
-                      <th className="px-6 py-4 text-center font-semibold text-sm">
+                      <th className="px-6 py-5 text-center font-display font-semibold text-muted-foreground">
+                        {t("name")}
+                      </th>
+                      <th className="px-6 py-5 text-center font-display font-semibold text-green-500">
                         {tCommon("us")}
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     {featureKeys.map((key, index) => (
-                      <tr key={key} className={index % 2 === 0 ? "bg-muted/20" : ""}>
-                        <td className="px-6 py-4 font-medium">{t(`features.${key}.label`)}</td>
-                        <td className="px-6 py-4 text-center text-muted-foreground">
-                          <div className="flex items-center justify-center gap-2">
+                      <tr
+                        key={key}
+                        className={`${index % 2 === 0 ? "bg-muted/20" : ""} border-b border-border/50 last:border-0`}
+                      >
+                        <td className="px-6 py-5 font-medium">
+                          {t(`features.${key}.label`)}
+                        </td>
+                        <td className="px-6 py-5 text-center">
+                          <div className="flex items-center justify-center gap-2 text-muted-foreground">
                             <XCircle className="h-5 w-5 text-red-500" />
-                            <span>{t(`features.${key}.them`)}</span>
+                            <span className="text-sm">
+                              {t(`features.${key}.them`)}
+                            </span>
                           </div>
                         </td>
-                        <td className="px-6 py-4 text-center">
+                        <td className="px-6 py-5 text-center">
                           <div className="flex items-center justify-center gap-2">
                             <CheckCircle className="h-5 w-5 text-green-500" />
-                            <span className="font-semibold">{t(`features.${key}.us`)}</span>
+                            <span className="font-semibold text-sm">
+                              {t(`features.${key}.us`)}
+                            </span>
                           </div>
                         </td>
                       </tr>
@@ -100,84 +148,129 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
         </section>
 
         {/* Why Switch Section */}
-        <section className="bg-muted/30 px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="text-center font-bold text-3xl tracking-tight">
-              {tCommon("whySwitch")}
-            </h2>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2">
-              <div className="rounded-xl border bg-card p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500">
-                  <CheckCircle className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="mt-4 font-semibold text-lg">{tBenefits("free.title")}</h3>
-                <p className="mt-2 text-muted-foreground text-sm">
-                  {tBenefits("free.description")}
-                </p>
-              </div>
-              <div className="rounded-xl border bg-card p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500">
-                  <CheckCircle className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="mt-4 font-semibold text-lg">{tBenefits("noInstall.title")}</h3>
-                <p className="mt-2 text-muted-foreground text-sm">
-                  {tBenefits("noInstall.description")}
-                </p>
-              </div>
-              <div className="rounded-xl border bg-card p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500">
-                  <CheckCircle className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="mt-4 font-semibold text-lg">{tBenefits("privacy.title")}</h3>
-                <p className="mt-2 text-muted-foreground text-sm">
-                  {tBenefits("privacy.description")}
-                </p>
-              </div>
-              <div className="rounded-xl border bg-card p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-cyan-500">
-                  <CheckCircle className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="mt-4 font-semibold text-lg">{tBenefits("crossPlatform.title")}</h3>
-                <p className="mt-2 text-muted-foreground text-sm">
-                  {tBenefits("crossPlatform.description")}
-                </p>
-              </div>
+        <section className="py-24 px-4" aria-labelledby="benefits-heading">
+          <div className="mx-auto max-w-6xl">
+            <div className="text-center mb-16">
+              <span className="font-display text-sm font-semibold text-green-500 uppercase tracking-widest mb-4 block">
+                {isSpanish ? "Ventajas" : "Benefits"}
+              </span>
+              <h2
+                id="benefits-heading"
+                className="font-display font-bold text-3xl md:text-4xl"
+              >
+                {tCommon("whySwitch")}
+              </h2>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              {(["free", "noInstall", "privacy", "crossPlatform"] as const).map(
+                (key) => (
+                  <div
+                    key={key}
+                    className="group p-8 rounded-2xl border border-border bg-card hover:border-slate-700 transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-green-500/10">
+                      <CheckCircle className="h-7 w-7 text-green-500" />
+                    </div>
+                    <h3 className="font-display font-semibold text-xl mb-3">
+                      {tBenefits(`${key}.title`)}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {tBenefits(`${key}.description`)}
+                    </p>
+                  </div>
+                )
+              )}
             </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="text-center font-bold text-3xl tracking-tight">{tFaq("title")}</h2>
-            <div className="mt-12 space-y-6">
-              <div className="rounded-xl border bg-card p-6">
-                <h3 className="font-semibold text-lg">{tFaq("free.question")}</h3>
-                <p className="mt-2 text-muted-foreground">{tFaq("free.answer")}</p>
-              </div>
-              <div className="rounded-xl border bg-card p-6">
-                <h3 className="font-semibold text-lg">
+        <section className="py-24 px-4" aria-labelledby="faq-heading">
+          <div className="mx-auto max-w-3xl">
+            <div className="text-center mb-16">
+              <span className="font-display text-sm font-semibold text-green-500 uppercase tracking-widest mb-4 block">
+                FAQ
+              </span>
+              <h2
+                id="faq-heading"
+                className="font-display font-bold text-3xl md:text-4xl"
+              >
+                {tFaq("title")}
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              <details className="group rounded-xl border border-border bg-card overflow-hidden">
+                <summary className="flex cursor-pointer items-center justify-between p-5 font-display font-medium text-lg hover:bg-accent/50 transition-colors">
+                  {tFaq("free.question")}
+                  <span className="ml-4 shrink-0 transition-transform duration-200 group-open:rotate-180">
+                    <svg
+                      className="w-5 h-5 text-muted-foreground"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="border-t border-border px-5 py-4 text-muted-foreground leading-relaxed">
+                  {tFaq("free.answer")}
+                </div>
+              </details>
+
+              <details className="group rounded-xl border border-border bg-card overflow-hidden">
+                <summary className="flex cursor-pointer items-center justify-between p-5 font-display font-medium text-lg hover:bg-accent/50 transition-colors">
                   {tFaq("migration.question", { competitor: t("name") })}
-                </h3>
-                <p className="mt-2 text-muted-foreground">{tFaq("migration.answer")}</p>
-              </div>
+                  <span className="ml-4 shrink-0 transition-transform duration-200 group-open:rotate-180">
+                    <svg
+                      className="w-5 h-5 text-muted-foreground"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+                <div className="border-t border-border px-5 py-4 text-muted-foreground leading-relaxed">
+                  {tFaq("migration.answer")}
+                </div>
+              </details>
             </div>
           </div>
         </section>
 
         {/* Final CTA Section */}
-        <section className="bg-gradient-to-b from-background to-muted/30 px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="font-bold text-3xl tracking-tight">{tCommon("tryFree")}</h2>
-            <p className="mt-4 text-muted-foreground text-lg">{tCommon("ctaSubtitle")}</p>
-            <div className="mt-8">
-              <Button asChild size="lg" className="min-w-[200px]">
-                <Link href="/compare">
-                  {tCommon("tryFree")}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+        <section className="py-24 px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-display font-bold text-3xl md:text-4xl mb-6">
+              {isSpanish ? "¿Listo para cambiar?" : "Ready to switch?"}
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+              {tCommon("ctaSubtitle")}
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="gap-2 bg-green-500 hover:bg-green-400 text-slate-950 font-semibold px-8 shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all hover:-translate-y-0.5"
+            >
+              <Link href="/compare">
+                {tCommon("tryFree")}
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </section>
       </main>

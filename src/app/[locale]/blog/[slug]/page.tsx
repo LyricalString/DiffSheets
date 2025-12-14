@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { Footer, Header } from "@/components/layout";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Prose } from "@/components/ui/prose";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -1733,28 +1734,42 @@ export default async function BlogPostPage({ params }: Props) {
           </header>
 
           {/* Content */}
-          <div className="prose prose-neutral dark:prose-invert max-w-none">
+          <div className="max-w-none">
             {content.sections.map((section, index) => (
-              <section key={index} className="mb-8">
-                <h2 className="font-semibold text-2xl">{section.heading}</h2>
-                <div className="mt-4 space-y-4 text-muted-foreground whitespace-pre-line">
-                  {section.content}
-                </div>
+              <section key={index} className="mb-12">
+                <h2 className="font-display font-bold text-2xl mb-4">{section.heading}</h2>
+                <Prose content={section.content} />
               </section>
             ))}
           </div>
 
           {/* CTA */}
-          <div className="mt-12 rounded-xl border bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 p-8 text-center">
-            <h3 className="font-semibold text-xl">{tCommon("tryNow")}</h3>
-            <p className="mt-2 text-muted-foreground">
-              {locale === "es"
-                ? "Compara tus archivos Excel o CSV en segundos"
-                : "Compare your Excel or CSV files in seconds"}
-            </p>
-            <Button asChild className="mt-4">
-              <Link href="/">DiffSheets</Link>
-            </Button>
+          <div className="mt-16 relative rounded-2xl border border-green-500/20 bg-card p-8 md:p-12 text-center overflow-hidden">
+            {/* Background glow */}
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(circle at center, rgba(34, 197, 94, 0.08) 0%, transparent 70%)",
+              }}
+            />
+            <div className="relative z-10">
+              <h3 className="font-display font-bold text-2xl md:text-3xl mb-3">
+                {locale === "es" ? "¿Listo para comparar?" : "Ready to compare?"}
+              </h3>
+              <p className="text-muted-foreground max-w-md mx-auto mb-6">
+                {locale === "es"
+                  ? "Compara tus hojas de cálculo en segundos. Gratis, privado, sin registro."
+                  : "Compare your spreadsheets in seconds. Free, private, no sign-up required."}
+              </p>
+              <Button
+                asChild
+                size="lg"
+                className="gap-2 bg-green-500 hover:bg-green-400 text-slate-950 font-semibold px-8 shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all hover:-translate-y-0.5"
+              >
+                <Link href="/compare">{tCommon("tryNow")}</Link>
+              </Button>
+            </div>
           </div>
         </article>
       </main>

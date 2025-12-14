@@ -1,0 +1,13 @@
+<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- DiffSheets Logo: Two overlapping spreadsheets -->
+  <!-- Back sheet (original document) -->
+  <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+  <!-- Front sheet (comparison document) -->
+  <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+  <!-- Intersection zone (overlap area) -->
+  <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+  <!-- Data lines -->
+  <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+  <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+  <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+</svg>

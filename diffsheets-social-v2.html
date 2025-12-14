@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiffSheets - Social Media Assets (v2)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0b;
+            color: #e4e4e7;
+            padding: 60px 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p { color: #71717a; }
+
+        .assets { display: flex; flex-direction: column; gap: 80px; max-width: 1400px; margin: 0 auto; }
+
+        .asset-section { display: flex; flex-direction: column; gap: 24px; }
+
+        .asset-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #22c55e;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .asset-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fafafa;
+        }
+
+        .asset-desc { color: #71717a; font-size: 0.9rem; margin-bottom: 16px; }
+
+        /* OG Image - 1200x630 */
+        .og-image {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #020617 100%);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 80px;
+            transform-origin: top left;
+            transform: scale(0.55);
+            margin-bottom: -283px;
+            border: 1px solid #27272a;
+        }
+
+        .og-image::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle at 30% 40%, rgba(34, 197, 94, 0.12) 0%, transparent 50%);
+        }
+
+        .og-left { flex: 1; position: relative; z-index: 1; }
+
+        .og-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .og-logo svg { width: 72px; height: 72px; }
+
+        .og-logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 2.75rem;
+            color: #fafafa;
+        }
+
+        .og-logo-text span { color: #22c55e; }
+
+        .og-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #fafafa;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .og-title .highlight {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .og-subtitle { font-size: 1.4rem; color: #94a3b8; max-width: 500px; }
+
+        .og-right {
+            position: relative;
+            z-index: 1;
+            margin-left: 60px;
+        }
+
+        .og-demo {
+            width: 420px;
+            background: #0f172a;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .og-demo-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 18px;
+            background: #1e293b;
+            border-bottom: 1px solid #334155;
+        }
+
+        .og-demo-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .og-demo-dot.r { background: #ef4444; }
+        .og-demo-dot.y { background: #f59e0b; }
+        .og-demo-dot.g { background: #22c55e; }
+
+        .og-demo-content { padding: 20px; }
+
+        .og-demo-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-family: 'Space Grotesk', monospace;
+            font-size: 0.95rem;
+        }
+
+        .og-demo-cell {
+            flex: 1;
+            padding: 14px 16px;
+            background: #1e293b;
+            border-radius: 8px;
+            color: #94a3b8;
+        }
+
+        .og-demo-cell.added {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .og-demo-cell.removed {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .og-demo-cell.changed {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        /* Twitter Header - 1500x500 */
+        .twitter-header {
+            width: 1500px;
+            height: 500px;
+            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-origin: top left;
+            transform: scale(0.45);
+            margin-bottom: -275px;
+            border: 1px solid #27272a;
+        }
+
+        .twitter-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.12) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(34, 197, 94, 0.08) 0%, transparent 50%);
+        }
+
+        .twitter-content {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .twitter-logo {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .twitter-logo svg { width: 100px; height: 100px; }
+
+        .twitter-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 4rem;
+            color: #fafafa;
+        }
+
+        .twitter-text span { color: #22c55e; }
+
+        .twitter-divider {
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #334155, transparent);
+        }
+
+        .twitter-tagline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            color: #94a3b8;
+            max-width: 450px;
+            line-height: 1.4;
+        }
+
+        /* Product Hunt - 1270x760 */
+        .ph-banner {
+            width: 1270px;
+            height: 760px;
+            background: #020617;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            transform-origin: top left;
+            transform: scale(0.5);
+            margin-bottom: -380px;
+            border: 1px solid #27272a;
+        }
+
+        .ph-left {
+            flex: 1;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .ph-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .ph-right::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(34, 197, 94, 0.15) 0%, transparent 60%);
+        }
+
+        .ph-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .ph-logo svg { width: 64px; height: 64px; }
+
+        .ph-logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 2.25rem;
+            color: #fafafa;
+        }
+
+        .ph-logo-text span { color: #22c55e; }
+
+        .ph-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.25rem;
+            font-weight: 700;
+            color: #fafafa;
+            line-height: 1.15;
+            margin-bottom: 24px;
+        }
+
+        .ph-subtitle {
+            font-size: 1.35rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .ph-features { display: flex; gap: 16px; }
+
+        .ph-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 100px;
+            font-size: 1rem;
+            color: #e4e4e7;
+        }
+
+        .ph-feature svg { width: 18px; height: 18px; color: #22c55e; }
+
+        .ph-demo {
+            position: relative;
+            z-index: 1;
+            width: 480px;
+            background: #0f172a;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .ph-demo-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 20px;
+            background: #1e293b;
+            border-bottom: 1px solid #334155;
+        }
+
+        .ph-demo-content { padding: 24px; }
+
+        .ph-demo-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-family: 'Space Grotesk', monospace;
+        }
+
+        .ph-demo-cell {
+            flex: 1;
+            padding: 16px;
+            background: #1e293b;
+            border-radius: 8px;
+            color: #94a3b8;
+        }
+
+        .ph-demo-cell.added { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .ph-demo-cell.removed { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .ph-demo-cell.changed { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+        /* Favicon Grid */
+        .favicon-grid { display: flex; gap: 32px; flex-wrap: wrap; }
+
+        .favicon-box { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+
+        .favicon-display {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            border: 1px solid #27272a;
+        }
+
+        .favicon-display.dark { background: #18181b; }
+        .favicon-display.light { background: #fafafa; }
+        .favicon-display.green { background: #22c55e; border-color: #22c55e; }
+
+        .favicon-label { font-size: 0.85rem; color: #a1a1aa; }
+        .favicon-size { font-size: 0.75rem; color: #52525b; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>DiffSheets Social Assets</h1>
+        <p>Updated with Overlapping Sheets logo (Proposal 3)</p>
+    </div>
+
+    <div class="assets">
+        <!-- OG Image -->
+        <div class="asset-section">
+            <div>
+                <div class="asset-label">Open Graph / Twitter Card</div>
+                <h2 class="asset-title">og-image.png</h2>
+                <p class="asset-desc">1200×630px — Link previews on Twitter, Facebook, LinkedIn</p>
+            </div>
+            <div class="og-image">
+                <div class="og-left">
+                    <div class="og-logo">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                            <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                            <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                            <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        </svg>
+                        <span class="og-logo-text">Diff<span>Sheets</span></span>
+                    </div>
+                    <h1 class="og-title">Compare spreadsheets.<br><span class="highlight">See what changed.</span></h1>
+                    <p class="og-subtitle">Upload two Excel, CSV, or ODS files and instantly see every difference.</p>
+                </div>
+                <div class="og-right">
+                    <div class="og-demo">
+                        <div class="og-demo-header">
+                            <div class="og-demo-dot r"></div>
+                            <div class="og-demo-dot y"></div>
+                            <div class="og-demo-dot g"></div>
+                        </div>
+                        <div class="og-demo-content">
+                            <div class="og-demo-row">
+                                <div class="og-demo-cell">Marketing</div>
+                                <div class="og-demo-cell changed">$65,000</div>
+                            </div>
+                            <div class="og-demo-row">
+                                <div class="og-demo-cell">Engineering</div>
+                                <div class="og-demo-cell">$120,000</div>
+                            </div>
+                            <div class="og-demo-row">
+                                <div class="og-demo-cell added">Operations</div>
+                                <div class="og-demo-cell added">$45,000</div>
+                            </div>
+                            <div class="og-demo-row">
+                                <div class="og-demo-cell removed">Sales</div>
+                                <div class="og-demo-cell removed">$80,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Twitter Header -->
+        <div class="asset-section">
+            <div>
+                <div class="asset-label">Twitter/X Header</div>
+                <h2 class="asset-title">twitter-header.png</h2>
+                <p class="asset-desc">1500×500px — Profile banner for Twitter/X</p>
+            </div>
+            <div class="twitter-header">
+                <div class="twitter-content">
+                    <div class="twitter-logo">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                            <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                            <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                            <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        </svg>
+                        <span class="twitter-text">Diff<span>Sheets</span></span>
+                    </div>
+                    <div class="twitter-divider"></div>
+                    <p class="twitter-tagline">Compare spreadsheets instantly. See what changed. 100% private.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Hunt -->
+        <div class="asset-section">
+            <div>
+                <div class="asset-label">Product Hunt</div>
+                <h2 class="asset-title">product-hunt-banner.png</h2>
+                <p class="asset-desc">1270×760px — Featured gallery image</p>
+            </div>
+            <div class="ph-banner">
+                <div class="ph-left">
+                    <div class="ph-logo">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                            <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                            <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                            <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        </svg>
+                        <span class="ph-logo-text">Diff<span>Sheets</span></span>
+                    </div>
+                    <h1 class="ph-title">Spot every change between spreadsheets</h1>
+                    <p class="ph-subtitle">Compare Excel, CSV, or ODS files instantly. Your data never leaves your browser.</p>
+                    <div class="ph-features">
+                        <div class="ph-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                            Private
+                        </div>
+                        <div class="ph-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                            Fast
+                        </div>
+                        <div class="ph-feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg>
+                            Open Source
+                        </div>
+                    </div>
+                </div>
+                <div class="ph-right">
+                    <div class="ph-demo">
+                        <div class="ph-demo-header">
+                            <div class="og-demo-dot r"></div>
+                            <div class="og-demo-dot y"></div>
+                            <div class="og-demo-dot g"></div>
+                        </div>
+                        <div class="ph-demo-content">
+                            <div class="ph-demo-row">
+                                <div class="ph-demo-cell">Marketing</div>
+                                <div class="ph-demo-cell changed">$65,000</div>
+                            </div>
+                            <div class="ph-demo-row">
+                                <div class="ph-demo-cell">Engineering</div>
+                                <div class="ph-demo-cell">$120,000</div>
+                            </div>
+                            <div class="ph-demo-row">
+                                <div class="ph-demo-cell added">Operations</div>
+                                <div class="ph-demo-cell added">$45,000</div>
+                            </div>
+                            <div class="ph-demo-row">
+                                <div class="ph-demo-cell removed">Sales</div>
+                                <div class="ph-demo-cell removed">$80,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Favicons -->
+        <div class="asset-section">
+            <div>
+                <div class="asset-label">App Icons / Favicons</div>
+                <h2 class="asset-title">Icon variations</h2>
+                <p class="asset-desc">Various sizes for favicon, PWA, app stores</p>
+            </div>
+            <div class="favicon-grid">
+                <div class="favicon-box">
+                    <div class="favicon-display dark">
+                        <svg width="64" height="64" viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                            <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                            <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                            <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        </svg>
+                    </div>
+                    <span class="favicon-label">On Dark</span>
+                    <span class="favicon-size">512×512</span>
+                </div>
+                <div class="favicon-box">
+                    <div class="favicon-display light">
+                        <svg width="64" height="64" viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="4" width="28" height="36" rx="4" fill="#d4d4d8"/>
+                            <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                            <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.4"/>
+                            <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        </svg>
+                    </div>
+                    <span class="favicon-label">On Light</span>
+                    <span class="favicon-size">512×512</span>
+                </div>
+                <div class="favicon-box">
+                    <div class="favicon-display green">
+                        <svg width="64" height="64" viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="4" width="28" height="36" rx="4" fill="rgba(255,255,255,0.3)"/>
+                            <rect x="14" y="8" width="28" height="36" rx="4" fill="#fafafa"/>
+                            <rect x="14" y="8" width="20" height="32" rx="4" fill="rgba(255,255,255,0.5)"/>
+                            <rect x="18" y="14" width="12" height="3" rx="1" fill="#16a34a"/>
+                            <rect x="18" y="20" width="8" height="3" rx="1" fill="#16a34a"/>
+                            <rect x="18" y="26" width="10" height="3" rx="1" fill="#16a34a"/>
+                        </svg>
+                    </div>
+                    <span class="favicon-label">On Green</span>
+                    <span class="favicon-size">512×512</span>
+                </div>
+                <div class="favicon-box">
+                    <div class="favicon-display dark">
+                        <svg width="32" height="32" viewBox="0 0 48 48" fill="none">
+                            <rect x="6" y="4" width="28" height="36" rx="4" fill="#3f3f46"/>
+                            <rect x="14" y="8" width="28" height="36" rx="4" fill="#22c55e"/>
+                            <rect x="14" y="8" width="20" height="32" rx="4" fill="#16a34a" fill-opacity="0.6"/>
+                            <rect x="18" y="14" width="12" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="20" width="8" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                            <rect x="18" y="26" width="10" height="3" rx="1" fill="#fafafa" fill-opacity="0.9"/>
+                        </svg>
+                    </div>
+                    <span class="favicon-label">Favicon</span>
+                    <span class="favicon-size">32×32</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
