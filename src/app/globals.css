@@ -149,3 +149,72 @@
     }
   }
 }
+
+/* Custom animations */
+@keyframes pulse-ring {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes slide-up-fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes highlight-flash {
+  0% {
+    background-color: oklch(0.9 0.15 90);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-slide-up-fade {
+  animation: slide-up-fade 0.3s ease-out;
+}
+
+.animate-highlight-flash {
+  animation: highlight-flash 1s ease-out;
+}
+
+/* Smooth scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: oklch(0.7 0 0 / 30%);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: oklch(0.6 0 0 / 50%);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: oklch(0.4 0 0 / 40%);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: oklch(0.5 0 0 / 60%);
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/card";
@@ -25,6 +25,50 @@ function getColumnLetter(index: number): string {
   return letter;
 }
 
+// Calculate smart column widths based on content
+function calculateColumnWidths(
+  rows: DiffRowType[],
+  columns: number[]
+): Map<number, number> {
+  const CHAR_WIDTH = 8; // Average pixels per character
+  const MIN_WIDTH = 80;
+  const MAX_WIDTH = 400;
+  const PADDING = 24; // px padding in cells
+  const SAMPLE_SIZE = 100;
+
+  const maxChars = new Map<number, number>();
+
+  // Initialize with column header length (single letter = ~2 chars min)
+  for (const colIndex of columns) {
+    maxChars.set(colIndex, 2);
+  }
+
+  // Sample first N rows to find max content length per column
+  const sampleRows = rows.slice(0, SAMPLE_SIZE);
+
+  for (const row of sampleRows) {
+    for (const colIndex of columns) {
+      const cell = row.cells[colIndex];
+      if (!cell) continue;
+
+      const originalLen = String(cell.original?.value ?? "").length;
+      const modifiedLen = String(cell.modified?.value ?? "").length;
+      const maxLen = Math.max(originalLen, modifiedLen);
+
+      maxChars.set(colIndex, Math.max(maxChars.get(colIndex) ?? 0, maxLen));
+    }
+  }
+
+  // Convert character counts to pixel widths with constraints
+  const widths = new Map<number, number>();
+  for (const [col, chars] of maxChars) {
+    const calculatedWidth = chars * CHAR_WIDTH + PADDING;
+    widths.set(col, Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, calculatedWidth)));
+  }
+
+  return widths;
+}
+
 export function DiffGrid({
   diffResult,
   visibleRows,
@@ -45,6 +89,22 @@ export function DiffGrid({
     overscan: 5,
   });
 
+  // Calculate smart column widths based on content (memoized)
+  const columnWidths = useMemo(
+    () => calculateColumnWidths(visibleRows, visibleColumns),
+    [visibleRows, visibleColumns]
+  );
+
+  // Calculate total table width from individual column widths
+  const totalTableWidth = useMemo(() => {
+    const stickyWidth = 40 + 40 + 32; // row numbers + indicator
+    let dataWidth = 0;
+    for (const colIndex of visibleColumns) {
+      dataWidth += columnWidths.get(colIndex) ?? 120;
+    }
+    return stickyWidth + dataWidth;
+  }, [visibleColumns, columnWidths]);
+
   if (visibleRows.length === 0) {
     return (
       <Card className={cn("flex items-center justify-center p-12", className)}>
@@ -52,11 +112,6 @@ export function DiffGrid({
       </Card>
     );
   }
-
-  // Calculate column width based on number of columns
-  const columnWidth = Math.max(150, Math.floor(800 / Math.min(visibleColumns.length, 6)));
-  // Calculate total table width: sticky columns (40 + 40 + 32) + data columns
-  const totalTableWidth = 40 + 40 + 32 + visibleColumns.length * columnWidth;
 
   return (
     <Card className={cn("overflow-hidden", className)}>
@@ -67,7 +122,7 @@ export function DiffGrid({
             <col style={{ width: "40px" }} />
             <col style={{ width: "32px" }} />
             {visibleColumns.map((colIndex) => (
-              <col key={colIndex} style={{ width: `${columnWidth}px` }} />
+              <col key={colIndex} style={{ width: `${columnWidths.get(colIndex) ?? 120}px` }} />
             ))}
           </colgroup>
           <thead className="sticky top-0 z-20">
@@ -116,7 +171,7 @@ export function DiffGrid({
                   key={virtualRow.key}
                   row={row}
                   visibleColumns={visibleColumns}
-                  columnWidth={columnWidth}
+                  columnWidths={columnWidths}
                   style={{
                     position: "absolute",
                     top: 0,

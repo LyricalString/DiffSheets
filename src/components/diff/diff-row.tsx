@@ -7,11 +7,11 @@ import type { DiffRow as DiffRowType } from "@/types";
 interface DiffRowProps {
   row: DiffRowType;
   visibleColumns: number[];
-  columnWidth: number;
+  columnWidths: Map<number, number>;
   style?: React.CSSProperties;
 }
 
-export function DiffRow({ row, visibleColumns, columnWidth, style }: DiffRowProps) {
+export function DiffRow({ row, visibleColumns, columnWidths, style }: DiffRowProps) {
   const rowBgClass = cn(
     row.changeType === "added" && "bg-green-50/50 dark:bg-green-900/10",
     row.changeType === "removed" && "bg-red-50/50 dark:bg-red-900/10",
@@ -46,18 +46,19 @@ export function DiffRow({ row, visibleColumns, columnWidth, style }: DiffRowProp
       {/* Cells */}
       {visibleColumns.map((colIndex) => {
         const cell = row.cells[colIndex];
+        const width = columnWidths.get(colIndex) ?? 120;
         if (!cell) {
           return (
             <td
               key={colIndex}
               className="border-r px-2 py-2 text-muted-foreground overflow-hidden"
-              style={{ width: columnWidth, minWidth: columnWidth, maxWidth: columnWidth }}
+              style={{ width, minWidth: width, maxWidth: width }}
             >
               -
             </td>
           );
         }
-        return <DiffCell key={colIndex} cell={cell} width={columnWidth} />;
+        return <DiffCell key={colIndex} cell={cell} width={width} />;
       })}
     </tr>
   );

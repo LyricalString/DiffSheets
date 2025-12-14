@@ -3,3 +3,7 @@ export { DiffGrid } from "./diff-grid";
 export { DiffRow } from "./diff-row";
 export { DiffCell } from "./diff-cell";
 export { DiffSummary } from "./diff-summary";
+export { SideBySideGrid } from "./side-by-side-grid";
+export { ViewModeSelector } from "./view-mode-selector";
+export { ChangeNavigation } from "./change-navigation";
+export { CellInspector } from "./cell-inspector";
