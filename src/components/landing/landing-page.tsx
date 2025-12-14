@@ -6,7 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { Footer, Header } from "@/components/layout";
 
-type LandingType = "excel" | "csv";
+type LandingType = "excel" | "csv" | "xlsx" | "xls" | "ods";
 
 interface LandingPageProps {
   type: LandingType;
@@ -21,6 +21,11 @@ const icons = {
   large: FileSpreadsheet,
   delimiters: FileSpreadsheet,
   export: FileSpreadsheet,
+  legacy: FileSpreadsheet,
+  compatibility: CheckCircle,
+  results: Zap,
+  opensource: FileSpreadsheet,
+  crossplatform: FileSpreadsheet,
 };
 
 const useCaseIcons = {
@@ -32,6 +37,14 @@ const useCaseIcons = {
   api: Zap,
   logs: FileSpreadsheet,
   etl: FileSpreadsheet,
+  legacyMigration: FileSpreadsheet,
+  historicalComparison: FileSpreadsheet,
+  complianceAuditing: Shield,
+  archiveVerification: CheckCircle,
+  opensourceWorkflows: FileSpreadsheet,
+  governmentCompliance: Shield,
+  crossplatformTeams: FileSpreadsheet,
+  conversionVerification: CheckCircle,
 };
 
 export function LandingPage({ type }: LandingPageProps) {
@@ -39,11 +52,23 @@ export function LandingPage({ type }: LandingPageProps) {
 
   const benefitKeys = type === "excel"
     ? ["visual", "privacy", "formats", "free"] as const
-    : ["instant", "large", "delimiters", "export"] as const;
+    : type === "csv"
+    ? ["instant", "large", "delimiters", "export"] as const
+    : type === "xlsx"
+    ? ["visual", "privacy", "formats", "free"] as const
+    : type === "xls"
+    ? ["legacy", "compatibility", "privacy", "results"] as const
+    : ["opensource", "formats", "privacy", "crossplatform"] as const; // ods
 
   const useCaseKeys = type === "excel"
     ? ["audit", "version", "migration", "qa"] as const
-    : ["database", "api", "logs", "etl"] as const;
+    : type === "csv"
+    ? ["database", "api", "logs", "etl"] as const
+    : type === "xlsx"
+    ? ["audit", "version", "migration", "qa"] as const
+    : type === "xls"
+    ? ["legacyMigration", "historicalComparison", "complianceAuditing", "archiveVerification"] as const
+    : ["opensourceWorkflows", "governmentCompliance", "crossplatformTeams", "conversionVerification"] as const; // ods
 
   return (
     <div className="flex min-h-screen flex-col">

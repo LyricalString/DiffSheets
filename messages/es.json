@@ -227,6 +227,153 @@
         }
       },
       "cta": "Compara tus Archivos CSV Ahora"
+    },
+    "xlsx": {
+      "title": "Comparar Archivos XLSX Online Gratis - Diff de Hojas Excel",
+      "description": "Compara archivos XLSX de Excel online gratis. Encuentra diferencias entre dos hojas XLSX al instante. 100% privado - tus archivos nunca salen de tu navegador.",
+      "h1": "Comparar Archivos XLSX Online",
+      "subtitle": "La forma más rápida de encontrar diferencias entre archivos XLSX de Excel. Gratis, privado y funciona completamente en tu navegador.",
+      "benefits": {
+        "title": "¿Por qué usar DiffSheets para comparar XLSX?",
+        "items": {
+          "visual": {
+            "title": "Comparación Visual Lado a Lado",
+            "description": "Ve los cambios resaltados en color. Filas añadidas en verde, eliminadas en rojo, modificadas en amarillo."
+          },
+          "privacy": {
+            "title": "Privacidad Total",
+            "description": "Tus archivos XLSX nunca salen de tu ordenador. Todo el procesamiento ocurre localmente en tu navegador."
+          },
+          "formats": {
+            "title": "Todos los Formatos Excel",
+            "description": "Funciona con .xlsx, .xls, e incluso compara Excel con archivos CSV."
+          },
+          "free": {
+            "title": "100% Gratis",
+            "description": "Sin registro, sin límites, sin marcas de agua. Úsalo tanto como necesites."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso Comunes",
+        "items": {
+          "audit": {
+            "title": "Auditoría Financiera",
+            "description": "Compara versiones de presupuestos, rastrea cambios en informes financieros, audita hojas de gastos."
+          },
+          "version": {
+            "title": "Control de Versiones",
+            "description": "Rastrea cambios entre versiones de documentos cuando colaboras con equipos."
+          },
+          "migration": {
+            "title": "Migración de Datos",
+            "description": "Verifica la integridad de datos después de importar o exportar entre sistemas."
+          },
+          "qa": {
+            "title": "Control de Calidad",
+            "description": "Valida resultados de pruebas, compara resultados esperados vs reales."
+          }
+        }
+      },
+      "cta": "Compara tus Archivos XLSX Ahora"
+    },
+    "xls": {
+      "title": "Herramienta de Comparación de Archivos XLS - Compara Excel Antiguos",
+      "description": "Compara archivos XLS de Excel online. Encuentra diferencias entre hojas .xls antiguas con nuestra herramienta gratuita. Sin subir archivos.",
+      "h1": "Comparar Archivos XLS Online",
+      "subtitle": "¿Necesitas comparar archivos Excel antiguos? Nuestra herramienta gratuita maneja archivos .xls perfectamente. Privacidad garantizada.",
+      "benefits": {
+        "title": "¿Por qué usar DiffSheets para comparar XLS?",
+        "items": {
+          "legacy": {
+            "title": "Soporte de Formato Antiguo",
+            "description": "Soporte completo para archivos .xls antiguos de Excel 97-2003."
+          },
+          "compatibility": {
+            "title": "Compatibilidad Entre Versiones",
+            "description": "Compara archivos .xls con formatos .xlsx modernos sin problemas."
+          },
+          "privacy": {
+            "title": "Privacidad Total",
+            "description": "Tus archivos XLS nunca salen de tu ordenador. Todo el procesamiento ocurre localmente en tu navegador."
+          },
+          "results": {
+            "title": "Resultados Instantáneos",
+            "description": "Sin esperar procesamiento del servidor. Compara archivos en milisegundos."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Perfecto Para",
+        "items": {
+          "legacyMigration": {
+            "title": "Migración de Sistemas Antiguos",
+            "description": "Verifica la integridad de datos al migrar desde sistemas Excel antiguos a plataformas modernas."
+          },
+          "historicalComparison": {
+            "title": "Comparación de Datos Históricos",
+            "description": "Compara archivos archivados antiguos con datos actuales para rastrear cambios a largo plazo."
+          },
+          "complianceAuditing": {
+            "title": "Auditoría de Cumplimiento",
+            "description": "Audita registros históricos y asegura el cumplimiento con requisitos de documentos antiguos."
+          },
+          "archiveVerification": {
+            "title": "Verificación de Archivos",
+            "description": "Verifica que los archivos .xls archivados coincidan con sus versiones originales para el mantenimiento de registros."
+          }
+        }
+      },
+      "cta": "Compara tus Archivos XLS Ahora"
+    },
+    "ods": {
+      "title": "Comparar Archivos ODS - Herramienta Diff de LibreOffice",
+      "description": "Compara archivos ODS de LibreOffice Calc online gratis. Encuentra diferencias entre hojas OpenDocument al instante. 100% privado.",
+      "h1": "Comparar Hojas de Cálculo ODS",
+      "subtitle": "Herramienta gratuita para comparar hojas de LibreOffice Calc y OpenOffice. Tus datos permanecen privados.",
+      "benefits": {
+        "title": "¿Por qué usar DiffSheets para comparar ODS?",
+        "items": {
+          "opensource": {
+            "title": "Soporte LibreOffice y OpenOffice",
+            "description": "Soporte nativo para formato OpenDocument Spreadsheet (.ods) de LibreOffice y OpenOffice."
+          },
+          "formats": {
+            "title": "Estándar de Formato Abierto",
+            "description": "Funciona con archivos ODS y compáralos con formatos Excel para máxima flexibilidad."
+          },
+          "privacy": {
+            "title": "Privacidad Total",
+            "description": "Tus archivos ODS nunca salen de tu ordenador. Todo el procesamiento ocurre localmente en tu navegador."
+          },
+          "crossplatform": {
+            "title": "Compatible Multiplataforma",
+            "description": "Funciona en cualquier dispositivo con navegador moderno - Windows, Mac, Linux o móvil."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Perfecto Para",
+        "items": {
+          "opensourceWorkflows": {
+            "title": "Flujos de Trabajo de Código Abierto",
+            "description": "Perfecto para equipos que usan LibreOffice u OpenOffice en entornos de código abierto."
+          },
+          "governmentCompliance": {
+            "title": "Gobierno y Cumplimiento",
+            "description": "Muchas agencias gubernamentales requieren formato ODS para cumplimiento y archivo."
+          },
+          "crossplatformTeams": {
+            "title": "Equipos Multiplataforma",
+            "description": "Compara archivos entre diferentes suites de oficina - LibreOffice, OpenOffice y Microsoft Excel."
+          },
+          "conversionVerification": {
+            "title": "Verificación de Conversión de Documentos",
+            "description": "Verifica la integridad de datos al convertir entre ODS y otros formatos de hojas de cálculo."
+          }
+        }
+      },
+      "cta": "Compara tus Archivos ODS Ahora"
     }
   },
   "blog": {
@@ -244,6 +391,24 @@
         "excerpt": "¿Cuándo deberías usar fórmulas de Excel vs herramientas de comparación dedicadas? Analizamos los pros y contras.",
         "date": "2025-01-10",
         "readTime": "4 min de lectura"
+      },
+      "free-excel-diff-tools-2025": {
+        "title": "Las 5 Mejores Herramientas Gratuitas de Diff Excel en 2025 (Comparación)",
+        "excerpt": "Compara las mejores herramientas gratuitas para comparar archivos Excel. Encuentra la mejor opción para tus necesidades de comparación de hojas de cálculo.",
+        "date": "2025-01-20",
+        "readTime": "8 min de lectura"
+      },
+      "compare-excel-without-excel": {
+        "title": "Cómo Comparar Archivos Excel Sin Microsoft Excel",
+        "excerpt": "¿No tienes Excel instalado? Aquí están las mejores formas de comparar archivos XLSX sin Microsoft Office.",
+        "date": "2025-01-18",
+        "readTime": "5 min de lectura"
+      },
+      "find-duplicates-two-excel-files": {
+        "title": "Cómo Encontrar Duplicados Entre Dos Archivos Excel",
+        "excerpt": "Guía paso a paso para encontrar datos duplicados entre dos hojas de cálculo usando diferentes métodos.",
+        "date": "2025-01-16",
+        "readTime": "6 min de lectura"
       }
     }
   },
@@ -251,5 +416,348 @@
     "privacy": "Tus archivos se procesan localmente y nunca se suben a ningún servidor.",
     "madeWith": "Hecho con",
     "opensource": "Código abierto en GitHub"
+  },
+  "guide": {
+    "spreadsheetComparison": {
+      "title": "Guía Completa de Comparación de Hojas de Cálculo (2025)",
+      "description": "Todo lo que necesitas saber sobre comparar hojas de cálculo. Aprende métodos, herramientas, mejores prácticas y consejos para comparar archivos Excel, CSV y ODS.",
+      "h1": "Guía Completa de Comparación de Hojas de Cálculo",
+      "subtitle": "Domina el arte de encontrar diferencias entre hojas de cálculo con esta guía completa.",
+      "toc": "Tabla de Contenidos",
+      "readTime": "15 min de lectura",
+      "sections": {
+        "what": "¿Qué es la Comparación de Hojas de Cálculo?",
+        "methods": "Métodos de Comparación",
+        "types": "Tipos de Diferencias",
+        "bestPractices": "Mejores Prácticas",
+        "tools": "Comparación de Herramientas",
+        "faq": "Preguntas Frecuentes",
+        "glossary": "Glosario"
+      },
+      "cta": "¿Listo para Comparar tus Hojas de Cálculo?",
+      "ctaButton": "Prueba DiffSheets Gratis"
+    }
+  },
+  "useCases": {
+    "common": {
+      "keyFeatures": "Características Clave",
+      "exampleUseCases": "Ejemplos de Uso",
+      "readyToStart": "¿Listo para Comenzar?"
+    },
+    "financial-auditing": {
+      "title": "Comparación de Excel para Auditoría Financiera | DiffSheets",
+      "description": "Compara hojas de cálculo financieras con confianza. Rastrea cambios de presupuesto, audita informes de gastos y verifica la precisión de datos financieros.",
+      "h1": "Comparación de Hojas de Cálculo para Auditoría Financiera",
+      "subtitle": "Audita documentos financieros más rápido con comparación visual. Identifica cada cambio entre versiones de presupuesto.",
+      "challenge": {
+        "title": "El Desafío",
+        "description": "Los auditores financieros necesitan comparar múltiples versiones de presupuestos, balances e informes de gastos. La comparación manual es propensa a errores y consume mucho tiempo."
+      },
+      "solution": {
+        "title": "Cómo Ayuda DiffSheets",
+        "description": "DiffSheets resalta instantáneamente cada diferencia entre dos hojas de cálculo, permitiéndote enfocarte en analizar cambios en lugar de encontrarlos."
+      },
+      "features": {
+        "accuracy": {
+          "title": "Precisión a Nivel de Celda",
+          "description": "Detecta incluso cambios de un solo dígito en cifras financieras."
+        },
+        "privacy": {
+          "title": "Confidencialidad Garantizada",
+          "description": "Los datos financieros nunca salen de tu navegador. Procesamiento 100% del lado del cliente."
+        },
+        "speed": {
+          "title": "Audita Más Rápido",
+          "description": "Compara hojas de cálculo en segundos, no en horas."
+        },
+        "export": {
+          "title": "Documenta Cambios",
+          "description": "Los informes visuales facilitan documentar qué cambió."
+        }
+      },
+      "scenarios": {
+        "budget": {
+          "title": "Comparación de Versiones de Presupuesto",
+          "description": "Compara presupuesto Q1 vs datos reales Q2 para identificar variaciones."
+        },
+        "expense": {
+          "title": "Auditoría de Informes de Gastos",
+          "description": "Verifica gastos presentados contra montos aprobados."
+        },
+        "reconciliation": {
+          "title": "Conciliación de Cuentas",
+          "description": "Coteja extractos bancarios con registros internos."
+        }
+      },
+      "cta": "Comienza a Auditar de Forma Inteligente"
+    },
+    "data-migration": {
+      "title": "Verificación de Migración de Datos | DiffSheets",
+      "description": "Verifica la integridad de datos después de la migración. Compara hojas de cálculo de origen y destino para asegurar que no se perdieron o corrompieron datos.",
+      "h1": "Verifica la Precisión de la Migración de Datos",
+      "subtitle": "Asegura que tus datos llegaron intactos. Compara archivos de origen y destino para detectar problemas de migración.",
+      "challenge": {
+        "title": "El Desafío",
+        "description": "Las migraciones de datos pueden introducir errores, registros duplicados o pérdida de datos. Verificar la precisión de la migración manualmente es casi imposible para conjuntos de datos grandes."
+      },
+      "solution": {
+        "title": "Cómo Ayuda DiffSheets",
+        "description": "Sube tus archivos de origen y destino para ver instantáneamente qué es diferente. Identifica registros faltantes, valores cambiados y modificaciones inesperadas."
+      },
+      "features": {
+        "large": {
+          "title": "Maneja Exportaciones Grandes",
+          "description": "Compara miles de filas eficientemente con scroll virtual."
+        },
+        "formats": {
+          "title": "Comparación Entre Formatos",
+          "description": "Compara exportaciones CSV con originales Excel sin problemas."
+        },
+        "key": {
+          "title": "Coincidencia por Columna Clave",
+          "description": "Empareja registros por columna ID incluso si cambió el orden de las filas."
+        },
+        "integrity": {
+          "title": "Verificaciones de Integridad de Datos",
+          "description": "Verifica que nada se perdió, duplicó o corrompió."
+        }
+      },
+      "scenarios": {
+        "database": {
+          "title": "Migración de Base de Datos",
+          "description": "Verifica datos después de mover de sistemas heredados a nuevos."
+        },
+        "crm": {
+          "title": "Importación de Datos CRM",
+          "description": "Confirma que todos los contactos se importaron correctamente a tu nuevo CRM."
+        },
+        "erp": {
+          "title": "Actualización de Sistema ERP",
+          "description": "Valida la integridad de datos después de actualizaciones de versión ERP."
+        }
+      },
+      "cta": "Verifica tu Migración"
+    },
+    "version-control": {
+      "title": "Control de Versiones de Hojas de Cálculo | DiffSheets",
+      "description": "Rastrea cambios entre versiones de hojas de cálculo. Ve exactamente qué cambió al colaborar con equipos.",
+      "h1": "Control de Versiones de Hojas de Cálculo Fácil",
+      "subtitle": "Ve exactamente qué cambió entre versiones de documentos. Esencial para colaboración en equipo.",
+      "challenge": {
+        "title": "El Desafío",
+        "description": "Los equipos comparten hojas de cálculo por correo electrónico o almacenamiento en la nube, pero rastrear quién cambió qué es casi imposible sin las herramientas adecuadas."
+      },
+      "solution": {
+        "title": "Cómo Ayuda DiffSheets",
+        "description": "Sube cualquier dos versiones de una hoja de cálculo para ver instantáneamente cada cambio resaltado. No más adivinar qué es diferente."
+      },
+      "features": {
+        "visual": {
+          "title": "Seguimiento Visual de Cambios",
+          "description": "Ve adiciones en verde, eliminaciones en rojo, modificaciones en amarillo."
+        },
+        "history": {
+          "title": "Compara Cualquier Versión",
+          "description": "Compara v1 con v5, o cualquier combinación de versiones guardadas."
+        },
+        "collaborate": {
+          "title": "Colaboración en Equipo",
+          "description": "Comparte resultados de comparación con tu equipo."
+        },
+        "offline": {
+          "title": "Funciona Sin Conexión",
+          "description": "Compara archivos locales sin subir a ningún servidor."
+        }
+      },
+      "scenarios": {
+        "review": {
+          "title": "Revisión de Documentos",
+          "description": "Ve qué cambió después de las ediciones de un colega."
+        },
+        "approval": {
+          "title": "Flujos de Aprobación",
+          "description": "Verifica que solo se realizaron cambios aprobados."
+        },
+        "backup": {
+          "title": "Verificación de Respaldo",
+          "description": "Confirma que los respaldos coinciden con los archivos de trabajo actuales."
+        }
+      },
+      "cta": "Rastrea tus Cambios"
+    },
+    "quality-assurance": {
+      "title": "Comparación de Hojas de Cálculo para QA | DiffSheets",
+      "description": "Compara resultados esperados vs reales de pruebas. Valida salidas de datos y detecta discrepancias en pruebas QA.",
+      "h1": "Comparación de Hojas de Cálculo para Pruebas QA",
+      "subtitle": "Valida resultados de pruebas comparando salidas esperadas vs reales. Detecta discrepancias instantáneamente.",
+      "challenge": {
+        "title": "El Desafío",
+        "description": "Los equipos QA necesitan comparar resultados esperados con salidas reales a través de cientos o miles de puntos de datos."
+      },
+      "solution": {
+        "title": "Cómo Ayuda DiffSheets",
+        "description": "Sube tus hojas de cálculo de resultados esperados y reales para identificar instantáneamente cada discrepancia. No más verificación manual celda por celda."
+      },
+      "features": {
+        "precision": {
+          "title": "Comparación Precisa",
+          "description": "Detecta diferencias hasta precisión decimal."
+        },
+        "bulk": {
+          "title": "Pruebas Masivas",
+          "description": "Compara conjuntos de datos de prueba completos en una operación."
+        },
+        "reports": {
+          "title": "Informes Claros",
+          "description": "La salida visual diff es perfecta para informes de errores."
+        },
+        "automation": {
+          "title": "Proceso Repetible",
+          "description": "La misma comparación confiable cada vez."
+        }
+      },
+      "scenarios": {
+        "regression": {
+          "title": "Pruebas de Regresión",
+          "description": "Compara datos antes/después para detectar regresiones."
+        },
+        "etl": {
+          "title": "Validación ETL",
+          "description": "Verifica que las transformaciones de datos produzcan la salida esperada."
+        },
+        "api": {
+          "title": "Pruebas de Respuesta API",
+          "description": "Compara datos de respuesta API contra valores esperados."
+        }
+      },
+      "cta": "Comienza las Pruebas QA"
+    }
+  },
+  "alternative": {
+    "title": "Alternativa Gratuita a {competitor} - DiffSheets",
+    "h1Prefix": "Alternativa Gratuita a",
+    "whySwitch": "¿Por qué Cambiar a DiffSheets?",
+    "comparison": "Comparación de Características",
+    "tryFree": "Prueba DiffSheets Gratis",
+    "feature": "Característica",
+    "them": "Ellos",
+    "us": "DiffSheets",
+    "ctaSubtitle": "Comienza a comparar hojas de cálculo en segundos. Sin instalación, sin registro requerido.",
+    "benefits": {
+      "free": {
+        "title": "100% Gratis para Siempre",
+        "description": "Sin licencias, sin suscripciones, sin costos ocultos. DiffSheets es completamente gratuito."
+      },
+      "noInstall": {
+        "title": "Sin Instalación",
+        "description": "Funciona instantáneamente en tu navegador. Sin descargas, sin configuración, sin complicaciones."
+      },
+      "privacy": {
+        "title": "Privacidad Completa",
+        "description": "Tus archivos nunca salen de tu computadora. Todo sucede localmente en tu navegador."
+      },
+      "crossPlatform": {
+        "title": "Multiplataforma",
+        "description": "Funciona en Windows, Mac, Linux y dispositivos móviles. Cualquier dispositivo con navegador."
+      }
+    },
+    "beyond-compare": {
+      "name": "Beyond Compare",
+      "title": "Alternativa Gratuita a Beyond Compare - DiffSheets",
+      "description": "¿Buscas una alternativa gratuita a Beyond Compare? DiffSheets ofrece comparación de Excel y CSV gratuita en el navegador sin necesidad de instalación.",
+      "h1": "Alternativa Gratuita a Beyond Compare",
+      "intro": "Beyond Compare es una herramienta poderosa de comparación de archivos, pero requiere instalación y cuesta más de $60. DiffSheets ofrece una alternativa gratuita basada en navegador para comparación de hojas de cálculo.",
+      "features": {
+        "price": {
+          "label": "Precio",
+          "them": "Licencia de $60+",
+          "us": "100% Gratis"
+        },
+        "installation": {
+          "label": "Instalación",
+          "them": "Aplicación de escritorio requerida",
+          "us": "Basado en navegador, sin instalación"
+        },
+        "privacy": {
+          "label": "Privacidad",
+          "them": "Procesamiento local",
+          "us": "Procesamiento local (nunca se sube)"
+        },
+        "formats": {
+          "label": "Formatos de Archivo",
+          "them": "Muchos tipos de archivo",
+          "us": "Enfocado en Excel, CSV, ODS"
+        }
+      }
+    },
+    "spreadsheet-compare": {
+      "name": "Spreadsheet Compare",
+      "title": "Alternativa Gratuita a Spreadsheet Compare - DiffSheets",
+      "description": "¿Necesitas una alternativa gratuita a Microsoft Spreadsheet Compare? DiffSheets compara archivos Excel online sin necesitar Office 365 Professional Plus.",
+      "h1": "Alternativa Gratuita a Spreadsheet Compare",
+      "intro": "Microsoft Spreadsheet Compare requiere Office 365 Professional Plus. DiffSheets proporciona la misma funcionalidad gratis, directamente en tu navegador.",
+      "features": {
+        "price": {
+          "label": "Precio",
+          "them": "Office 365 Pro+ requerido",
+          "us": "100% Gratis"
+        },
+        "installation": {
+          "label": "Instalación",
+          "them": "Complemento de Excel",
+          "us": "Basado en navegador"
+        },
+        "privacy": {
+          "label": "Privacidad",
+          "them": "Procesamiento local",
+          "us": "Procesamiento local"
+        },
+        "availability": {
+          "label": "Disponibilidad",
+          "them": "Solo Windows",
+          "us": "Cualquier dispositivo con navegador"
+        }
+      }
+    },
+    "excel-compare": {
+      "name": "Herramientas de Comparación de Excel",
+      "title": "Herramienta Gratuita de Comparación de Excel - Comparar Hojas Online",
+      "description": "Compara archivos Excel online gratis. Sin instalación, sin registro. La mejor herramienta gratuita de comparación de Excel disponible.",
+      "h1": "Herramienta Gratuita de Comparación de Excel",
+      "intro": "La mayoría de herramientas de comparación de Excel son de pago o requieren configuración compleja. DiffSheets es completamente gratuito, funciona instantáneamente en tu navegador y mantiene tus datos privados.",
+      "features": {
+        "price": {
+          "label": "Precio",
+          "them": "Normalmente $30-100+",
+          "us": "100% Gratis"
+        },
+        "setup": {
+          "label": "Configuración",
+          "them": "Instalación requerida",
+          "us": "Instantáneo, sin configuración"
+        },
+        "privacy": {
+          "label": "Privacidad",
+          "them": "Varía según la herramienta",
+          "us": "100% del lado del cliente"
+        },
+        "formats": {
+          "label": "Formatos de Archivo",
+          "them": "Normalmente solo Excel",
+          "us": "Excel, CSV, ODS"
+        }
+      }
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "free": {
+        "question": "¿DiffSheets es realmente gratis?",
+        "answer": "Sí, DiffSheets es 100% gratis sin costos ocultos, suscripciones ni niveles premium."
+      },
+      "migration": {
+        "question": "¿Puedo comparar archivos de {competitor}?",
+        "answer": "Sí, DiffSheets funciona con los mismos archivos Excel, CSV y ODS. Solo súbelos para comenzar."
+      }
+    }
   }
 }

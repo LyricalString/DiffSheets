@@ -227,6 +227,153 @@
         }
       },
       "cta": "Compare Your CSV Files Now"
+    },
+    "xlsx": {
+      "title": "Compare XLSX Files Online Free - Excel Spreadsheet Diff",
+      "description": "Compare XLSX Excel files online for free. Find differences between two XLSX spreadsheets instantly. 100% private - your files never leave your browser.",
+      "h1": "Compare XLSX Files Online",
+      "subtitle": "The fastest way to find differences between XLSX Excel files. Free, private, and runs entirely in your browser.",
+      "benefits": {
+        "title": "Why Use DiffSheets for XLSX Comparison?",
+        "items": {
+          "visual": {
+            "title": "Visual Side-by-Side Comparison",
+            "description": "See changes highlighted in color. Added rows in green, deleted in red, modified in yellow."
+          },
+          "privacy": {
+            "title": "Complete Privacy",
+            "description": "Your XLSX files never leave your computer. All processing happens locally in your browser."
+          },
+          "formats": {
+            "title": "All Excel Formats",
+            "description": "Works with .xlsx, .xls, and even compare Excel to CSV files."
+          },
+          "free": {
+            "title": "100% Free",
+            "description": "No registration, no limits, no watermarks. Use it as much as you need."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Common Use Cases",
+        "items": {
+          "audit": {
+            "title": "Financial Auditing",
+            "description": "Compare budget versions, track changes in financial reports, audit expense sheets."
+          },
+          "version": {
+            "title": "Version Control",
+            "description": "Track changes between document versions when collaborating with teams."
+          },
+          "migration": {
+            "title": "Data Migration",
+            "description": "Verify data integrity after importing or exporting between systems."
+          },
+          "qa": {
+            "title": "Quality Assurance",
+            "description": "Validate test results, compare expected vs actual outputs."
+          }
+        }
+      },
+      "cta": "Compare Your XLSX Files Now"
+    },
+    "xls": {
+      "title": "XLS File Comparison Tool - Compare Legacy Excel Files",
+      "description": "Compare XLS Excel files online. Find differences between legacy .xls spreadsheets with our free comparison tool. No upload required.",
+      "h1": "Compare XLS Files Online",
+      "subtitle": "Need to compare legacy Excel files? Our free tool handles .xls files perfectly. Privacy guaranteed.",
+      "benefits": {
+        "title": "Why Use DiffSheets for XLS Comparison?",
+        "items": {
+          "legacy": {
+            "title": "Legacy Format Support",
+            "description": "Full support for older .xls format files from Excel 97-2003."
+          },
+          "compatibility": {
+            "title": "Cross-Version Compatibility",
+            "description": "Compare .xls files with modern .xlsx formats seamlessly."
+          },
+          "privacy": {
+            "title": "Complete Privacy",
+            "description": "Your XLS files never leave your computer. All processing happens locally in your browser."
+          },
+          "results": {
+            "title": "Instant Results",
+            "description": "No waiting for server processing. Compare files in milliseconds."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Perfect For",
+        "items": {
+          "legacyMigration": {
+            "title": "Legacy System Migration",
+            "description": "Verify data integrity when migrating from legacy Excel systems to modern platforms."
+          },
+          "historicalComparison": {
+            "title": "Historical Data Comparison",
+            "description": "Compare old archived files with current data to track long-term changes."
+          },
+          "complianceAuditing": {
+            "title": "Compliance Auditing",
+            "description": "Audit historical records and ensure compliance with legacy document requirements."
+          },
+          "archiveVerification": {
+            "title": "Archive Verification",
+            "description": "Verify that archived .xls files match their original versions for record-keeping."
+          }
+        }
+      },
+      "cta": "Compare Your XLS Files Now"
+    },
+    "ods": {
+      "title": "Compare ODS Files - LibreOffice Spreadsheet Diff Tool",
+      "description": "Compare ODS LibreOffice Calc files online for free. Find differences between OpenDocument spreadsheets instantly. 100% private.",
+      "h1": "Compare ODS Spreadsheets",
+      "subtitle": "Free online tool to compare LibreOffice Calc and OpenOffice spreadsheets. Your data stays private.",
+      "benefits": {
+        "title": "Why Use DiffSheets for ODS Comparison?",
+        "items": {
+          "opensource": {
+            "title": "LibreOffice & OpenOffice Support",
+            "description": "Native support for OpenDocument Spreadsheet (.ods) format from LibreOffice and OpenOffice."
+          },
+          "formats": {
+            "title": "Open Format Standard",
+            "description": "Works with ODS files and compare them against Excel formats for maximum flexibility."
+          },
+          "privacy": {
+            "title": "Complete Privacy",
+            "description": "Your ODS files never leave your computer. All processing happens locally in your browser."
+          },
+          "crossplatform": {
+            "title": "Cross-Platform Compatible",
+            "description": "Works on any device with a modern browser - Windows, Mac, Linux, or mobile."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Perfect For",
+        "items": {
+          "opensourceWorkflows": {
+            "title": "Open Source Workflows",
+            "description": "Perfect for teams using LibreOffice or OpenOffice in open-source environments."
+          },
+          "governmentCompliance": {
+            "title": "Government & Compliance",
+            "description": "Many government agencies require ODS format for compliance and archival purposes."
+          },
+          "crossplatformTeams": {
+            "title": "Cross-Platform Teams",
+            "description": "Compare files across different office suites - LibreOffice, OpenOffice, and Microsoft Excel."
+          },
+          "conversionVerification": {
+            "title": "Document Conversion Verification",
+            "description": "Verify data integrity when converting between ODS and other spreadsheet formats."
+          }
+        }
+      },
+      "cta": "Compare Your ODS Files Now"
     }
   },
   "blog": {
@@ -244,6 +391,24 @@
         "excerpt": "When should you use Excel formulas vs dedicated comparison tools? We break down the pros and cons.",
         "date": "2025-01-10",
         "readTime": "4 min read"
+      },
+      "free-excel-diff-tools-2025": {
+        "title": "5 Best Free Excel Diff Tools in 2025 (Comparison)",
+        "excerpt": "Compare the top free tools for comparing Excel files. Find the best option for your spreadsheet comparison needs.",
+        "date": "2025-01-20",
+        "readTime": "8 min read"
+      },
+      "compare-excel-without-excel": {
+        "title": "How to Compare Excel Files Without Microsoft Excel",
+        "excerpt": "Don't have Excel installed? Here are the best ways to compare XLSX files without Microsoft Office.",
+        "date": "2025-01-18",
+        "readTime": "5 min read"
+      },
+      "find-duplicates-two-excel-files": {
+        "title": "How to Find Duplicates Between Two Excel Files",
+        "excerpt": "Step-by-step guide to finding duplicate data across two spreadsheets using different methods.",
+        "date": "2025-01-16",
+        "readTime": "6 min read"
       }
     }
   },
@@ -251,5 +416,348 @@
     "privacy": "Your files are processed locally and never uploaded to any server.",
     "madeWith": "Made with",
     "opensource": "Open Source on GitHub"
+  },
+  "guide": {
+    "spreadsheetComparison": {
+      "title": "The Complete Guide to Spreadsheet Comparison (2025)",
+      "description": "Everything you need to know about comparing spreadsheets. Learn methods, tools, best practices, and tips for Excel, CSV, and ODS file comparison.",
+      "h1": "The Complete Guide to Spreadsheet Comparison",
+      "subtitle": "Master the art of finding differences between spreadsheets with this comprehensive guide.",
+      "toc": "Table of Contents",
+      "readTime": "15 min read",
+      "sections": {
+        "what": "What is Spreadsheet Comparison?",
+        "methods": "Methods of Comparison",
+        "types": "Types of Differences",
+        "bestPractices": "Best Practices",
+        "tools": "Tools Comparison",
+        "faq": "Frequently Asked Questions",
+        "glossary": "Glossary"
+      },
+      "cta": "Ready to Compare Your Spreadsheets?",
+      "ctaButton": "Try DiffSheets Free"
+    }
+  },
+  "useCases": {
+    "common": {
+      "keyFeatures": "Key Features",
+      "exampleUseCases": "Example Use Cases",
+      "readyToStart": "Ready to Get Started?"
+    },
+    "financial-auditing": {
+      "title": "Excel Comparison for Financial Auditing | DiffSheets",
+      "description": "Compare financial spreadsheets with confidence. Track budget changes, audit expense reports, and verify financial data accuracy.",
+      "h1": "Spreadsheet Comparison for Financial Auditing",
+      "subtitle": "Audit financial documents faster with visual diff comparison. Identify every change between budget versions.",
+      "challenge": {
+        "title": "The Challenge",
+        "description": "Financial auditors need to compare multiple versions of budgets, balance sheets, and expense reports. Manual comparison is error-prone and time-consuming."
+      },
+      "solution": {
+        "title": "How DiffSheets Helps",
+        "description": "DiffSheets instantly highlights every difference between two spreadsheets, letting you focus on analyzing changes rather than finding them."
+      },
+      "features": {
+        "accuracy": {
+          "title": "Cell-Level Accuracy",
+          "description": "Catch even single-digit changes in financial figures."
+        },
+        "privacy": {
+          "title": "Confidentiality Guaranteed",
+          "description": "Financial data never leaves your browser. 100% client-side processing."
+        },
+        "speed": {
+          "title": "Audit Faster",
+          "description": "Compare spreadsheets in seconds, not hours."
+        },
+        "export": {
+          "title": "Document Changes",
+          "description": "Visual reports make it easy to document what changed."
+        }
+      },
+      "scenarios": {
+        "budget": {
+          "title": "Budget Version Comparison",
+          "description": "Compare Q1 budget vs Q2 actuals to identify variances."
+        },
+        "expense": {
+          "title": "Expense Report Auditing",
+          "description": "Verify submitted expenses against approved amounts."
+        },
+        "reconciliation": {
+          "title": "Account Reconciliation",
+          "description": "Match bank statements with internal records."
+        }
+      },
+      "cta": "Start Auditing Smarter"
+    },
+    "data-migration": {
+      "title": "Data Migration Verification | DiffSheets",
+      "description": "Verify data integrity after migration. Compare source and destination spreadsheets to ensure no data was lost or corrupted.",
+      "h1": "Verify Data Migration Accuracy",
+      "subtitle": "Ensure your data arrived intact. Compare source and destination files to catch migration issues.",
+      "challenge": {
+        "title": "The Challenge",
+        "description": "Data migrations can introduce errors, duplicate records, or data loss. Verifying migration accuracy manually is nearly impossible for large datasets."
+      },
+      "solution": {
+        "title": "How DiffSheets Helps",
+        "description": "Upload your source and destination files to instantly see what's different. Identify missing records, changed values, and unexpected modifications."
+      },
+      "features": {
+        "large": {
+          "title": "Handle Large Exports",
+          "description": "Compare thousands of rows efficiently with virtual scrolling."
+        },
+        "formats": {
+          "title": "Cross-Format Comparison",
+          "description": "Compare CSV exports to Excel originals seamlessly."
+        },
+        "key": {
+          "title": "Key Column Matching",
+          "description": "Match records by ID column even if row order changed."
+        },
+        "integrity": {
+          "title": "Data Integrity Checks",
+          "description": "Verify nothing was lost, duplicated, or corrupted."
+        }
+      },
+      "scenarios": {
+        "database": {
+          "title": "Database Migration",
+          "description": "Verify data after moving from legacy to new systems."
+        },
+        "crm": {
+          "title": "CRM Data Import",
+          "description": "Confirm all contacts imported correctly into your new CRM."
+        },
+        "erp": {
+          "title": "ERP System Upgrade",
+          "description": "Validate data integrity after ERP version upgrades."
+        }
+      },
+      "cta": "Verify Your Migration"
+    },
+    "version-control": {
+      "title": "Spreadsheet Version Control | DiffSheets",
+      "description": "Track changes between spreadsheet versions. See exactly what changed when collaborating with teams.",
+      "h1": "Spreadsheet Version Control Made Easy",
+      "subtitle": "See exactly what changed between document versions. Essential for team collaboration.",
+      "challenge": {
+        "title": "The Challenge",
+        "description": "Teams share spreadsheets via email or cloud storage, but tracking who changed what is nearly impossible without the right tools."
+      },
+      "solution": {
+        "title": "How DiffSheets Helps",
+        "description": "Upload any two versions of a spreadsheet to instantly see every change highlighted. No more guessing what's different."
+      },
+      "features": {
+        "visual": {
+          "title": "Visual Change Tracking",
+          "description": "See additions in green, deletions in red, modifications in yellow."
+        },
+        "history": {
+          "title": "Compare Any Versions",
+          "description": "Compare v1 to v5, or any combination of saved versions."
+        },
+        "collaborate": {
+          "title": "Team Collaboration",
+          "description": "Share comparison results with your team."
+        },
+        "offline": {
+          "title": "Works Offline",
+          "description": "Compare local files without uploading to any server."
+        }
+      },
+      "scenarios": {
+        "review": {
+          "title": "Document Review",
+          "description": "See what changed after a colleague's edits."
+        },
+        "approval": {
+          "title": "Approval Workflows",
+          "description": "Verify only approved changes were made."
+        },
+        "backup": {
+          "title": "Backup Verification",
+          "description": "Confirm backups match current working files."
+        }
+      },
+      "cta": "Track Your Changes"
+    },
+    "quality-assurance": {
+      "title": "QA Spreadsheet Comparison | DiffSheets",
+      "description": "Compare expected vs actual test results. Validate data outputs and catch discrepancies in QA testing.",
+      "h1": "Spreadsheet Comparison for QA Testing",
+      "subtitle": "Validate test results by comparing expected vs actual outputs. Catch discrepancies instantly.",
+      "challenge": {
+        "title": "The Challenge",
+        "description": "QA teams need to compare expected results with actual outputs across hundreds or thousands of data points."
+      },
+      "solution": {
+        "title": "How DiffSheets Helps",
+        "description": "Upload your expected and actual result spreadsheets to instantly identify every discrepancy. No more manual cell-by-cell checking."
+      },
+      "features": {
+        "precision": {
+          "title": "Precise Comparison",
+          "description": "Catch differences down to decimal precision."
+        },
+        "bulk": {
+          "title": "Bulk Testing",
+          "description": "Compare entire test datasets in one operation."
+        },
+        "reports": {
+          "title": "Clear Reports",
+          "description": "Visual diff output is perfect for bug reports."
+        },
+        "automation": {
+          "title": "Repeatable Process",
+          "description": "Same reliable comparison every time."
+        }
+      },
+      "scenarios": {
+        "regression": {
+          "title": "Regression Testing",
+          "description": "Compare before/after data to catch regressions."
+        },
+        "etl": {
+          "title": "ETL Validation",
+          "description": "Verify data transformations produce expected output."
+        },
+        "api": {
+          "title": "API Response Testing",
+          "description": "Compare API response data against expected values."
+        }
+      },
+      "cta": "Start QA Testing"
+    }
+  },
+  "alternative": {
+    "title": "Free {competitor} Alternative - DiffSheets",
+    "h1Prefix": "Free Alternative to",
+    "whySwitch": "Why Switch to DiffSheets?",
+    "comparison": "Feature Comparison",
+    "tryFree": "Try DiffSheets Free",
+    "feature": "Feature",
+    "them": "Them",
+    "us": "DiffSheets",
+    "ctaSubtitle": "Start comparing spreadsheets in seconds. No installation, no registration required.",
+    "benefits": {
+      "free": {
+        "title": "100% Free Forever",
+        "description": "No license fees, no subscriptions, no hidden costs. DiffSheets is completely free to use."
+      },
+      "noInstall": {
+        "title": "No Installation Required",
+        "description": "Works instantly in your browser. No downloads, no setup, no hassle."
+      },
+      "privacy": {
+        "title": "Complete Privacy",
+        "description": "Your files never leave your computer. Everything happens locally in your browser."
+      },
+      "crossPlatform": {
+        "title": "Cross-Platform",
+        "description": "Works on Windows, Mac, Linux, and mobile devices. Any device with a browser."
+      }
+    },
+    "beyond-compare": {
+      "name": "Beyond Compare",
+      "title": "Free Beyond Compare Alternative - DiffSheets",
+      "description": "Looking for a free Beyond Compare alternative? DiffSheets offers free, browser-based Excel and CSV comparison with no installation required.",
+      "h1": "Free Alternative to Beyond Compare",
+      "intro": "Beyond Compare is a powerful file comparison tool, but it requires installation and costs $60+. DiffSheets offers a free, browser-based alternative for spreadsheet comparison.",
+      "features": {
+        "price": {
+          "label": "Price",
+          "them": "$60+ license",
+          "us": "100% Free"
+        },
+        "installation": {
+          "label": "Installation",
+          "them": "Desktop app required",
+          "us": "Browser-based, no install"
+        },
+        "privacy": {
+          "label": "Privacy",
+          "them": "Local processing",
+          "us": "Local processing (never uploaded)"
+        },
+        "formats": {
+          "label": "File Formats",
+          "them": "Many file types",
+          "us": "Excel, CSV, ODS focused"
+        }
+      }
+    },
+    "spreadsheet-compare": {
+      "name": "Spreadsheet Compare",
+      "title": "Free Spreadsheet Compare Alternative - DiffSheets",
+      "description": "Need a free alternative to Microsoft Spreadsheet Compare? DiffSheets compares Excel files online without needing Office 365 Professional Plus.",
+      "h1": "Free Alternative to Spreadsheet Compare",
+      "intro": "Microsoft Spreadsheet Compare requires Office 365 Professional Plus. DiffSheets provides the same functionality for free, directly in your browser.",
+      "features": {
+        "price": {
+          "label": "Price",
+          "them": "Office 365 Pro+ required",
+          "us": "100% Free"
+        },
+        "installation": {
+          "label": "Installation",
+          "them": "Excel add-in",
+          "us": "Browser-based"
+        },
+        "privacy": {
+          "label": "Privacy",
+          "them": "Local processing",
+          "us": "Local processing"
+        },
+        "availability": {
+          "label": "Availability",
+          "them": "Windows only",
+          "us": "Any device with a browser"
+        }
+      }
+    },
+    "excel-compare": {
+      "name": "Excel Compare Tools",
+      "title": "Free Excel Compare Tool - Compare Spreadsheets Online",
+      "description": "Compare Excel files online for free. No installation, no registration. The best free Excel comparison tool available.",
+      "h1": "Free Excel Compare Tool",
+      "intro": "Most Excel comparison tools are paid or require complex setup. DiffSheets is completely free, works instantly in your browser, and keeps your data private.",
+      "features": {
+        "price": {
+          "label": "Price",
+          "them": "Usually $30-100+",
+          "us": "100% Free"
+        },
+        "setup": {
+          "label": "Setup",
+          "them": "Installation required",
+          "us": "Instant, no setup"
+        },
+        "privacy": {
+          "label": "Privacy",
+          "them": "Varies by tool",
+          "us": "100% client-side"
+        },
+        "formats": {
+          "label": "File Formats",
+          "them": "Usually Excel only",
+          "us": "Excel, CSV, ODS"
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "free": {
+        "question": "Is DiffSheets really free?",
+        "answer": "Yes, DiffSheets is 100% free with no hidden costs, subscriptions, or premium tiers."
+      },
+      "migration": {
+        "question": "Can I compare files from {competitor}?",
+        "answer": "Yes, DiffSheets works with the same Excel, CSV, and ODS files. Just upload them to get started."
+      }
+    }
   }
 }
