@@ -90,7 +90,7 @@ export default async function UseCasesPage({ params }: Props) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              <span className="text-sm font-medium text-green-400">
+              <span className="text-sm font-medium text-green-300">
                 {isSpanish ? "Soluciones para Equipos" : "Solutions for Teams"}
               </span>
             </div>
@@ -144,7 +144,7 @@ export default async function UseCasesPage({ params }: Props) {
                     {/* Challenge & Solution */}
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="rounded-2xl border border-border bg-card p-6 hover:border-slate-700 transition-colors">
-                        <h3 className="font-display font-semibold text-sm text-green-600 dark:text-green-400 uppercase tracking-widest mb-3">
+                        <h3 className="font-display font-semibold text-sm text-green-700 dark:text-green-300 uppercase tracking-widest mb-3">
                           {t(`${useCase.id}.challenge.title`)}
                         </h3>
                         <p className="text-muted-foreground leading-relaxed">
@@ -152,7 +152,7 @@ export default async function UseCasesPage({ params }: Props) {
                         </p>
                       </div>
                       <div className="rounded-2xl border border-border bg-card p-6 hover:border-slate-700 transition-colors">
-                        <h3 className="font-display font-semibold text-sm text-green-600 dark:text-green-400 uppercase tracking-widest mb-3">
+                        <h3 className="font-display font-semibold text-sm text-green-700 dark:text-green-300 uppercase tracking-widest mb-3">
                           {t(`${useCase.id}.solution.title`)}
                         </h3>
                         <p className="text-muted-foreground leading-relaxed">

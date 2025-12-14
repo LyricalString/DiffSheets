@@ -19,13 +19,13 @@ export function Footer() {
           >
             <LogoIcon size={28} />
             <span className="font-display font-semibold text-lg">
-              Diff<span className="text-green-400">Sheets</span>
+              Diff<span className="text-green-600 dark:text-green-300">Sheets</span>
             </span>
           </Link>
 
           {/* Privacy notice */}
           <div className="flex items-center gap-2 text-muted-foreground text-sm">
-            <Shield className="h-4 w-4 text-green-400" />
+            <Shield className="h-4 w-4 text-green-600 dark:text-green-300" />
             <span>{t("privacy")}</span>
           </div>
 
