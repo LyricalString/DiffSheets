@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "title": "DiffSheets - Compara Excel y CSV Online",
+    "description": "Herramienta gratuita para comparar archivos Excel, hojas de cálculo CSV y más. 100% local, tus datos nunca salen de tu navegador."
+  },
+  "common": {
+    "appName": "DiffSheets",
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "download": "Descargar",
+    "upload": "Subir",
+    "compare": "Comparar",
+    "clear": "Limpiar",
+    "reset": "Reiniciar"
+  },
+  "header": {
+    "tagline": "Compara hojas de cálculo al instante",
+    "github": "GitHub",
+    "theme": "Cambiar tema",
+    "language": "Idioma"
+  },
+  "upload": {
+    "title": "Compara archivos Excel y hojas de cálculo",
+    "subtitle": "Sube dos archivos para ver las diferencias. Tus datos permanecen en tu navegador.",
+    "dropzone": {
+      "title": "Arrastra el archivo aquí",
+      "subtitle": "o haz clic para buscar",
+      "formats": "Formatos: xlsx, xls, csv, ods"
+    },
+    "original": "Original",
+    "modified": "Modificado",
+    "selectSheet": "Seleccionar hoja",
+    "headerRow": "Fila de encabezado",
+    "findDifference": "Encontrar Diferencias",
+    "processing": "Procesando...",
+    "fileInfo": "{rows} filas, {cols} columnas"
+  },
+  "diff": {
+    "title": "Resultados de la Comparación",
+    "summary": {
+      "additions": "{count} adiciones",
+      "removals": "{count} eliminaciones",
+      "modifications": "{count} modificaciones",
+      "unchanged": "{count} sin cambios"
+    },
+    "tabs": {
+      "table": "Tabla",
+      "text": "Texto",
+      "details": "Detalles del archivo"
+    },
+    "options": {
+      "title": "Opciones",
+      "hideUnchangedRows": "Ocultar filas sin cambios",
+      "hideUnchangedCols": "Ocultar columnas sin cambios",
+      "ignoreWhitespace": "Ignorar espacios en blanco",
+      "ignoreCase": "Ignorar mayúsculas/minúsculas"
+    },
+    "noChanges": "No se encontraron diferencias",
+    "emptyState": "Sube dos archivos para comparar"
+  },
+  "seo": {
+    "home": {
+      "h1": "Compara Archivos Excel Online",
+      "h2Features": "Características",
+      "h2HowItWorks": "Cómo Funciona",
+      "features": {
+        "offline": {
+          "title": "100% Offline",
+          "description": "Tus datos nunca salen de tu navegador. Todo el procesamiento ocurre localmente."
+        },
+        "formats": {
+          "title": "Múltiples Formatos",
+          "description": "Soporte para Excel (xlsx, xls), CSV y archivos ODS."
+        },
+        "fast": {
+          "title": "Súper Rápido",
+          "description": "Maneja hojas de cálculo con miles de filas de forma eficiente."
+        },
+        "opensource": {
+          "title": "Código Abierto",
+          "description": "Gratuito y de código abierto. Sin registro necesario."
+        }
+      },
+      "steps": {
+        "step1": "Sube tu archivo original",
+        "step2": "Sube el archivo modificado",
+        "step3": "Haz clic en 'Encontrar Diferencias' para ver los cambios"
+      }
+    }
+  },
+  "footer": {
+    "privacy": "Tus archivos se procesan localmente y nunca se suben a ningún servidor.",
+    "madeWith": "Hecho con",
+    "opensource": "Código abierto en GitHub"
+  }
+}

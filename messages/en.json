@@ -1,0 +1,100 @@
+{
+  "metadata": {
+    "title": "DiffSheets - Compare Excel & CSV Files Online",
+    "description": "Free online tool to compare Excel files, CSV spreadsheets, and more. 100% client-side, your data never leaves your browser."
+  },
+  "common": {
+    "appName": "DiffSheets",
+    "loading": "Loading...",
+    "error": "Error",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "download": "Download",
+    "upload": "Upload",
+    "compare": "Compare",
+    "clear": "Clear",
+    "reset": "Reset"
+  },
+  "header": {
+    "tagline": "Compare spreadsheets instantly",
+    "github": "GitHub",
+    "theme": "Toggle theme",
+    "language": "Language"
+  },
+  "upload": {
+    "title": "Compare Excel files and spreadsheets",
+    "subtitle": "Upload two files to see the differences. Your data stays in your browser.",
+    "dropzone": {
+      "title": "Drop file here",
+      "subtitle": "or click to browse",
+      "formats": "Supports: xlsx, xls, csv, ods"
+    },
+    "original": "Original",
+    "modified": "Modified",
+    "selectSheet": "Select sheet",
+    "headerRow": "Header row",
+    "findDifference": "Find Difference",
+    "processing": "Processing...",
+    "fileInfo": "{rows} rows, {cols} columns"
+  },
+  "diff": {
+    "title": "Comparison Results",
+    "summary": {
+      "additions": "{count} additions",
+      "removals": "{count} removals",
+      "modifications": "{count} modifications",
+      "unchanged": "{count} unchanged"
+    },
+    "tabs": {
+      "table": "Table",
+      "text": "Text",
+      "details": "File details"
+    },
+    "options": {
+      "title": "Options",
+      "hideUnchangedRows": "Hide unchanged rows",
+      "hideUnchangedCols": "Hide unchanged columns",
+      "ignoreWhitespace": "Ignore whitespace",
+      "ignoreCase": "Ignore case"
+    },
+    "noChanges": "No differences found",
+    "emptyState": "Upload two files to compare"
+  },
+  "seo": {
+    "home": {
+      "h1": "Compare Excel Files Online",
+      "h2Features": "Features",
+      "h2HowItWorks": "How It Works",
+      "features": {
+        "offline": {
+          "title": "100% Offline",
+          "description": "Your data never leaves your browser. All processing happens locally."
+        },
+        "formats": {
+          "title": "Multiple Formats",
+          "description": "Support for Excel (xlsx, xls), CSV, and ODS files."
+        },
+        "fast": {
+          "title": "Lightning Fast",
+          "description": "Handle spreadsheets with thousands of rows efficiently."
+        },
+        "opensource": {
+          "title": "Open Source",
+          "description": "Free and open source. No sign-up required."
+        }
+      },
+      "steps": {
+        "step1": "Upload your original file",
+        "step2": "Upload the modified file",
+        "step3": "Click 'Find Difference' to see changes"
+      }
+    }
+  },
+  "footer": {
+    "privacy": "Your files are processed locally and never uploaded to any server.",
+    "madeWith": "Made with",
+    "opensource": "Open Source on GitHub"
+  }
+}
