@@ -1,5 +1,14 @@
-import * as XLSX from "xlsx";
 import type { Cell, Column, ParsedSpreadsheet, Row, SheetData, SheetInfo } from "@/types";
+
+// Lazy load xlsx library - only when needed (saves ~165KB from initial bundle)
+let XLSX: typeof import("xlsx") | null = null;
+
+async function getXLSX() {
+  if (!XLSX) {
+    XLSX = await import("xlsx");
+  }
+  return XLSX;
+}
 
 /**
  * Get column letter from index (0 -> A, 1 -> B, ..., 26 -> AA, etc.)
@@ -40,8 +49,12 @@ function createCell(value: unknown, formula?: string): Cell {
 /**
  * Parse a worksheet into SheetData
  */
-function parseWorksheet(worksheet: XLSX.WorkSheet, name: string): SheetData {
-  const range = XLSX.utils.decode_range(worksheet["!ref"] || "A1");
+function parseWorksheet(
+  xlsx: typeof import("xlsx"),
+  worksheet: import("xlsx").WorkSheet,
+  name: string,
+): SheetData {
+  const range = xlsx.utils.decode_range(worksheet["!ref"] || "A1");
   const rowCount = range.e.r - range.s.r + 1;
   const colCount = range.e.c - range.s.c + 1;
 
@@ -60,7 +73,7 @@ function parseWorksheet(worksheet: XLSX.WorkSheet, name: string): SheetData {
   for (let r = range.s.r; r <= range.e.r; r++) {
     const row: Row = [];
     for (let c = range.s.c; c <= range.e.c; c++) {
-      const cellAddress = XLSX.utils.encode_cell({ r, c });
+      const cellAddress = xlsx.utils.encode_cell({ r, c });
       const cell = worksheet[cellAddress];
 
       if (cell) {
@@ -84,6 +97,8 @@ function parseWorksheet(worksheet: XLSX.WorkSheet, name: string): SheetData {
  * Parse a spreadsheet file (xlsx, xls, csv, ods)
  */
 export async function parseSpreadsheet(file: File): Promise<ParsedSpreadsheet> {
+  const xlsx = await getXLSX();
+
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
 
@@ -94,7 +109,7 @@ export async function parseSpreadsheet(file: File): Promise<ParsedSpreadsheet> {
           throw new Error("Failed to read file");
         }
 
-        const workbook = XLSX.read(data, {
+        const workbook = xlsx.read(data, {
           type: "array",
           cellDates: true,
           cellFormula: true,
@@ -103,7 +118,7 @@ export async function parseSpreadsheet(file: File): Promise<ParsedSpreadsheet> {
 
         const sheets: SheetInfo[] = workbook.SheetNames.map((name) => {
           const worksheet = workbook.Sheets[name];
-          const range = XLSX.utils.decode_range(worksheet["!ref"] || "A1");
+          const range = xlsx.utils.decode_range(worksheet["!ref"] || "A1");
           return {
             name,
             rowCount: range.e.r - range.s.r + 1,
@@ -114,7 +129,7 @@ export async function parseSpreadsheet(file: File): Promise<ParsedSpreadsheet> {
         const sheetDataMap = new Map<string, SheetData>();
         for (const name of workbook.SheetNames) {
           const worksheet = workbook.Sheets[name];
-          sheetDataMap.set(name, parseWorksheet(worksheet, name));
+          sheetDataMap.set(name, parseWorksheet(xlsx, worksheet, name));
         }
 
         resolve({
