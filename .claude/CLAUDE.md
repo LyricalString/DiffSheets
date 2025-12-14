@@ -1,45 +1,6 @@
-# DiffSheets
+# CLAUDE.md
 
-**Domain:** https://diffsheets.com
-**Brand:** DiffSheets
-**Tagline:** Compare spreadsheets instantly / Compara hojas de cálculo al instante
-
-## Project Overview
-
-DiffSheets is a free, open-source web application for comparing Excel files, CSV spreadsheets, and other tabular data formats. All processing happens 100% client-side - user data never leaves the browser.
-
-## Tech Stack
-
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS v4
-- **UI Components:** shadcn/ui (Radix primitives)
-- **State Management:** Zustand
-- **Internationalization:** next-intl (EN/ES)
-- **Linter/Formatter:** Biome
-- **Package Manager:** Bun
-
-## Project Structure
-
-```
-src/
-├── app/                    # Next.js App Router pages
-├── components/
-│   ├── layout/            # Header, Footer, ThemeToggle, LanguageSwitcher
-│   ├── providers/         # ThemeProvider
-│   ├── seo/               # JSON-LD structured data
-│   ├── ui/                # shadcn/ui components
-│   └── upload/            # FileDropzone, SheetSelector, SpreadsheetPreview
-├── i18n/                  # Internationalization config
-├── lib/
-│   ├── diff/              # Diff algorithms (cell-diff, row-matcher)
-│   └── parser/            # Spreadsheet parsing (xlsx, csv, ods)
-├── store/                 # Zustand state management
-└── types/                 # TypeScript type definitions
-messages/
-├── en.json                # English translations
-└── es.json                # Spanish translations
-```
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Development Commands
 
@@ -50,24 +11,45 @@ bun lint         # Run Biome linter
 bun format       # Format code with Biome
 ```
 
-## SEO Strategy
+## Architecture Overview
 
-- **Target:** Global audience (EN primary, ES secondary)
-- **Domain:** .com for international reach
-- **Structure:** Subdirectories with hreflang (/en/, /es/)
-- **Keywords:** excel compare, csv diff, spreadsheet comparison, xlsx compare
+DiffSheets is a client-side spreadsheet comparison tool. All file processing happens in the browser - no server uploads.
 
-## Infrastructure (Planned)
+### Data Flow
 
-- **Hosting:** Vercel (initial) → Cloudflare Pages (scale)
-- **Domain Registrar:** Cloudflare Registrar
-- **DNS/CDN:** Cloudflare
-- **Email:** Cloudflare Email Routing → personal email
+1. **File Upload** → `src/lib/parser/index.ts` parses xlsx/csv/ods using the `xlsx` library
+2. **State Management** → `src/store/index.ts` (Zustand) holds parsed spreadsheets and diff results
+3. **Diff Computation** → `src/lib/diff/` compares sheets when both files are loaded
+4. **Rendering** → `src/components/diff/` displays results with virtual scrolling
 
-## Key Design Decisions
+### Diff Algorithm (`src/lib/diff/`)
 
-1. **Client-side only:** No server uploads for privacy/trust
-2. **Branding:** "DiffSheets" - neutral, works in EN/ES
-3. **Mobile-first:** Responsive design for all devices
-4. **Accessibility:** ARIA labels, keyboard navigation
-5. **Performance:** Virtual scrolling for large files
+- **row-matcher.ts**: Three row alignment strategies:
+  - `position`: Simple 1:1 index mapping
+  - `key-column`: Match rows by a key column value
+  - `lcs`: Myers' diff algorithm for best alignment
+- **cell-diff.ts**: Cell-level comparison with inline text diffs
+- **index.ts**: Main `computeSpreadsheetDiff()` orchestrates the pipeline
+
+### Type System (`src/types/`)
+
+- **spreadsheet.ts**: `Cell`, `Row`, `SheetData`, `ParsedSpreadsheet`
+- **diff.ts**: `DiffCell`, `DiffRow`, `DiffResult`, `ComparisonOptions`
+
+### Component Structure
+
+- **upload/**: File dropzone, sheet selector, preview
+- **diff/**: Grid views (unified, side-by-side), cell inspector, change navigation
+- **layout/**: Header with language/theme controls
+- **ui/**: shadcn/ui primitives (button, card, select, etc.)
+
+## Internationalization
+
+- Uses `next-intl` with messages in `messages/en.json` and `messages/es.json`
+- All user-facing strings must use translation keys
+
+## Key Constraints
+
+- **Client-side only**: Never send user data to a server
+- **Tailwind v4**: Uses CSS variables, not `tailwind.config.js` theme extensions
+- **Biome**: Use `bun lint` and `bun format`, not ESLint/Prettier
