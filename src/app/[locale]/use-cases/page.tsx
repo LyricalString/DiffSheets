@@ -31,6 +31,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         es: `${BASE_URL}/es/use-cases`,
       },
     },
+    openGraph: {
+      title,
+      description,
+      url: `${BASE_URL}/${locale}/use-cases`,
+      type: "website",
+      images: [`${BASE_URL}/og-image.png`],
+    },
   };
 }
 

@@ -6,6 +6,8 @@ import { ArrowLeft, Clock, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/prose";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
+
 type Props = {
   params: Promise<{ locale: string }>;
 };
@@ -22,16 +24,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: `/${locale}/guide/spreadsheet-comparison`,
+      canonical: `${BASE_URL}/${locale}/guide/spreadsheet-comparison`,
       languages: {
-        en: "/en/guide/spreadsheet-comparison",
-        es: "/es/guide/spreadsheet-comparison",
+        en: `${BASE_URL}/en/guide/spreadsheet-comparison`,
+        es: `${BASE_URL}/es/guide/spreadsheet-comparison`,
       },
     },
     openGraph: {
       title: t("title"),
       description: t("description"),
+      url: `${BASE_URL}/${locale}/guide/spreadsheet-comparison`,
       type: "article",
+      images: [`${BASE_URL}/og-image.png`],
     },
   };
 }

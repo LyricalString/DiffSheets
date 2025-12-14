@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { AlternativePage } from "@/components/landing";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
+
 type Props = {
   params: Promise<{ locale: string }>;
 };
@@ -14,17 +16,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: `/${locale}/alternative/spreadsheet-compare`,
+      canonical: `${BASE_URL}/${locale}/alternative/spreadsheet-compare`,
       languages: {
-        en: "/en/alternative/spreadsheet-compare",
-        es: "/es/alternative/spreadsheet-compare",
+        en: `${BASE_URL}/en/alternative/spreadsheet-compare`,
+        es: `${BASE_URL}/es/alternative/spreadsheet-compare`,
       },
     },
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: `/${locale}/alternative/spreadsheet-compare`,
+      url: `${BASE_URL}/${locale}/alternative/spreadsheet-compare`,
       type: "website",
+      images: [`${BASE_URL}/og-image.png`],
     },
   };
 }

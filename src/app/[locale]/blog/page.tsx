@@ -4,6 +4,8 @@ import { Link } from "@/i18n/navigation";
 import { Footer, Header } from "@/components/layout";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
+
 type Props = {
   params: Promise<{ locale: string }>;
 };
@@ -16,11 +18,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t("title"),
     description: t("subtitle"),
     alternates: {
-      canonical: `/${locale}/blog`,
+      canonical: `${BASE_URL}/${locale}/blog`,
       languages: {
-        en: "/en/blog",
-        es: "/es/blog",
+        en: `${BASE_URL}/en/blog`,
+        es: `${BASE_URL}/es/blog`,
       },
+    },
+    openGraph: {
+      title: t("title"),
+      description: t("subtitle"),
+      url: `${BASE_URL}/${locale}/blog`,
+      type: "website",
+      images: [`${BASE_URL}/og-image.png`],
     },
   };
 }

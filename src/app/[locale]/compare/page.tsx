@@ -29,6 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t("meta.title"),
       description: t("meta.description"),
       url: `${BASE_URL}/${locale}/compare`,
+      type: "website",
+      images: [`${BASE_URL}/og-image.png`],
     },
   };
 }
@@ -39,7 +41,7 @@ export default async function ComparePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "upload" });
 
   return (
-    <div className="relative flex min-h-screen flex-col bg-background">
+    <div className="relative flex min-h-screen flex-col bg-background overflow-x-hidden">
       {/* Background glow */}
       <div
         className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px]"
