@@ -3,7 +3,7 @@
 import { useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ChevronUp, ChevronDown, Keyboard } from "lucide-react";
+import { ChevronUp, ChevronDown } from "lucide-react";
 
 interface ChangeNavigationProps {
   currentIndex: number;
@@ -109,10 +109,6 @@ export function ChangeNavigation({
         <ChevronDown className="h-4 w-4" />
       </Button>
 
-      <div className="ml-1 hidden items-center gap-1 border-l pl-2 text-xs text-muted-foreground sm:flex">
-        <Keyboard className="h-3 w-3" />
-        <span>n/p</span>
-      </div>
     </div>
   );
 }

@@ -226,7 +226,7 @@ export function SideBySideGrid({
                     row.changeType === "added" && "bg-green-50/50 dark:bg-green-900/10",
                     row.changeType === "removed" && "bg-red-50/50 dark:bg-red-900/10",
                     row.changeType === "modified" && "bg-yellow-50/30 dark:bg-yellow-900/5",
-                    isCurrentChange && "ring-2 ring-inset ring-primary"
+                    isCurrentChange && "ring-1 ring-inset ring-primary/40 bg-primary/5"
                   )}
                   style={{
                     position: "absolute",

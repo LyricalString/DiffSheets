@@ -1,9 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Layers, Columns2, AlignJustify } from "lucide-react";
+import { Layers, Columns2 } from "lucide-react";
 
-export type ViewMode = "unified" | "side-by-side" | "inline";
+export type ViewMode = "unified" | "side-by-side";
 
 interface ViewModeSelectorProps {
   mode: ViewMode;
@@ -13,22 +13,16 @@ interface ViewModeSelectorProps {
 
 const modes: { value: ViewMode; label: string; icon: React.ReactNode; description: string }[] = [
   {
-    value: "unified",
-    label: "Unified",
-    icon: <Layers className="h-4 w-4" />,
-    description: "Merged view with changes stacked",
-  },
-  {
     value: "side-by-side",
     label: "Side by Side",
     icon: <Columns2 className="h-4 w-4" />,
     description: "Compare files in parallel",
   },
   {
-    value: "inline",
-    label: "Inline",
-    icon: <AlignJustify className="h-4 w-4" />,
-    description: "Changes shown inline",
+    value: "unified",
+    label: "Unified",
+    icon: <Layers className="h-4 w-4" />,
+    description: "Merged view with changes stacked",
   },
 ];
 
