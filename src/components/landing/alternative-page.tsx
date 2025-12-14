@@ -6,7 +6,7 @@ import { Footer, Header } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 
-type AlternativeType = "beyond-compare" | "spreadsheet-compare" | "excel-compare";
+type AlternativeType = "spreadsheet-compare" | "excel-compare";
 
 interface AlternativePageProps {
   competitor: AlternativeType;
@@ -20,11 +20,9 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
 
   // Get feature keys based on competitor type
   const featureKeys =
-    competitor === "beyond-compare"
-      ? (["price", "installation", "privacy", "formats"] as const)
-      : competitor === "spreadsheet-compare"
-        ? (["price", "installation", "privacy", "availability"] as const)
-        : (["price", "setup", "privacy", "formats"] as const);
+    competitor === "spreadsheet-compare"
+      ? (["price", "installation", "privacy", "availability"] as const)
+      : (["price", "setup", "privacy", "formats"] as const);
 
   return (
     <div className="flex min-h-screen flex-col">

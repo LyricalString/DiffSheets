@@ -62,21 +62,43 @@ DiffSheets is a client-side spreadsheet comparison tool. All file processing hap
 - **Dynamic OG Images**: Generated at `/og?locale=en|es`
 - **Sitemap**: Auto-generated with all locale variants
 
-### Content Structure
-- Landing page: SSR with H1, features, how-it-works, FAQ
-- File uploader: Client component loaded after initial paint
-- Landing pages per feature: `/en/compare-excel`, `/en/compare-csv` (planned)
+### Site Structure (12 pages × 2 locales)
+
+```
+/                              → Home (marketing only, no tool)
+/compare                       → Comparison tool
+/compare-excel-files           → Landing: Excel/XLSX
+/csv-diff                      → Landing: CSV
+/xls-diff                      → Landing: XLS (legacy format)
+/ods-compare                   → Landing: ODS (LibreOffice)
+/guide/spreadsheet-comparison  → Pillar guide (3000+ words)
+/use-cases                     → Consolidated use cases page
+/alternative/spreadsheet-compare → vs Microsoft Spreadsheet Compare
+/alternative/excel-compare     → vs paid Excel tools
+/blog                          → Blog index
+/blog/[slug]                   → Blog articles
+```
+
+### Landing Page Components
+
+- `LandingPage` - Format-specific pages (excel, csv, xls, ods)
+- `AlternativePage` - Competitor comparison pages
+- `LandingContent` - Home page marketing content
 
 ### Technical SEO Checklist
-- [ ] metadataBase set in layout
-- [ ] Canonical URLs with locale
-- [ ] robots.txt allows all crawlers
-- [ ] sitemap.xml with hreflang alternates
-- [ ] Open Graph + Twitter cards
-- [ ] JSON-LD structured data
+- [x] metadataBase set in layout
+- [x] Canonical URLs with locale (www.diffsheets.com)
+- [x] robots.txt allows all crawlers
+- [x] sitemap.xml with hreflang alternates
+- [x] Open Graph + Twitter cards
+- [x] JSON-LD structured data
 
 ## Key Constraints
 
 - **Client-side only**: Never send user data to a server
 - **Tailwind v4**: Uses CSS variables, not `tailwind.config.js` theme extensions
 - **SSR for SEO**: Keep main content server-rendered; only interactive parts as client components
+
+## Git Commands
+
+- Use `git` directly, not `git -C /path` (we're already in the project directory)

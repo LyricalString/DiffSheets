@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle, Code, Lock, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle, Code, GitCompare, Lock, Upload, Zap } from "lucide-react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
@@ -90,17 +90,66 @@ export async function LandingContent({ locale }: Props) {
         <h2 id="how-it-works-heading" className="mb-8 text-center font-semibold text-2xl">
           {t("h2HowItWorks")}
         </h2>
-        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-          {[1, 2, 3].map((step) => (
-            <div key={step} className="flex items-center gap-3 sm:flex-col">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-semibold text-primary-foreground text-sm">
-                {step}
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-center">
+          {/* Step 1 */}
+          <div className="flex items-center gap-4 sm:flex-col sm:items-center sm:text-center">
+            <div className="relative flex flex-col items-center">
+              <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                <Upload className="h-6 w-6 text-primary" />
               </div>
-              <p className="text-muted-foreground text-sm sm:text-center">
-                {t(`steps.step${step}` as "steps.step1")}
-              </p>
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary font-semibold text-primary-foreground text-xs">
+                1
+              </div>
             </div>
-          ))}
+            <div className="sm:mt-3">
+              <p className="font-medium">{t("steps.step1")}</p>
+              <p className="mt-1 text-muted-foreground text-sm">{t("steps.step1Sub")}</p>
+            </div>
+          </div>
+
+          {/* Connector */}
+          <div className="hidden sm:flex sm:items-center sm:pt-8">
+            <div className="h-0.5 w-12 bg-border" />
+            <ArrowRight className="h-4 w-4 text-muted-foreground" />
+          </div>
+
+          {/* Step 2 */}
+          <div className="flex items-center gap-4 sm:flex-col sm:items-center sm:text-center">
+            <div className="relative flex flex-col items-center">
+              <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                <Upload className="h-6 w-6 text-primary" />
+              </div>
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary font-semibold text-primary-foreground text-xs">
+                2
+              </div>
+            </div>
+            <div className="sm:mt-3">
+              <p className="font-medium">{t("steps.step2")}</p>
+              <p className="mt-1 text-muted-foreground text-sm">{t("steps.step2Sub")}</p>
+            </div>
+          </div>
+
+          {/* Connector */}
+          <div className="hidden sm:flex sm:items-center sm:pt-8">
+            <div className="h-0.5 w-12 bg-border" />
+            <ArrowRight className="h-4 w-4 text-muted-foreground" />
+          </div>
+
+          {/* Step 3 */}
+          <div className="flex items-center gap-4 sm:flex-col sm:items-center sm:text-center">
+            <div className="relative flex flex-col items-center">
+              <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                <GitCompare className="h-6 w-6 text-primary" />
+              </div>
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary font-semibold text-primary-foreground text-xs">
+                3
+              </div>
+            </div>
+            <div className="sm:mt-3">
+              <p className="font-medium">{t("steps.step3")}</p>
+              <p className="mt-1 text-muted-foreground text-sm">{t("steps.step3Sub")}</p>
+            </div>
+          </div>
         </div>
       </section>
 

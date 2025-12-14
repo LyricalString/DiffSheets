@@ -27,7 +27,12 @@
     "tagline": "Compare spreadsheets instantly",
     "github": "GitHub",
     "theme": "Toggle theme",
-    "language": "Language"
+    "language": "Language",
+    "nav": {
+      "compare": "Compare",
+      "guide": "Guide",
+      "blog": "Blog"
+    }
   },
   "nav": {
     "home": "Home",
@@ -99,8 +104,11 @@
       },
       "steps": {
         "step1": "Upload your original file",
+        "step1Sub": "Drag & drop or click to browse",
         "step2": "Upload the modified file",
-        "step3": "Click 'Find Difference' to see changes"
+        "step2Sub": "Same formats supported",
+        "step3": "Compare instantly",
+        "step3Sub": "See all changes highlighted"
       }
     }
   },
@@ -227,55 +235,6 @@
         }
       },
       "cta": "Compare Your CSV Files Now"
-    },
-    "xlsx": {
-      "title": "Compare XLSX Files Online Free - Excel Spreadsheet Diff",
-      "description": "Compare XLSX Excel files online for free. Find differences between two XLSX spreadsheets instantly. 100% private - your files never leave your browser.",
-      "h1": "Compare XLSX Files Online",
-      "subtitle": "The fastest way to find differences between XLSX Excel files. Free, private, and runs entirely in your browser.",
-      "benefits": {
-        "title": "Why Use DiffSheets for XLSX Comparison?",
-        "items": {
-          "visual": {
-            "title": "Visual Side-by-Side Comparison",
-            "description": "See changes highlighted in color. Added rows in green, deleted in red, modified in yellow."
-          },
-          "privacy": {
-            "title": "Complete Privacy",
-            "description": "Your XLSX files never leave your computer. All processing happens locally in your browser."
-          },
-          "formats": {
-            "title": "All Excel Formats",
-            "description": "Works with .xlsx, .xls, and even compare Excel to CSV files."
-          },
-          "free": {
-            "title": "100% Free",
-            "description": "No registration, no limits, no watermarks. Use it as much as you need."
-          }
-        }
-      },
-      "useCases": {
-        "title": "Common Use Cases",
-        "items": {
-          "audit": {
-            "title": "Financial Auditing",
-            "description": "Compare budget versions, track changes in financial reports, audit expense sheets."
-          },
-          "version": {
-            "title": "Version Control",
-            "description": "Track changes between document versions when collaborating with teams."
-          },
-          "migration": {
-            "title": "Data Migration",
-            "description": "Verify data integrity after importing or exporting between systems."
-          },
-          "qa": {
-            "title": "Quality Assurance",
-            "description": "Validate test results, compare expected vs actual outputs."
-          }
-        }
-      },
-      "cta": "Compare Your XLSX Files Now"
     },
     "xls": {
       "title": "XLS File Comparison Tool - Compare Legacy Excel Files",
@@ -669,35 +628,6 @@
       "crossPlatform": {
         "title": "Cross-Platform",
         "description": "Works on Windows, Mac, Linux, and mobile devices. Any device with a browser."
-      }
-    },
-    "beyond-compare": {
-      "name": "Beyond Compare",
-      "title": "Free Beyond Compare Alternative - DiffSheets",
-      "description": "Looking for a free Beyond Compare alternative? DiffSheets offers free, browser-based Excel and CSV comparison with no installation required.",
-      "h1": "Free Alternative to Beyond Compare",
-      "intro": "Beyond Compare is a powerful file comparison tool, but it requires installation and costs $60+. DiffSheets offers a free, browser-based alternative for spreadsheet comparison.",
-      "features": {
-        "price": {
-          "label": "Price",
-          "them": "$60+ license",
-          "us": "100% Free"
-        },
-        "installation": {
-          "label": "Installation",
-          "them": "Desktop app required",
-          "us": "Browser-based, no install"
-        },
-        "privacy": {
-          "label": "Privacy",
-          "them": "Local processing",
-          "us": "Local processing (never uploaded)"
-        },
-        "formats": {
-          "label": "File Formats",
-          "them": "Many file types",
-          "us": "Excel, CSV, ODS focused"
-        }
       }
     },
     "spreadsheet-compare": {

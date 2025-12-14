@@ -26,6 +26,19 @@ export function Header() {
           </div>
         </Link>
 
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center gap-1">
+          <Button variant="ghost" size="sm" asChild>
+            <Link href="/compare">{t("nav.compare")}</Link>
+          </Button>
+          <Button variant="ghost" size="sm" asChild>
+            <Link href="/guide/spreadsheet-comparison">{t("nav.guide")}</Link>
+          </Button>
+          <Button variant="ghost" size="sm" asChild>
+            <Link href="/blog">{t("nav.blog")}</Link>
+          </Button>
+        </nav>
+
         {/* Actions Section */}
         <div className="flex items-center gap-1">
           <Button

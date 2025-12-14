@@ -12,23 +12,18 @@ const routes = [
   // Format-specific landing pages
   { path: "/compare-excel-files", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/csv-diff", priority: 0.9, changeFrequency: "monthly" as const },
-  { path: "/xlsx-compare", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/xls-diff", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/ods-compare", priority: 0.9, changeFrequency: "monthly" as const },
 
   // Pillar guide
   { path: "/guide/spreadsheet-comparison", priority: 0.85, changeFrequency: "monthly" as const },
 
+  // Use cases (consolidated)
+  { path: "/use-cases", priority: 0.8, changeFrequency: "monthly" as const },
+
   // Alternative comparison pages
-  { path: "/alternative/beyond-compare", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/alternative/spreadsheet-compare", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/alternative/excel-compare", priority: 0.8, changeFrequency: "monthly" as const },
-
-  // Use case pages
-  { path: "/use-cases/financial-auditing", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/use-cases/data-migration", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/use-cases/version-control", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/use-cases/quality-assurance", priority: 0.8, changeFrequency: "monthly" as const },
 
   // Blog
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" as const },

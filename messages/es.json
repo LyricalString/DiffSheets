@@ -27,7 +27,12 @@
     "tagline": "Compara hojas de cálculo al instante",
     "github": "GitHub",
     "theme": "Cambiar tema",
-    "language": "Idioma"
+    "language": "Idioma",
+    "nav": {
+      "compare": "Comparar",
+      "guide": "Guía",
+      "blog": "Blog"
+    }
   },
   "nav": {
     "home": "Inicio",
@@ -99,8 +104,11 @@
       },
       "steps": {
         "step1": "Sube tu archivo original",
+        "step1Sub": "Arrastra y suelta o haz clic para buscar",
         "step2": "Sube el archivo modificado",
-        "step3": "Haz clic en 'Encontrar Diferencias' para ver los cambios"
+        "step2Sub": "Mismos formatos compatibles",
+        "step3": "Compara al instante",
+        "step3Sub": "Ve todos los cambios resaltados"
       }
     }
   },
@@ -227,55 +235,6 @@
         }
       },
       "cta": "Compara tus Archivos CSV Ahora"
-    },
-    "xlsx": {
-      "title": "Comparar Archivos XLSX Online Gratis - Diff de Hojas Excel",
-      "description": "Compara archivos XLSX de Excel online gratis. Encuentra diferencias entre dos hojas XLSX al instante. 100% privado - tus archivos nunca salen de tu navegador.",
-      "h1": "Comparar Archivos XLSX Online",
-      "subtitle": "La forma más rápida de encontrar diferencias entre archivos XLSX de Excel. Gratis, privado y funciona completamente en tu navegador.",
-      "benefits": {
-        "title": "¿Por qué usar DiffSheets para comparar XLSX?",
-        "items": {
-          "visual": {
-            "title": "Comparación Visual Lado a Lado",
-            "description": "Ve los cambios resaltados en color. Filas añadidas en verde, eliminadas en rojo, modificadas en amarillo."
-          },
-          "privacy": {
-            "title": "Privacidad Total",
-            "description": "Tus archivos XLSX nunca salen de tu ordenador. Todo el procesamiento ocurre localmente en tu navegador."
-          },
-          "formats": {
-            "title": "Todos los Formatos Excel",
-            "description": "Funciona con .xlsx, .xls, e incluso compara Excel con archivos CSV."
-          },
-          "free": {
-            "title": "100% Gratis",
-            "description": "Sin registro, sin límites, sin marcas de agua. Úsalo tanto como necesites."
-          }
-        }
-      },
-      "useCases": {
-        "title": "Casos de Uso Comunes",
-        "items": {
-          "audit": {
-            "title": "Auditoría Financiera",
-            "description": "Compara versiones de presupuestos, rastrea cambios en informes financieros, audita hojas de gastos."
-          },
-          "version": {
-            "title": "Control de Versiones",
-            "description": "Rastrea cambios entre versiones de documentos cuando colaboras con equipos."
-          },
-          "migration": {
-            "title": "Migración de Datos",
-            "description": "Verifica la integridad de datos después de importar o exportar entre sistemas."
-          },
-          "qa": {
-            "title": "Control de Calidad",
-            "description": "Valida resultados de pruebas, compara resultados esperados vs reales."
-          }
-        }
-      },
-      "cta": "Compara tus Archivos XLSX Ahora"
     },
     "xls": {
       "title": "Herramienta de Comparación de Archivos XLS - Compara Excel Antiguos",
@@ -669,35 +628,6 @@
       "crossPlatform": {
         "title": "Multiplataforma",
         "description": "Funciona en Windows, Mac, Linux y dispositivos móviles. Cualquier dispositivo con navegador."
-      }
-    },
-    "beyond-compare": {
-      "name": "Beyond Compare",
-      "title": "Alternativa Gratuita a Beyond Compare - DiffSheets",
-      "description": "¿Buscas una alternativa gratuita a Beyond Compare? DiffSheets ofrece comparación de Excel y CSV gratuita en el navegador sin necesidad de instalación.",
-      "h1": "Alternativa Gratuita a Beyond Compare",
-      "intro": "Beyond Compare es una herramienta poderosa de comparación de archivos, pero requiere instalación y cuesta más de $60. DiffSheets ofrece una alternativa gratuita basada en navegador para comparación de hojas de cálculo.",
-      "features": {
-        "price": {
-          "label": "Precio",
-          "them": "Licencia de $60+",
-          "us": "100% Gratis"
-        },
-        "installation": {
-          "label": "Instalación",
-          "them": "Aplicación de escritorio requerida",
-          "us": "Basado en navegador, sin instalación"
-        },
-        "privacy": {
-          "label": "Privacidad",
-          "them": "Procesamiento local",
-          "us": "Procesamiento local (nunca se sube)"
-        },
-        "formats": {
-          "label": "Formatos de Archivo",
-          "them": "Muchos tipos de archivo",
-          "us": "Enfocado en Excel, CSV, ODS"
-        }
       }
     },
     "spreadsheet-compare": {

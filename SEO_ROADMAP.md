@@ -33,19 +33,19 @@
 
 **Objetivo:** Capturar búsquedas específicas por tipo de archivo con baja competencia.
 
-#### Páginas a crear:
+#### Páginas implementadas:
 
 ```
-/[locale]/xlsx-compare
 /[locale]/xls-diff
 /[locale]/ods-compare
 ```
+
+> **Nota:** `/xlsx-compare` fue eliminada por ser redundante con `/compare-excel-files`. XLSX y Excel son sinónimos para la mayoría de usuarios.
 
 #### Especificaciones:
 
 | Página | Title (EN) | Title (ES) | H1 |
 |--------|-----------|------------|-----|
-| xlsx-compare | Compare XLSX Files Online Free | Comparar Archivos XLSX Online Gratis | Compare XLSX Files Online |
 | xls-diff | XLS File Comparison Tool | Herramienta Comparar XLS | Compare XLS Files Online |
 | ods-compare | Compare ODS Spreadsheets | Comparar Hojas ODS | Compare ODS Files Online |
 
@@ -53,7 +53,6 @@
 
 | Página | Primary Keyword | Secondary Keywords |
 |--------|----------------|-------------------|
-| xlsx-compare | compare xlsx files | xlsx diff, xlsx compare online, compare two xlsx |
 | xls-diff | compare xls files | xls diff tool, xls file comparison |
 | ods-compare | compare ods files | libreoffice compare, ods diff |
 
@@ -131,13 +130,14 @@ Palabras: 1200-1500
 
 **Objetivo:** Capturar usuarios buscando alternativas a herramientas de pago.
 
-#### Páginas a crear:
+#### Páginas implementadas:
 
 ```
-/[locale]/alternative/beyond-compare
 /[locale]/alternative/spreadsheet-compare
-/[locale]/alternative/excel-compare-tool
+/[locale]/alternative/excel-compare
 ```
+
+> **Nota:** `/alternative/beyond-compare` fue eliminada. Beyond Compare es un producto de nicho para desarrolladores, no para nuestro público objetivo (usuarios de Excel/hojas de cálculo). Consolidamos el mensaje en las 2 páginas restantes.
 
 #### Contenido:
 - Análisis honesto de la herramienta original
@@ -146,9 +146,8 @@ Palabras: 1200-1500
 - FAQ específico
 
 #### Keywords:
-- "beyond compare alternative free"
 - "spreadsheet compare alternative"
-- "free alternative to [tool]"
+- "excel compare tool free"
 
 ---
 
@@ -197,20 +196,24 @@ Palabras: 3000-5000
 
 ---
 
-### 3.2 Páginas por Caso de Uso
+### 3.2 Página de Casos de Uso (Consolidada)
 
 ```
-/[locale]/use-cases/financial-auditing
-/[locale]/use-cases/data-migration
-/[locale]/use-cases/version-control
-/[locale]/use-cases/quality-assurance
+/[locale]/use-cases
 ```
 
-**Contenido por página:**
-- Problema específico del sector
-- Cómo DiffSheets lo resuelve
-- Ejemplo práctico
-- Testimonial (cuando los tengamos)
+> **Decisión:** En lugar de 4 páginas separadas, consolidamos todos los casos de uso en una sola página. Razones:
+> - Los casos de uso individuales tienen poco volumen de búsqueda
+> - Una página consolidada es más fácil de mantener y ofrece mejor UX
+> - Evita thin content y duplicación de estructura
+
+**Contenido incluido:**
+- Financial Auditing
+- Data Migration
+- Version Control
+- Quality Assurance
+
+Cada caso de uso muestra: desafío, solución, y CTA común al final.
 
 ---
 
