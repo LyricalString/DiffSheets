@@ -14,6 +14,8 @@ const nextConfig: NextConfig = {
       "@radix-ui/react-tabs",
       "@radix-ui/react-switch",
     ],
+    // Enable CSS optimization for faster rendering
+    optimizeCss: true,
   },
 };
 

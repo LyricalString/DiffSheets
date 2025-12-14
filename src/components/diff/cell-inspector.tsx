@@ -105,7 +105,7 @@ export function CellInspector({
     <Card
       className={cn(
         "absolute right-4 top-4 z-50 w-72 overflow-hidden rounded-2xl border shadow-2xl shadow-black/20",
-        "animate-in slide-in-from-right-4 fade-in duration-200",
+        "animate-slide-in-right",
         className,
       )}
     >
