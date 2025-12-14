@@ -16,13 +16,13 @@ export function Footer() {
           <Link href="/" className="flex items-center gap-2.5 opacity-70 hover:opacity-100 transition-opacity">
             <LogoIcon size={28} />
             <span className="font-display font-semibold text-lg">
-              Diff<span className="text-green-500">Sheets</span>
+              Diff<span className="text-green-400">Sheets</span>
             </span>
           </Link>
 
           {/* Privacy notice */}
           <div className="flex items-center gap-2 text-muted-foreground text-sm">
-            <Shield className="h-4 w-4 text-green-500" />
+            <Shield className="h-4 w-4 text-green-400" />
             <span>{t("privacy")}</span>
           </div>
 
@@ -37,7 +37,7 @@ export function Footer() {
               href="https://github.com/LyricalString/diffsheets"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-green-500 transition-colors"
+              className="flex items-center gap-1.5 hover:text-green-400 transition-colors"
             >
               <Github className="h-4 w-4" />
               {t("opensource")}

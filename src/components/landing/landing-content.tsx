@@ -207,7 +207,7 @@ export async function LandingContent({ locale }: Props) {
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-16">
-            <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
+            <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
               {locale === "es" ? "Características" : "Features"}
             </span>
             <h2
@@ -244,7 +244,7 @@ export async function LandingContent({ locale }: Props) {
       <section className="py-24 px-4" aria-labelledby="how-it-works-heading">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
+            <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
               {locale === "es" ? "Cómo funciona" : "How it works"}
             </span>
             <h2
@@ -307,7 +307,7 @@ export async function LandingContent({ locale }: Props) {
       <section className="py-24 px-4" aria-labelledby="faq-heading">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
-            <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
+            <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
               FAQ
             </span>
             <h2

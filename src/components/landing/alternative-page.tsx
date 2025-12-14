@@ -86,7 +86,7 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
         <section className="py-24 px-4" aria-labelledby="comparison-heading">
           <div className="mx-auto max-w-5xl">
             <div className="text-center mb-16">
-              <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
+              <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
                 {isSpanish ? "Comparativa" : "Comparison"}
               </span>
               <h2
@@ -151,7 +151,7 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
         <section className="py-24 px-4" aria-labelledby="benefits-heading">
           <div className="mx-auto max-w-6xl">
             <div className="text-center mb-16">
-              <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
+              <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
                 {isSpanish ? "Ventajas" : "Benefits"}
               </span>
               <h2
@@ -189,7 +189,7 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
         <section className="py-24 px-4" aria-labelledby="faq-heading">
           <div className="mx-auto max-w-3xl">
             <div className="text-center mb-16">
-              <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
+              <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
                 FAQ
               </span>
               <h2
