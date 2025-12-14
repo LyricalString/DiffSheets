@@ -20,7 +20,7 @@ export function CompareHeader({ locale }: CompareHeaderProps) {
   const hasFiles = originalFile.file || modifiedFile.file;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Back + Logo */}
         <div className="flex items-center gap-3">
@@ -44,7 +44,7 @@ export function CompareHeader({ locale }: CompareHeaderProps) {
           >
             <LogoIcon size={28} />
             <span className="font-display font-bold text-base hidden sm:block">
-              Diff<span className="text-green-500">Sheets</span>
+              Diff<span className="text-green-900 dark:text-green-100">Sheets</span>
             </span>
           </Link>
         </div>

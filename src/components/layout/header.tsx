@@ -25,13 +25,13 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 transition-opacity hover:opacity-80">
           <LogoIcon size={32} />
           <span className="font-display font-bold text-lg hidden sm:block">
-            Diff<span className="text-green-500">Sheets</span>
+            Diff<span className="text-green-900 dark:text-green-100">Sheets</span>
           </span>
         </Link>
 
@@ -101,7 +101,7 @@ export function Header() {
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-xl">
+        <div className="md:hidden border-t border-border bg-background backdrop-blur-xl">
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
