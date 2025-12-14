@@ -1,17 +1,17 @@
 import type {
-  SheetData,
+  ColumnDiff,
   ComparisonOptions,
+  DiffCell,
   DiffResult,
   DiffRow,
-  DiffCell,
   DiffSummary,
-  ColumnDiff,
   RowChangeType,
+  SheetData,
 } from "@/types";
+import { areCellsEqual, compareCells } from "./cell-diff";
 import { alignRows, type RowAlignment } from "./row-matcher";
-import { compareCells, areCellsEqual } from "./cell-diff";
 
-export { compareCells, areCellsEqual } from "./cell-diff";
+export { areCellsEqual, compareCells } from "./cell-diff";
 export { alignRows } from "./row-matcher";
 
 /**
@@ -23,25 +23,18 @@ function compareRows(
   alignment: RowAlignment,
   originalData: SheetData,
   modifiedData: SheetData,
-  options: ComparisonOptions
+  options: ComparisonOptions,
 ): { cells: DiffCell[]; changeType: RowChangeType; modifiedCellCount: number } {
-  const maxCols = Math.max(
-    originalData.columns.length,
-    modifiedData.columns.length
-  );
+  const maxCols = Math.max(originalData.columns.length, modifiedData.columns.length);
 
   const cells: DiffCell[] = [];
   let hasChanges = false;
   let modifiedCellCount = 0;
 
   const origRow =
-    alignment.originalIndex !== null
-      ? originalData.rows[alignment.originalIndex]
-      : null;
+    alignment.originalIndex !== null ? originalData.rows[alignment.originalIndex] : null;
   const modRow =
-    alignment.modifiedIndex !== null
-      ? modifiedData.rows[alignment.modifiedIndex]
-      : null;
+    alignment.modifiedIndex !== null ? modifiedData.rows[alignment.modifiedIndex] : null;
 
   for (let colIdx = 0; colIdx < maxCols; colIdx++) {
     const origCell = origRow?.[colIdx] ?? null;
@@ -78,12 +71,9 @@ function compareRows(
 function computeColumnDiffs(
   diffRows: DiffRow[],
   originalData: SheetData,
-  modifiedData: SheetData
+  modifiedData: SheetData,
 ): ColumnDiff[] {
-  const maxCols = Math.max(
-    originalData.columns.length,
-    modifiedData.columns.length
-  );
+  const maxCols = Math.max(originalData.columns.length, modifiedData.columns.length);
 
   const columnHasChanges: boolean[] = Array(maxCols).fill(false);
 
@@ -164,7 +154,7 @@ function computeSummary(diffRows: DiffRow[]): DiffSummary {
 export function computeSpreadsheetDiff(
   originalData: SheetData,
   modifiedData: SheetData,
-  options: ComparisonOptions
+  options: ComparisonOptions,
 ): DiffResult {
   // Step 1: Align rows based on matching strategy
   const alignments = alignRows(originalData.rows, modifiedData.rows, options);
@@ -177,7 +167,7 @@ export function computeSpreadsheetDiff(
       alignment,
       originalData,
       modifiedData,
-      options
+      options,
     );
 
     return {
@@ -204,10 +194,7 @@ export function computeSpreadsheetDiff(
 /**
  * Filter diff rows based on options
  */
-export function filterDiffRows(
-  diffResult: DiffResult,
-  options: ComparisonOptions
-): DiffRow[] {
+export function filterDiffRows(diffResult: DiffResult, options: ComparisonOptions): DiffRow[] {
   let rows = diffResult.rows;
 
   if (options.hideUnchangedRows) {
@@ -220,15 +207,10 @@ export function filterDiffRows(
 /**
  * Filter columns based on options
  */
-export function filterDiffColumns(
-  diffResult: DiffResult,
-  options: ComparisonOptions
-): number[] {
+export function filterDiffColumns(diffResult: DiffResult, options: ComparisonOptions): number[] {
   if (!options.hideUnchangedColumns) {
     return diffResult.columns.map((col) => col.index);
   }
 
-  return diffResult.columns
-    .filter((col) => col.hasChanges)
-    .map((col) => col.index);
+  return diffResult.columns.filter((col) => col.hasChanges).map((col) => col.index);
 }

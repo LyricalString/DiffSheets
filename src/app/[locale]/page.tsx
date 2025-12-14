@@ -1,8 +1,8 @@
 "use client";
 
-import { Header, Footer } from "@/components/layout";
-import { ComparisonUploader } from "@/components/upload";
 import { DiffView } from "@/components/diff";
+import { Footer, Header } from "@/components/layout";
+import { ComparisonUploader } from "@/components/upload";
 import { useSpreadsheetStore } from "@/store";
 
 export default function Home() {

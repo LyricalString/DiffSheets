@@ -1,10 +1,10 @@
 "use client";
 
+import { ArrowRight, Binary, Hash, MapPin, Type, X } from "lucide-react";
 import { useMemo } from "react";
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { X, ArrowRight, MapPin, Hash, Type, Binary } from "lucide-react";
 import type { DiffCell } from "@/types";
 
 interface CellInspectorProps {
@@ -41,7 +41,7 @@ function levenshteinDistance(a: string, b: string): number {
         matrix[i][j] = Math.min(
           matrix[i - 1][j - 1] + 1,
           matrix[i][j - 1] + 1,
-          matrix[i - 1][j] + 1
+          matrix[i - 1][j] + 1,
         );
       }
     }
@@ -71,7 +71,10 @@ export function CellInspector({
       similarity:
         cell.changeType === "modified"
           ? Math.round(
-              (1 - levenshteinDistance(original, modified) / Math.max(original.length, modified.length, 1)) * 100
+              (1 -
+                levenshteinDistance(original, modified) /
+                  Math.max(original.length, modified.length, 1)) *
+                100,
             )
           : cell.changeType === "unchanged"
             ? 100
@@ -82,9 +85,17 @@ export function CellInspector({
   if (!cell || rowIndex === null || colIndex === null) return null;
 
   const changeTypeConfig = {
-    added: { label: "Added", color: "bg-green-500", textColor: "text-green-700 dark:text-green-400" },
+    added: {
+      label: "Added",
+      color: "bg-green-500",
+      textColor: "text-green-700 dark:text-green-400",
+    },
     removed: { label: "Removed", color: "bg-red-500", textColor: "text-red-700 dark:text-red-400" },
-    modified: { label: "Modified", color: "bg-yellow-500", textColor: "text-yellow-700 dark:text-yellow-400" },
+    modified: {
+      label: "Modified",
+      color: "bg-yellow-500",
+      textColor: "text-yellow-700 dark:text-yellow-400",
+    },
     unchanged: { label: "Unchanged", color: "bg-gray-400", textColor: "text-muted-foreground" },
   };
 
@@ -95,7 +106,7 @@ export function CellInspector({
       className={cn(
         "absolute right-4 top-4 z-50 w-80 overflow-hidden border shadow-xl",
         "animate-in slide-in-from-right-4 fade-in duration-200",
-        className
+        className,
       )}
     >
       {/* Header */}
@@ -133,7 +144,9 @@ export function CellInspector({
 
         {/* Values */}
         <div className="space-y-3">
-          {(cell.changeType === "removed" || cell.changeType === "modified" || cell.changeType === "unchanged") && (
+          {(cell.changeType === "removed" ||
+            cell.changeType === "modified" ||
+            cell.changeType === "unchanged") && (
             <div className="space-y-1">
               <label className="text-xs font-medium text-muted-foreground">Original</label>
               <div
@@ -141,7 +154,7 @@ export function CellInspector({
                   "rounded-md border p-2 text-sm font-mono break-all",
                   cell.changeType === "removed" || cell.changeType === "modified"
                     ? "border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-950/50"
-                    : "border-border bg-muted/30"
+                    : "border-border bg-muted/30",
                 )}
               >
                 {analysis?.original || <span className="text-muted-foreground italic">empty</span>}
@@ -155,7 +168,9 @@ export function CellInspector({
             </div>
           )}
 
-          {(cell.changeType === "added" || cell.changeType === "modified" || cell.changeType === "unchanged") && (
+          {(cell.changeType === "added" ||
+            cell.changeType === "modified" ||
+            cell.changeType === "unchanged") && (
             <div className="space-y-1">
               <label className="text-xs font-medium text-muted-foreground">
                 {cell.changeType === "unchanged" ? "Value" : "Modified"}
@@ -165,7 +180,7 @@ export function CellInspector({
                   "rounded-md border p-2 text-sm font-mono break-all",
                   cell.changeType === "added" || cell.changeType === "modified"
                     ? "border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-950/50"
-                    : "border-border bg-muted/30"
+                    : "border-border bg-muted/30",
                 )}
               >
                 {analysis?.modified || <span className="text-muted-foreground italic">empty</span>}

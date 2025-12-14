@@ -1,9 +1,9 @@
-export { DiffView } from "./diff-view";
+export { CellInspector } from "./cell-inspector";
+export { ChangeNavigation } from "./change-navigation";
+export { DiffCell } from "./diff-cell";
 export { DiffGrid } from "./diff-grid";
 export { DiffRow } from "./diff-row";
-export { DiffCell } from "./diff-cell";
 export { DiffSummary } from "./diff-summary";
+export { DiffView } from "./diff-view";
 export { SideBySideGrid } from "./side-by-side-grid";
 export { ViewModeSelector } from "./view-mode-selector";
-export { ChangeNavigation } from "./change-navigation";
-export { CellInspector } from "./cell-inspector";

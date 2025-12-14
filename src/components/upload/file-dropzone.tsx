@@ -1,18 +1,18 @@
 "use client";
 
+import { FileSpreadsheet, Loader2, Upload, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { Upload, FileSpreadsheet, X, Loader2 } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
+  formatFileSize,
+  isFileSupported,
   SUPPORTED_EXTENSIONS,
   SUPPORTED_MIME_TYPES,
-  isFileSupported,
-  formatFileSize,
 } from "@/lib/parser";
+import { cn } from "@/lib/utils";
 
 interface FileDropzoneProps {
   side: "original" | "modified";
@@ -40,7 +40,7 @@ export function FileDropzone({
         onFileSelect(selectedFile);
       }
     },
-    [onFileSelect]
+    [onFileSelect],
   );
 
   const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
@@ -50,7 +50,7 @@ export function FileDropzone({
         acc[type] = SUPPORTED_EXTENSIONS.map((ext) => ext);
         return acc;
       },
-      {} as Record<string, string[]>
+      {} as Record<string, string[]>,
     ),
     maxFiles: 1,
     disabled: isLoading,
@@ -103,7 +103,7 @@ export function FileDropzone({
         "flex min-h-[200px] cursor-pointer flex-col items-center justify-center border-2 border-dashed p-8 transition-all duration-200",
         isDragActive && !isDragReject && "border-primary bg-primary/5 scale-[1.02]",
         isDragReject && "border-destructive bg-destructive/5",
-        !isDragActive && "hover:border-primary/50 hover:bg-muted/30"
+        !isDragActive && "hover:border-primary/50 hover:bg-muted/30",
       )}
     >
       <input {...getInputProps()} />
@@ -111,7 +111,7 @@ export function FileDropzone({
       <div
         className={cn(
           "flex h-14 w-14 items-center justify-center rounded-full transition-colors",
-          isDragActive ? "bg-primary/20" : "bg-muted"
+          isDragActive ? "bg-primary/20" : "bg-muted",
         )}
       >
         <Upload
@@ -120,9 +120,7 @@ export function FileDropzone({
       </div>
 
       <div className="mt-5 text-center">
-        <p className="font-semibold">
-          {side === "original" ? t("original") : t("modified")}
-        </p>
+        <p className="font-semibold">{side === "original" ? t("original") : t("modified")}</p>
         <p className="mt-1.5 text-muted-foreground text-sm">{t("dropzone.title")}</p>
         <p className="text-muted-foreground/80 text-xs">{t("dropzone.subtitle")}</p>
       </div>

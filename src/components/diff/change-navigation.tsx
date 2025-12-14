@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ChevronUp, ChevronDown } from "lucide-react";
 
 interface ChangeNavigationProps {
   currentIndex: number;
@@ -78,7 +78,7 @@ export function ChangeNavigation({
     <div
       className={cn(
         "flex items-center gap-1 rounded-lg border bg-background/95 px-2 py-1 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/60",
-        className
+        className,
       )}
     >
       <Button
@@ -108,7 +108,6 @@ export function ChangeNavigation({
       >
         <ChevronDown className="h-4 w-4" />
       </Button>
-
     </div>
   );
 }

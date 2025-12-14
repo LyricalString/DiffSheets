@@ -1,15 +1,15 @@
 "use client";
 
-import { useCallback } from "react";
-import { useTranslations } from "next-intl";
 import { ArrowRight, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
+import { computeSpreadsheetDiff } from "@/lib/diff";
+import { parseSpreadsheet } from "@/lib/parser";
+import { useSpreadsheetStore } from "@/store";
 import { FileDropzone } from "./file-dropzone";
 import { SheetSelector } from "./sheet-selector";
 import { SpreadsheetPreview } from "./spreadsheet-preview";
-import { useSpreadsheetStore } from "@/store";
-import { parseSpreadsheet } from "@/lib/parser";
-import { computeSpreadsheetDiff } from "@/lib/diff";
 
 export function ComparisonUploader() {
   const t = useTranslations("upload");
@@ -51,7 +51,7 @@ export function ComparisonUploader() {
         setOriginalLoading(false);
       }
     },
-    [setOriginalFile, setOriginalParsed, setOriginalLoading, setOriginalError]
+    [setOriginalFile, setOriginalParsed, setOriginalLoading, setOriginalError],
   );
 
   const handleModifiedFileSelect = useCallback(
@@ -69,7 +69,7 @@ export function ComparisonUploader() {
         setModifiedLoading(false);
       }
     },
-    [setModifiedFile, setModifiedParsed, setModifiedLoading, setModifiedError]
+    [setModifiedFile, setModifiedParsed, setModifiedLoading, setModifiedError],
   );
 
   const canCompare =

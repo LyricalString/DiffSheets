@@ -1,6 +1,7 @@
 "use client";
 
-import { Moon, Sun, Monitor } from "lucide-react";
+import { Monitor, Moon, Sun } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,7 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useTranslations } from "next-intl";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();

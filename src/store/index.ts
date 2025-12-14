@@ -1,10 +1,5 @@
 import { create } from "zustand";
-import type {
-  ParsedSpreadsheet,
-  DiffResult,
-  ComparisonOptions,
-  FileUploadState,
-} from "@/types";
+import type { ComparisonOptions, DiffResult, FileUploadState, ParsedSpreadsheet } from "@/types";
 import { defaultComparisonOptions } from "@/types";
 
 interface SpreadsheetStore {

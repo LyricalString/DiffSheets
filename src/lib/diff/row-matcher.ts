@@ -1,4 +1,4 @@
-import type { Row, Cell, ComparisonOptions, MatchingStrategy } from "@/types";
+import type { Cell, ComparisonOptions, MatchingStrategy, Row } from "@/types";
 
 interface RowSignature {
   index: number;
@@ -29,26 +29,18 @@ function generateRowHash(row: Row, options: ComparisonOptions): string {
 /**
  * Generate signatures for all rows
  */
-function generateSignatures(
-  rows: Row[],
-  options: ComparisonOptions
-): RowSignature[] {
+function generateSignatures(rows: Row[], options: ComparisonOptions): RowSignature[] {
   return rows.map((row, index) => ({
     index,
     hash: generateRowHash(row, options),
-    values: row.map((cell) =>
-      cell.value === null ? "" : String(cell.value)
-    ),
+    values: row.map((cell) => (cell.value === null ? "" : String(cell.value))),
   }));
 }
 
 /**
  * Position-based alignment - simple 1:1 mapping
  */
-function positionBasedAlignment(
-  originalRows: Row[],
-  modifiedRows: Row[]
-): RowAlignment[] {
+function positionBasedAlignment(originalRows: Row[], modifiedRows: Row[]): RowAlignment[] {
   const maxLength = Math.max(originalRows.length, modifiedRows.length);
   const alignments: RowAlignment[] = [];
 
@@ -87,7 +79,7 @@ function keyColumnAlignment(
   originalRows: Row[],
   modifiedRows: Row[],
   keyColumnIndex: number,
-  options: ComparisonOptions
+  options: ComparisonOptions,
 ): RowAlignment[] {
   const alignments: RowAlignment[] = [];
   const usedModifiedIndices = new Set<number>();
@@ -114,9 +106,7 @@ function keyColumnAlignment(
     if (options.ignoreWhitespace) keyValue = keyValue.trim();
 
     const matchingIndices = modifiedByKey.get(keyValue) || [];
-    const availableIndex = matchingIndices.find(
-      (idx) => !usedModifiedIndices.has(idx)
-    );
+    const availableIndex = matchingIndices.find((idx) => !usedModifiedIndices.has(idx));
 
     if (availableIndex !== undefined) {
       usedModifiedIndices.add(availableIndex);
@@ -162,7 +152,7 @@ function keyColumnAlignment(
 function lcsBasedAlignment(
   originalRows: Row[],
   modifiedRows: Row[],
-  options: ComparisonOptions
+  options: ComparisonOptions,
 ): RowAlignment[] {
   const origSigs = generateSignatures(originalRows, options);
   const modSigs = generateSignatures(modifiedRows, options);
@@ -226,19 +216,14 @@ function lcsBasedAlignment(
 export function alignRows(
   originalRows: Row[],
   modifiedRows: Row[],
-  options: ComparisonOptions
+  options: ComparisonOptions,
 ): RowAlignment[] {
   const strategy = options.matchingStrategy;
 
   switch (strategy) {
     case "key-column":
       if (options.keyColumnIndex !== undefined) {
-        return keyColumnAlignment(
-          originalRows,
-          modifiedRows,
-          options.keyColumnIndex,
-          options
-        );
+        return keyColumnAlignment(originalRows, modifiedRows, options.keyColumnIndex, options);
       }
       // Fallback to position if no key column specified
       return positionBasedAlignment(originalRows, modifiedRows);

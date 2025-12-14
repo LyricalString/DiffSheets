@@ -1,10 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
 import { useTranslations } from "next-intl";
+import { useMemo } from "react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import type { SheetData, Cell } from "@/types";
+import type { Cell, SheetData } from "@/types";
 
 interface SpreadsheetPreviewProps {
   data: SheetData;
@@ -72,7 +72,7 @@ export function SpreadsheetPreview({
                     className={cn(
                       "max-w-[150px] truncate border-r px-2 py-1.5",
                       cell.type === "number" && "text-right",
-                      cell.type === "empty" && "text-muted-foreground"
+                      cell.type === "empty" && "text-muted-foreground",
                     )}
                     title={formatCellValue(cell)}
                   >

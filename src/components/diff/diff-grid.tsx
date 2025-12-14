@@ -1,12 +1,12 @@
 "use client";
 
-import { useRef, useMemo } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useTranslations } from "next-intl";
+import { useMemo, useRef } from "react";
 import { Card } from "@/components/ui/card";
-import { DiffRow } from "./diff-row";
 import { cn } from "@/lib/utils";
 import type { DiffResult, DiffRow as DiffRowType } from "@/types";
+import { DiffRow } from "./diff-row";
 
 interface DiffGridProps {
   diffResult: DiffResult;
@@ -26,10 +26,7 @@ function getColumnLetter(index: number): string {
 }
 
 // Calculate smart column widths based on content
-function calculateColumnWidths(
-  rows: DiffRowType[],
-  columns: number[]
-): Map<number, number> {
+function calculateColumnWidths(rows: DiffRowType[], columns: number[]): Map<number, number> {
   const CHAR_WIDTH = 8; // Average pixels per character
   const MIN_WIDTH = 80;
   const MAX_WIDTH = 400;
@@ -69,12 +66,7 @@ function calculateColumnWidths(
   return widths;
 }
 
-export function DiffGrid({
-  diffResult,
-  visibleRows,
-  visibleColumns,
-  className,
-}: DiffGridProps) {
+export function DiffGrid({ diffResult, visibleRows, visibleColumns, className }: DiffGridProps) {
   const t = useTranslations("diff");
   const parentRef = useRef<HTMLDivElement>(null);
 
@@ -92,7 +84,7 @@ export function DiffGrid({
   // Calculate smart column widths based on content (memoized)
   const columnWidths = useMemo(
     () => calculateColumnWidths(visibleRows, visibleColumns),
-    [visibleRows, visibleColumns]
+    [visibleRows, visibleColumns],
   );
 
   // Calculate total table width from individual column widths
@@ -116,7 +108,10 @@ export function DiffGrid({
   return (
     <Card className={cn("overflow-hidden", className)}>
       <div ref={parentRef} className="max-h-[70vh] overflow-auto">
-        <table className="border-collapse text-sm" style={{ tableLayout: "fixed", width: `${totalTableWidth}px` }}>
+        <table
+          className="border-collapse text-sm"
+          style={{ tableLayout: "fixed", width: `${totalTableWidth}px` }}
+        >
           <colgroup>
             <col style={{ width: "40px" }} />
             <col style={{ width: "40px" }} />
@@ -134,9 +129,7 @@ export function DiffGrid({
               <th className="sticky left-[40px] z-30 border-r bg-muted px-2 py-2.5 text-center text-muted-foreground text-xs font-medium">
                 #
               </th>
-              <th className="sticky left-[80px] z-30 border-r bg-muted px-1 py-2.5 text-center text-muted-foreground text-xs font-medium">
-
-              </th>
+              <th className="sticky left-[80px] z-30 border-r bg-muted px-1 py-2.5 text-center text-muted-foreground text-xs font-medium"></th>
 
               {/* Column headers */}
               {visibleColumns.map((colIndex) => {
@@ -146,9 +139,7 @@ export function DiffGrid({
                     key={colIndex}
                     className={cn(
                       "border-r bg-muted px-3 py-2.5 text-center text-xs font-semibold overflow-hidden",
-                      column?.hasChanges
-                        ? "text-foreground"
-                        : "text-muted-foreground"
+                      column?.hasChanges ? "text-foreground" : "text-muted-foreground",
                     )}
                   >
                     {getColumnLetter(colIndex)}

@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { DiffCell } from "./diff-cell";
 import type { DiffRow as DiffRowType } from "@/types";
+import { DiffCell } from "./diff-cell";
 
 interface DiffRowProps {
   row: DiffRowType;
@@ -15,23 +15,32 @@ export function DiffRow({ row, visibleColumns, columnWidths, style }: DiffRowPro
   const rowBgClass = cn(
     row.changeType === "added" && "bg-green-50/50 dark:bg-green-900/10",
     row.changeType === "removed" && "bg-red-50/50 dark:bg-red-900/10",
-    row.changeType === "modified" && "bg-yellow-50/30 dark:bg-yellow-900/5"
+    row.changeType === "modified" && "bg-yellow-50/30 dark:bg-yellow-900/5",
   );
 
   return (
     <tr className={cn("border-b hover:bg-muted/20", rowBgClass)} style={style}>
       {/* Original row number */}
-      <td className="sticky left-0 z-10 border-r bg-muted/80 px-2 py-2 text-center text-muted-foreground text-xs tabular-nums" style={{ width: "40px" }}>
+      <td
+        className="sticky left-0 z-10 border-r bg-muted/80 px-2 py-2 text-center text-muted-foreground text-xs tabular-nums"
+        style={{ width: "40px" }}
+      >
         {row.originalIndex !== null ? row.originalIndex + 1 : ""}
       </td>
 
       {/* Modified row number */}
-      <td className="sticky left-[40px] z-10 border-r bg-muted/80 px-2 py-2 text-center text-muted-foreground text-xs tabular-nums" style={{ width: "40px" }}>
+      <td
+        className="sticky left-[40px] z-10 border-r bg-muted/80 px-2 py-2 text-center text-muted-foreground text-xs tabular-nums"
+        style={{ width: "40px" }}
+      >
         {row.modifiedIndex !== null ? row.modifiedIndex + 1 : ""}
       </td>
 
       {/* Change indicator */}
-      <td className="sticky left-[80px] z-10 border-r bg-muted/80 px-1 py-2 text-center" style={{ width: "32px" }}>
+      <td
+        className="sticky left-[80px] z-10 border-r bg-muted/80 px-1 py-2 text-center"
+        style={{ width: "32px" }}
+      >
         {row.changeType === "added" && (
           <span className="font-bold text-green-600 dark:text-green-400">+</span>
         )}

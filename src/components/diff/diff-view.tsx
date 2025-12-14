@@ -1,19 +1,19 @@
 "use client";
 
-import { useMemo, useState, useCallback } from "react";
-import { useTranslations } from "next-intl";
 import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { DiffSummary } from "./diff-summary";
-import { DiffGrid } from "./diff-grid";
-import { SideBySideGrid } from "./side-by-side-grid";
-import { ViewModeSelector, type ViewMode } from "./view-mode-selector";
-import { ChangeNavigation } from "./change-navigation";
-import { CellInspector } from "./cell-inspector";
+import { useTranslations } from "next-intl";
+import { useCallback, useMemo, useState } from "react";
 import { ComparisonOptions } from "@/components/sidebar";
+import { Button } from "@/components/ui/button";
+import { filterDiffColumns, filterDiffRows } from "@/lib/diff";
 import { useSpreadsheetStore } from "@/store";
-import { filterDiffRows, filterDiffColumns } from "@/lib/diff";
 import type { DiffCell } from "@/types";
+import { CellInspector } from "./cell-inspector";
+import { ChangeNavigation } from "./change-navigation";
+import { DiffGrid } from "./diff-grid";
+import { DiffSummary } from "./diff-summary";
+import { SideBySideGrid } from "./side-by-side-grid";
+import { type ViewMode, ViewModeSelector } from "./view-mode-selector";
 
 export function DiffView() {
   const t = useTranslations("diff");

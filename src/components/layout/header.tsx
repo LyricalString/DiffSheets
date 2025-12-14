@@ -1,11 +1,11 @@
 "use client";
 
+import { FileSpreadsheet, Github } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { Github, FileSpreadsheet } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./theme-toggle";
 import { LanguageSwitcher } from "./language-switcher";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   const t = useTranslations("header");
@@ -19,9 +19,7 @@ export function Header() {
             <FileSpreadsheet className="h-5 w-5 text-white" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold tracking-tight text-lg leading-tight">
-              DiffSheets
-            </span>
+            <span className="font-bold tracking-tight text-lg leading-tight">DiffSheets</span>
             <span className="hidden text-[11px] text-muted-foreground sm:block leading-tight">
               {t("tagline")}
             </span>

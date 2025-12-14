@@ -1,5 +1,12 @@
 import { diffChars } from "diff";
-import type { Cell, CellValue, ComparisonOptions, DiffCell, InlineDiff, CellChangeType } from "@/types";
+import type {
+  Cell,
+  CellChangeType,
+  CellValue,
+  ComparisonOptions,
+  DiffCell,
+  InlineDiff,
+} from "@/types";
 
 /**
  * Normalize cell value for comparison based on options
@@ -26,24 +33,18 @@ function normalizeValue(value: CellValue, options: ComparisonOptions): string {
 export function areCellsEqual(
   original: Cell | null,
   modified: Cell | null,
-  options: ComparisonOptions
+  options: ComparisonOptions,
 ): boolean {
   const origValue = original?.value ?? null;
   const modValue = modified?.value ?? null;
 
   // Both empty
-  if (
-    (origValue === null || origValue === "") &&
-    (modValue === null || modValue === "")
-  ) {
+  if ((origValue === null || origValue === "") && (modValue === null || modValue === "")) {
     return true;
   }
 
   // One is empty, other is not
-  if (
-    (origValue === null || origValue === "") !==
-    (modValue === null || modValue === "")
-  ) {
+  if ((origValue === null || origValue === "") !== (modValue === null || modValue === "")) {
     return false;
   }
 
@@ -65,7 +66,7 @@ export function areCellsEqual(
  */
 export function generateInlineDiff(
   originalValue: CellValue,
-  modifiedValue: CellValue
+  modifiedValue: CellValue,
 ): InlineDiff[] {
   const origStr = originalValue === null ? "" : String(originalValue);
   const modStr = modifiedValue === null ? "" : String(modifiedValue);
@@ -84,12 +85,10 @@ export function generateInlineDiff(
 export function getCellChangeType(
   original: Cell | null,
   modified: Cell | null,
-  options: ComparisonOptions
+  options: ComparisonOptions,
 ): CellChangeType {
-  const origEmpty =
-    !original || original.value === null || original.value === "";
-  const modEmpty =
-    !modified || modified.value === null || modified.value === "";
+  const origEmpty = !original || original.value === null || original.value === "";
+  const modEmpty = !modified || modified.value === null || modified.value === "";
 
   if (origEmpty && modEmpty) return "unchanged";
   if (origEmpty && !modEmpty) return "added";
@@ -109,7 +108,7 @@ export function compareCells(
   columnIndex: number,
   original: Cell | null,
   modified: Cell | null,
-  options: ComparisonOptions
+  options: ComparisonOptions,
 ): DiffCell {
   const changeType = getCellChangeType(original, modified, options);
 
@@ -121,11 +120,7 @@ export function compareCells(
   };
 
   // Generate inline diff for modified text cells
-  if (
-    changeType === "modified" &&
-    original?.type === "string" &&
-    modified?.type === "string"
-  ) {
+  if (changeType === "modified" && original?.type === "string" && modified?.type === "string") {
     result.inlineDiff = generateInlineDiff(original.value, modified.value);
   }
 

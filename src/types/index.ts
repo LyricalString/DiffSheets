@@ -1,2 +1,2 @@
-export * from "./spreadsheet";
 export * from "./diff";
+export * from "./spreadsheet";

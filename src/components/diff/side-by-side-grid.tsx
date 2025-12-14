@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef, useEffect, useMemo, useCallback, useState } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import type { DiffResult, DiffRow, DiffCell } from "@/types";
+import type { DiffCell, DiffResult, DiffRow } from "@/types";
 
 interface SideBySideGridProps {
   diffResult: DiffResult;
@@ -25,10 +25,7 @@ function getColumnLetter(index: number): string {
   return letter;
 }
 
-function calculateColumnWidths(
-  rows: DiffRow[],
-  columns: number[]
-): Map<number, number> {
+function calculateColumnWidths(rows: DiffRow[], columns: number[]): Map<number, number> {
   const CHAR_WIDTH = 8;
   const MIN_WIDTH = 60;
   const MAX_WIDTH = 250;
@@ -74,7 +71,7 @@ export function SideBySideGrid({
 
   const columnWidths = useMemo(
     () => calculateColumnWidths(visibleRows, visibleColumns),
-    [visibleRows, visibleColumns]
+    [visibleRows, visibleColumns],
   );
 
   const totalWidth = useMemo(() => {
@@ -101,20 +98,23 @@ export function SideBySideGrid({
   });
 
   // Synchronized scrolling
-  const handleScroll = useCallback((source: "left" | "right") => {
-    if (isScrolling) return;
-    setIsScrolling(true);
+  const handleScroll = useCallback(
+    (source: "left" | "right") => {
+      if (isScrolling) return;
+      setIsScrolling(true);
 
-    const sourceEl = source === "left" ? leftRef.current : rightRef.current;
-    const targetEl = source === "left" ? rightRef.current : leftRef.current;
+      const sourceEl = source === "left" ? leftRef.current : rightRef.current;
+      const targetEl = source === "left" ? rightRef.current : leftRef.current;
 
-    if (sourceEl && targetEl) {
-      targetEl.scrollTop = sourceEl.scrollTop;
-      targetEl.scrollLeft = sourceEl.scrollLeft;
-    }
+      if (sourceEl && targetEl) {
+        targetEl.scrollTop = sourceEl.scrollTop;
+        targetEl.scrollLeft = sourceEl.scrollLeft;
+      }
 
-    requestAnimationFrame(() => setIsScrolling(false));
-  }, [isScrolling]);
+      requestAnimationFrame(() => setIsScrolling(false));
+    },
+    [isScrolling],
+  );
 
   // Scroll to current change
   useEffect(() => {
@@ -128,20 +128,20 @@ export function SideBySideGrid({
     row: DiffRow,
     colIndex: number,
     side: "original" | "modified",
-    rowIdx: number
+    rowIdx: number,
   ) => {
     const cell = row.cells[colIndex];
     const width = columnWidths.get(colIndex) ?? 80;
-    const value = side === "original"
-      ? cell?.original?.value
-      : cell?.modified?.value;
+    const value = side === "original" ? cell?.original?.value : cell?.modified?.value;
     const displayValue = value !== null && value !== undefined ? String(value) : "";
 
-    const isChanged = cell?.changeType === "modified" ||
+    const isChanged =
+      cell?.changeType === "modified" ||
       (side === "original" && cell?.changeType === "removed") ||
       (side === "modified" && cell?.changeType === "added");
 
-    const isEmpty = (side === "original" && cell?.changeType === "added") ||
+    const isEmpty =
+      (side === "original" && cell?.changeType === "added") ||
       (side === "modified" && cell?.changeType === "removed");
 
     return (
@@ -152,35 +152,44 @@ export function SideBySideGrid({
           "hover:bg-muted/50",
           isChanged && side === "original" && "bg-red-100/80 dark:bg-red-900/30",
           isChanged && side === "modified" && "bg-green-100/80 dark:bg-green-900/30",
-          isEmpty && "bg-muted/30"
+          isEmpty && "bg-muted/30",
         )}
         style={{ width, minWidth: width, maxWidth: width }}
         onClick={() => cell && onCellClick?.(cell, rowIdx, colIndex)}
         title={displayValue}
       >
-        <span className={cn(
-          isChanged && side === "original" && "text-red-700 dark:text-red-400",
-          isChanged && side === "modified" && "text-green-700 dark:text-green-400",
-          isEmpty && "text-muted-foreground/50"
-        )}>
+        <span
+          className={cn(
+            isChanged && side === "original" && "text-red-700 dark:text-red-400",
+            isChanged && side === "modified" && "text-green-700 dark:text-green-400",
+            isEmpty && "text-muted-foreground/50",
+          )}
+        >
           {isEmpty ? "—" : displayValue || <span className="text-muted-foreground">-</span>}
         </span>
       </td>
     );
   };
 
-  const renderTable = (side: "original" | "modified", ref: React.RefObject<HTMLDivElement | null>) => (
+  const renderTable = (
+    side: "original" | "modified",
+    ref: React.RefObject<HTMLDivElement | null>,
+  ) => (
     <div className="flex-1 min-w-0">
-      <div className={cn(
-        "sticky top-0 z-20 flex items-center justify-center gap-2 border-b py-2 font-semibold",
-        side === "original"
-          ? "bg-red-50 text-red-700 dark:bg-red-950/50 dark:text-red-400"
-          : "bg-green-50 text-green-700 dark:bg-green-950/50 dark:text-green-400"
-      )}>
-        <span className={cn(
-          "inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold text-white",
-          side === "original" ? "bg-red-500" : "bg-green-500"
-        )}>
+      <div
+        className={cn(
+          "sticky top-0 z-20 flex items-center justify-center gap-2 border-b py-2 font-semibold",
+          side === "original"
+            ? "bg-red-50 text-red-700 dark:bg-red-950/50 dark:text-red-400"
+            : "bg-green-50 text-green-700 dark:bg-green-950/50 dark:text-green-400",
+        )}
+      >
+        <span
+          className={cn(
+            "inline-flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold text-white",
+            side === "original" ? "bg-red-500" : "bg-green-500",
+          )}
+        >
           {side === "original" ? "A" : "B"}
         </span>
         {side === "original" ? "Original" : "Modified"}
@@ -190,10 +199,16 @@ export function SideBySideGrid({
         className="max-h-[60vh] overflow-auto"
         onScroll={() => handleScroll(side === "original" ? "left" : "right")}
       >
-        <table className="border-collapse text-sm" style={{ tableLayout: "fixed", width: totalWidth }}>
+        <table
+          className="border-collapse text-sm"
+          style={{ tableLayout: "fixed", width: totalWidth }}
+        >
           <thead className="sticky top-0 z-10">
             <tr className="border-b bg-muted">
-              <th className="border-r bg-muted px-2 py-2 text-center text-xs font-medium text-muted-foreground" style={{ width: 50 }}>
+              <th
+                className="border-r bg-muted px-2 py-2 text-center text-xs font-medium text-muted-foreground"
+                style={{ width: 50 }}
+              >
                 #
               </th>
               {visibleColumns.map((colIndex) => (
@@ -226,7 +241,7 @@ export function SideBySideGrid({
                     row.changeType === "added" && "bg-green-50/50 dark:bg-green-900/10",
                     row.changeType === "removed" && "bg-red-50/50 dark:bg-red-900/10",
                     row.changeType === "modified" && "bg-yellow-50/30 dark:bg-yellow-900/5",
-                    isCurrentChange && "ring-1 ring-inset ring-primary/40 bg-primary/5"
+                    isCurrentChange && "ring-1 ring-inset ring-primary/40 bg-primary/5",
                   )}
                   style={{
                     position: "absolute",
@@ -243,7 +258,9 @@ export function SideBySideGrid({
                   >
                     {rowNumber !== null ? rowNumber + 1 : ""}
                   </td>
-                  {visibleColumns.map((colIndex) => renderCell(row, colIndex, side, virtualRow.index))}
+                  {visibleColumns.map((colIndex) =>
+                    renderCell(row, colIndex, side, virtualRow.index),
+                  )}
                 </tr>
               );
             })}

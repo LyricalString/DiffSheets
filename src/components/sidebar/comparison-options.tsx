@@ -2,8 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/card";
-import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
+import { Switch } from "@/components/ui/switch";
 import { useSpreadsheetStore } from "@/store";
 
 export function ComparisonOptions() {

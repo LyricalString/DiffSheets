@@ -27,7 +27,7 @@ export function DiffCell({ cell, width, className }: DiffCellProps) {
         className={cn(
           "border-r px-2 py-1 overflow-hidden",
           "bg-yellow-50/50 dark:bg-yellow-900/10",
-          className
+          className,
         )}
         style={cellStyle}
       >
@@ -50,14 +50,12 @@ export function DiffCell({ cell, width, className }: DiffCellProps) {
         className={cn(
           "truncate border-r px-2 py-1.5 overflow-hidden",
           "bg-green-50 dark:bg-green-900/20",
-          className
+          className,
         )}
         style={cellStyle}
         title={modifiedValue}
       >
-        <span className="text-green-700 dark:text-green-400">
-          {modifiedValue || "-"}
-        </span>
+        <span className="text-green-700 dark:text-green-400">{modifiedValue || "-"}</span>
       </td>
     );
   }
@@ -69,14 +67,12 @@ export function DiffCell({ cell, width, className }: DiffCellProps) {
         className={cn(
           "truncate border-r px-2 py-1.5 overflow-hidden",
           "bg-red-50 dark:bg-red-900/20",
-          className
+          className,
         )}
         style={cellStyle}
         title={originalValue}
       >
-        <span className="text-red-700 line-through dark:text-red-400">
-          {originalValue || "-"}
-        </span>
+        <span className="text-red-700 line-through dark:text-red-400">{originalValue || "-"}</span>
       </td>
     );
   }
@@ -84,10 +80,7 @@ export function DiffCell({ cell, width, className }: DiffCellProps) {
   // Unchanged cell
   return (
     <td
-      className={cn(
-        "truncate border-r px-2 py-1.5 overflow-hidden",
-        className
-      )}
+      className={cn("truncate border-r px-2 py-1.5 overflow-hidden", className)}
       style={cellStyle}
       title={modifiedValue || originalValue}
     >

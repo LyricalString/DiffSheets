@@ -1,7 +1,7 @@
 "use client";
 
+import { Columns2, Layers } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Layers, Columns2 } from "lucide-react";
 
 export type ViewMode = "unified" | "side-by-side";
 
@@ -39,7 +39,7 @@ export function ViewModeSelector({ mode, onChange, className }: ViewModeSelector
             "hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
             mode === m.value
               ? "bg-background text-foreground shadow-sm"
-              : "text-muted-foreground hover:bg-background/50"
+              : "text-muted-foreground hover:bg-background/50",
           )}
           title={m.description}
         >
