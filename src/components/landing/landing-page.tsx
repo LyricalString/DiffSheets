@@ -158,7 +158,7 @@ export function LandingPage({ type }: LandingPageProps) {
         <section className="py-24 px-4" aria-labelledby="benefits-heading">
           <div className="mx-auto max-w-6xl">
             <div className="text-center mb-16">
-              <span className="font-display text-sm font-semibold text-green-500 uppercase tracking-widest mb-4 block">
+              <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
                 {isSpanish ? "Beneficios" : "Benefits"}
               </span>
               <h2
@@ -197,7 +197,7 @@ export function LandingPage({ type }: LandingPageProps) {
         <section className="py-24 px-4" aria-labelledby="usecases-heading">
           <div className="mx-auto max-w-6xl">
             <div className="text-center mb-16">
-              <span className="font-display text-sm font-semibold text-green-500 uppercase tracking-widest mb-4 block">
+              <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
                 {isSpanish ? "Casos de Uso" : "Use Cases"}
               </span>
               <h2

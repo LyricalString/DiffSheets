@@ -45,7 +45,7 @@ export function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-muted-foreground/60 text-xs">
+          <p className="text-muted-foreground text-xs">
             © {new Date().getFullYear()} DiffSheets. All rights reserved.
           </p>
         </div>

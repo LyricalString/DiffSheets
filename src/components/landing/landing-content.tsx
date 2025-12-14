@@ -165,7 +165,7 @@ export async function LandingContent({ locale }: Props) {
               <div className="w-3 h-3 rounded-full bg-red-500" />
               <div className="w-3 h-3 rounded-full bg-amber-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
-              <span className="ml-3 font-mono text-xs text-slate-500">
+              <span className="ml-3 font-mono text-xs text-slate-400">
                 budget_2024.xlsx vs budget_2024_v2.xlsx
               </span>
             </div>
@@ -174,7 +174,7 @@ export async function LandingContent({ locale }: Props) {
             <div className="grid md:grid-cols-2 divide-x divide-slate-700">
               {/* Original panel */}
               <div className="p-5">
-                <div className="font-mono text-[10px] uppercase tracking-wider text-slate-500 mb-4">
+                <div className="font-mono text-[10px] uppercase tracking-wider text-slate-400 mb-4">
                   {locale === "es" ? "Original" : "Original"}
                 </div>
                 <div className="space-y-px">
@@ -187,7 +187,7 @@ export async function LandingContent({ locale }: Props) {
 
               {/* Modified panel */}
               <div className="p-5">
-                <div className="font-mono text-[10px] uppercase tracking-wider text-slate-500 mb-4">
+                <div className="font-mono text-[10px] uppercase tracking-wider text-slate-400 mb-4">
                   {locale === "es" ? "Modificado" : "Modified"}
                 </div>
                 <div className="space-y-px">
@@ -207,7 +207,7 @@ export async function LandingContent({ locale }: Props) {
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-16">
-            <span className="font-display text-sm font-semibold text-green-500 uppercase tracking-widest mb-4 block">
+            <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
               {locale === "es" ? "Características" : "Features"}
             </span>
             <h2
@@ -244,7 +244,7 @@ export async function LandingContent({ locale }: Props) {
       <section className="py-24 px-4" aria-labelledby="how-it-works-heading">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <span className="font-display text-sm font-semibold text-green-500 uppercase tracking-widest mb-4 block">
+            <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
               {locale === "es" ? "Cómo funciona" : "How it works"}
             </span>
             <h2
@@ -307,7 +307,7 @@ export async function LandingContent({ locale }: Props) {
       <section className="py-24 px-4" aria-labelledby="faq-heading">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
-            <span className="font-display text-sm font-semibold text-green-500 uppercase tracking-widest mb-4 block">
+            <span className="font-display text-sm font-semibold text-green-600 dark:text-green-500 uppercase tracking-widest mb-4 block">
               FAQ
             </span>
             <h2

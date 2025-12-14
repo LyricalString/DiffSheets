@@ -51,7 +51,7 @@ export function SpreadsheetPreview({
           <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
           <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
         </div>
-        <span className="ml-2 font-mono text-xs text-slate-500">
+        <span className="ml-2 font-mono text-xs text-slate-400">
           {t("fileInfo", { rows: data.rows.length, cols: data.columns.length })}
         </span>
       </div>
@@ -61,7 +61,7 @@ export function SpreadsheetPreview({
         <table className="w-full font-mono text-xs">
           <thead>
             <tr className="border-b border-slate-700 bg-slate-800/50">
-              <th className="w-8 border-r border-slate-700 px-2 py-1.5 text-center text-slate-500 font-normal">
+              <th className="w-8 border-r border-slate-700 px-2 py-1.5 text-center text-slate-400 font-normal">
                 #
               </th>
               {previewData.cols.map((col) => (
@@ -73,7 +73,7 @@ export function SpreadsheetPreview({
                 </th>
               ))}
               {previewData.hasMoreCols && (
-                <th className="px-2 py-1.5 text-center text-slate-500">...</th>
+                <th className="px-2 py-1.5 text-center text-slate-400">...</th>
               )}
             </tr>
           </thead>
@@ -86,7 +86,7 @@ export function SpreadsheetPreview({
                   rowIndex % 2 === 1 && "bg-slate-800/20",
                 )}
               >
-                <td className="border-r border-slate-700 px-2 py-1 text-center text-slate-500">
+                <td className="border-r border-slate-700 px-2 py-1 text-center text-slate-400">
                   {rowIndex + 1}
                 </td>
                 {row.slice(0, maxCols).map((cell, colIndex) => (
@@ -103,7 +103,7 @@ export function SpreadsheetPreview({
                   </td>
                 ))}
                 {previewData.hasMoreCols && (
-                  <td className="px-2 py-1 text-center text-slate-500">...</td>
+                  <td className="px-2 py-1 text-center text-slate-400">...</td>
                 )}
               </tr>
             ))}
@@ -111,7 +111,7 @@ export function SpreadsheetPreview({
               <tr className="bg-slate-800/30">
                 <td
                   colSpan={previewData.cols.length + 2}
-                  className="px-2 py-1.5 text-center text-slate-500 text-xs"
+                  className="px-2 py-1.5 text-center text-slate-400 text-xs"
                 >
                   ... {data.rows.length - maxRows} more rows
                 </td>
