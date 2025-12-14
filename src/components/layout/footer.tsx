@@ -9,7 +9,7 @@ export function Footer() {
   const t = useTranslations("footer");
 
   return (
-    <footer className="border-t border-border/40 bg-muted/20">
+    <footer className="border-t border-border bg-muted/50">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-6">
           {/* Logo */}
@@ -19,13 +19,13 @@ export function Footer() {
           >
             <LogoIcon size={28} />
             <span className="font-display font-semibold text-lg">
-              Diff<span className="text-green-600 dark:text-green-300">Sheets</span>
+              Diff<span className="text-green-700 dark:text-green-400">Sheets</span>
             </span>
           </Link>
 
           {/* Privacy notice */}
           <div className="flex items-center gap-2 text-muted-foreground text-sm">
-            <Shield className="h-4 w-4 text-green-600 dark:text-green-300" />
+            <Shield className="h-4 w-4 text-green-700 dark:text-green-400" />
             <span>{t("privacy")}</span>
           </div>
 
