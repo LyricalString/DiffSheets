@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { LogoIcon } from "@/components/brand";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./theme-toggle";
-import { useSpreadsheetStore } from "@/store";
 import type { Locale } from "@/i18n/routing";
+import { useSpreadsheetStore } from "@/store";
+import { ThemeToggle } from "./theme-toggle";
 
 interface CompareHeaderProps {
   locale: Locale;

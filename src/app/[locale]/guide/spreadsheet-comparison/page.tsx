@@ -1,10 +1,10 @@
+import { ArrowLeft, BookOpen, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { Footer, Header } from "@/components/layout";
-import { ArrowLeft, Clock, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/prose";
+import { Link } from "@/i18n/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
 
@@ -1692,8 +1692,7 @@ export default async function SpreadsheetComparisonGuidePage({ params }: Props) 
           <div
             className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px]"
             style={{
-              background:
-                "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
+              background: "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
             }}
           />
 
@@ -1740,7 +1739,11 @@ export default async function SpreadsheetComparisonGuidePage({ params }: Props) 
           <div className="mx-auto max-w-4xl">
             {/* Back Link */}
             <div className="mb-8">
-              <Button variant="ghost" asChild className="gap-2 text-muted-foreground hover:text-green-500">
+              <Button
+                variant="ghost"
+                asChild
+                className="gap-2 text-muted-foreground hover:text-green-500"
+              >
                 <Link href="/">
                   <ArrowLeft className="h-4 w-4" />
                   {tCommon("backToHome")}
@@ -1772,7 +1775,9 @@ export default async function SpreadsheetComparisonGuidePage({ params }: Props) 
             <div className="max-w-none">
               {content.sections.map((section) => (
                 <section key={section.id} id={section.id} className="mb-20 scroll-mt-20">
-                  <h2 className="font-display font-bold text-2xl md:text-3xl mb-6">{section.heading}</h2>
+                  <h2 className="font-display font-bold text-2xl md:text-3xl mb-6">
+                    {section.heading}
+                  </h2>
                   <Prose content={section.content} />
                 </section>
               ))}

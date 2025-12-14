@@ -1,17 +1,10 @@
 "use client";
 
-import {
-  ArrowRight,
-  CheckCircle,
-  FileSpreadsheet,
-  Lock,
-  Shield,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, CheckCircle, FileSpreadsheet, Lock, Shield, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import { Button } from "@/components/ui/button";
 import { Footer, Header } from "@/components/layout";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 
 type LandingType = "excel" | "csv" | "xlsx" | "xls" | "ods";
 
@@ -113,8 +106,7 @@ export function LandingPage({ type }: LandingPageProps) {
           <div
             className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px]"
             style={{
-              background:
-                "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
+              background: "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
             }}
           />
 
@@ -161,10 +153,7 @@ export function LandingPage({ type }: LandingPageProps) {
               <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
                 {isSpanish ? "Beneficios" : "Benefits"}
               </span>
-              <h2
-                id="benefits-heading"
-                className="font-display font-bold text-3xl md:text-4xl"
-              >
+              <h2 id="benefits-heading" className="font-display font-bold text-3xl md:text-4xl">
                 {t("benefits.title")}
               </h2>
             </div>
@@ -200,10 +189,7 @@ export function LandingPage({ type }: LandingPageProps) {
               <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
                 {isSpanish ? "Casos de Uso" : "Use Cases"}
               </span>
-              <h2
-                id="usecases-heading"
-                className="font-display font-bold text-3xl md:text-4xl"
-              >
+              <h2 id="usecases-heading" className="font-display font-bold text-3xl md:text-4xl">
                 {t("useCases.title")}
               </h2>
             </div>
@@ -240,9 +226,7 @@ export function LandingPage({ type }: LandingPageProps) {
             <h2 className="font-display font-bold text-3xl md:text-4xl mb-6">
               {isSpanish ? "¿Listo para comparar?" : "Ready to compare?"}
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-              {t("subtitle")}
-            </p>
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">{t("subtitle")}</p>
             <Button
               asChild
               size="lg"

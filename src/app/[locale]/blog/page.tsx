@@ -1,8 +1,8 @@
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { Footer, Header } from "@/components/layout";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
 
@@ -62,8 +62,7 @@ export default async function BlogPage({ params }: Props) {
           <div
             className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px]"
             style={{
-              background:
-                "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
+              background: "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
             }}
           />
 
@@ -106,8 +105,18 @@ export default async function BlogPage({ params }: Props) {
                     <div className="aspect-video bg-gradient-to-br from-green-500/10 to-green-500/5 relative overflow-hidden">
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-16 h-16 rounded-2xl bg-green-500/20 flex items-center justify-center">
-                          <svg className="w-8 h-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                          <svg
+                            className="w-8 h-8 text-green-500"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={1.5}
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+                            />
                           </svg>
                         </div>
                       </div>

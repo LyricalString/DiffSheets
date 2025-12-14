@@ -31,7 +31,11 @@ const routes = [
   { path: "/blog/excel-diff-formula", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/blog/free-excel-diff-tools-2025", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/blog/compare-excel-without-excel", priority: 0.7, changeFrequency: "monthly" as const },
-  { path: "/blog/find-duplicates-two-excel-files", priority: 0.7, changeFrequency: "monthly" as const },
+  {
+    path: "/blog/find-duplicates-two-excel-files",
+    priority: 0.7,
+    changeFrequency: "monthly" as const,
+  },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -53,11 +57,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: route.changeFrequency,
       priority: route.priority,
       alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [l, `${BASE_URL}/${l}${route.path}`])
-        ),
+        languages: Object.fromEntries(locales.map((l) => [l, `${BASE_URL}/${l}${route.path}`])),
       },
-    }))
+    })),
   );
 
   return [rootEntry, ...localizedRoutes];

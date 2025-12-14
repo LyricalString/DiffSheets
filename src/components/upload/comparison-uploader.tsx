@@ -4,7 +4,6 @@ import { ArrowRight, Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { computeSpreadsheetDiff } from "@/lib/diff";
 import { parseSpreadsheet } from "@/lib/parser";
 import { useSpreadsheetStore } from "@/store";
 import { FileDropzone } from "./file-dropzone";
@@ -80,7 +79,7 @@ export function ComparisonUploader() {
     !originalFile.isLoading &&
     !modifiedFile.isLoading;
 
-  const handleCompare = useCallback(() => {
+  const handleCompare = useCallback(async () => {
     const origData = originalFile.parsed?.data.get(originalFile.selectedSheet);
     const modData = modifiedFile.parsed?.data.get(modifiedFile.selectedSheet);
 
@@ -93,7 +92,9 @@ export function ComparisonUploader() {
     setComparisonError(null);
 
     try {
-      const result = computeSpreadsheetDiff(origData, modData, options);
+      // Lazy-load diff module only when user clicks Compare (saves ~20KB from initial bundle)
+      const { computeSpreadsheetDiff } = await import("@/lib/diff");
+      const result = await computeSpreadsheetDiff(origData, modData, options);
       setDiffResult(result);
     } catch (error) {
       setComparisonError(error instanceof Error ? error.message : "Comparison failed");

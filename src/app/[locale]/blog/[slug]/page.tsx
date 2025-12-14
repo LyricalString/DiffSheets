@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { Link } from "@/i18n/navigation";
-import { Footer, Header } from "@/components/layout";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Footer, Header } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/prose";
+import { Link } from "@/i18n/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
 

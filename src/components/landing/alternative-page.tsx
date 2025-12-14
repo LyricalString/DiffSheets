@@ -26,8 +26,7 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
 
   // Detect locale
   const isSpanish =
-    tCommon("h1Prefix").includes("Alternativa") ||
-    tCommon("h1Prefix").includes("alternativa");
+    tCommon("h1Prefix").includes("Alternativa") || tCommon("h1Prefix").includes("alternativa");
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -39,8 +38,7 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
           <div
             className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px]"
             style={{
-              background:
-                "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
+              background: "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
             }}
           />
 
@@ -51,9 +49,7 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              <span className="text-sm font-medium text-green-400">
-                {tCommon("h1Prefix")}
-              </span>
+              <span className="text-sm font-medium text-green-400">{tCommon("h1Prefix")}</span>
             </div>
 
             {/* Headline */}
@@ -89,10 +85,7 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
               <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
                 {isSpanish ? "Comparativa" : "Comparison"}
               </span>
-              <h2
-                id="comparison-heading"
-                className="font-display font-bold text-3xl md:text-4xl"
-              >
+              <h2 id="comparison-heading" className="font-display font-bold text-3xl md:text-4xl">
                 {tCommon("comparison")}
               </h2>
             </div>
@@ -119,23 +112,17 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
                         key={key}
                         className={`${index % 2 === 0 ? "bg-muted/20" : ""} border-b border-border/50 last:border-0`}
                       >
-                        <td className="px-6 py-5 font-medium">
-                          {t(`features.${key}.label`)}
-                        </td>
+                        <td className="px-6 py-5 font-medium">{t(`features.${key}.label`)}</td>
                         <td className="px-6 py-5 text-center">
                           <div className="flex items-center justify-center gap-2 text-muted-foreground">
                             <XCircle className="h-5 w-5 text-red-500" />
-                            <span className="text-sm">
-                              {t(`features.${key}.them`)}
-                            </span>
+                            <span className="text-sm">{t(`features.${key}.them`)}</span>
                           </div>
                         </td>
                         <td className="px-6 py-5 text-center">
                           <div className="flex items-center justify-center gap-2">
                             <CheckCircle className="h-5 w-5 text-green-500" />
-                            <span className="font-semibold text-sm">
-                              {t(`features.${key}.us`)}
-                            </span>
+                            <span className="font-semibold text-sm">{t(`features.${key}.us`)}</span>
                           </div>
                         </td>
                       </tr>
@@ -154,33 +141,28 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
               <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
                 {isSpanish ? "Ventajas" : "Benefits"}
               </span>
-              <h2
-                id="benefits-heading"
-                className="font-display font-bold text-3xl md:text-4xl"
-              >
+              <h2 id="benefits-heading" className="font-display font-bold text-3xl md:text-4xl">
                 {tCommon("whySwitch")}
               </h2>
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2">
-              {(["free", "noInstall", "privacy", "crossPlatform"] as const).map(
-                (key) => (
-                  <div
-                    key={key}
-                    className="group p-8 rounded-2xl border border-border bg-card hover:border-slate-700 transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-green-500/10">
-                      <CheckCircle className="h-7 w-7 text-green-500" />
-                    </div>
-                    <h3 className="font-display font-semibold text-xl mb-3">
-                      {tBenefits(`${key}.title`)}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {tBenefits(`${key}.description`)}
-                    </p>
+              {(["free", "noInstall", "privacy", "crossPlatform"] as const).map((key) => (
+                <div
+                  key={key}
+                  className="group p-8 rounded-2xl border border-border bg-card hover:border-slate-700 transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-green-500/10">
+                    <CheckCircle className="h-7 w-7 text-green-500" />
                   </div>
-                )
-              )}
+                  <h3 className="font-display font-semibold text-xl mb-3">
+                    {tBenefits(`${key}.title`)}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {tBenefits(`${key}.description`)}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -192,10 +174,7 @@ export function AlternativePage({ competitor }: AlternativePageProps) {
               <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
                 FAQ
               </span>
-              <h2
-                id="faq-heading"
-                className="font-display font-bold text-3xl md:text-4xl"
-              >
+              <h2 id="faq-heading" className="font-display font-bold text-3xl md:text-4xl">
                 {tFaq("title")}
               </h2>
             </div>

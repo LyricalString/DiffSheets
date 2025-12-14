@@ -24,7 +24,7 @@ function parseInline(text: string): ReactNode[] {
       result.push(
         <strong key={key++} className="font-semibold text-foreground">
           {boldMatch[1]}
-        </strong>
+        </strong>,
       );
       remaining = remaining.slice(boldMatch[0].length);
       continue;
@@ -36,7 +36,7 @@ function parseInline(text: string): ReactNode[] {
       result.push(
         <em key={key++} className="italic">
           {italicMatch[1]}
-        </em>
+        </em>,
       );
       remaining = remaining.slice(italicMatch[0].length);
       continue;
@@ -51,7 +51,7 @@ function parseInline(text: string): ReactNode[] {
           className="px-1.5 py-0.5 rounded-md bg-muted font-mono text-sm text-green-500"
         >
           {codeMatch[1]}
-        </code>
+        </code>,
       );
       remaining = remaining.slice(codeMatch[0].length);
       continue;
@@ -70,14 +70,14 @@ function parseInline(text: string): ReactNode[] {
           rel={isExternal ? "noopener noreferrer" : undefined}
         >
           {linkMatch[1]}
-        </a>
+        </a>,
       );
       remaining = remaining.slice(linkMatch[0].length);
       continue;
     }
 
     // Regular text - find next special character or end
-    const nextSpecial = remaining.search(/[\*`\[]/);
+    const nextSpecial = remaining.search(/[*`[]/);
     if (nextSpecial === -1) {
       result.push(remaining);
       break;
@@ -128,7 +128,7 @@ function parseLine(line: string, index: number): ReactNode {
 
 // Parse code blocks
 function extractCodeBlocks(
-  content: string
+  content: string,
 ): { type: "text" | "code"; content: string; language?: string }[] {
   const blocks: { type: "text" | "code"; content: string; language?: string }[] = [];
   const codeBlockRegex = /```(\w*)\n([\s\S]*?)```/g;
@@ -178,7 +178,7 @@ function parseTable(lines: string[]): ReactNode {
     line
       .split("|")
       .map((c) => c.trim())
-      .filter(Boolean)
+      .filter(Boolean),
   );
 
   return (
@@ -229,7 +229,7 @@ function parseContent(content: string): ReactNode[] {
           className="rounded-xl bg-slate-900 dark:bg-slate-950 border border-border p-4 mb-6 overflow-x-auto"
         >
           <code className="block font-mono text-sm text-slate-300">{block.content}</code>
-        </pre>
+        </pre>,
       );
       continue;
     }
@@ -261,11 +261,7 @@ function parseContent(content: string): ReactNode[] {
       }
 
       // Check for list (collect all consecutive list items)
-      if (
-        trimmed.startsWith("- ") ||
-        trimmed.startsWith("* ") ||
-        /^\d+\.\s/.test(trimmed)
-      ) {
+      if (trimmed.startsWith("- ") || trimmed.startsWith("* ") || /^\d+\.\s/.test(trimmed)) {
         const isOrdered = /^\d+\.\s/.test(trimmed);
         const listItems: ReactNode[] = [];
         let listKey = 0;
@@ -276,11 +272,7 @@ function parseContent(content: string): ReactNode[] {
             i++;
             continue;
           }
-          if (
-            listLine.startsWith("- ") ||
-            listLine.startsWith("* ") ||
-            /^\d+\.\s/.test(listLine)
-          ) {
+          if (listLine.startsWith("- ") || listLine.startsWith("* ") || /^\d+\.\s/.test(listLine)) {
             listItems.push(parseLine(listLine, listKey++));
             i++;
           } else {
@@ -295,7 +287,7 @@ function parseContent(content: string): ReactNode[] {
               className="list-decimal list-outside ml-6 mb-6 space-y-2 text-muted-foreground"
             >
               {listItems}
-            </ol>
+            </ol>,
           );
         } else {
           result.push(
@@ -304,7 +296,7 @@ function parseContent(content: string): ReactNode[] {
               className="list-disc list-outside ml-6 mb-6 space-y-2 text-muted-foreground"
             >
               {listItems}
-            </ul>
+            </ul>,
           );
         }
         continue;
@@ -331,7 +323,7 @@ function parseContent(content: string): ReactNode[] {
         result.push(
           <p key={blockKey++} className="text-muted-foreground leading-relaxed mb-4">
             {parseInline(paragraphLines.join(" "))}
-          </p>
+          </p>,
         );
       }
     }

@@ -113,7 +113,9 @@ export function Logo({
     <div className={cn("flex items-center gap-3", className)}>
       <LogoIcon size={iconSize} variant={variant} />
       <div className="flex flex-col">
-        <span className={cn("font-display font-bold tracking-tight text-lg leading-tight", textColor)}>
+        <span
+          className={cn("font-display font-bold tracking-tight text-lg leading-tight", textColor)}
+        >
           Diff<span className="text-green-500">Sheets</span>
         </span>
         {showTagline && tagline && (

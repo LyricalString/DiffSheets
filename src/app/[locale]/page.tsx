@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
+import { LandingContent } from "@/components/landing/landing-content";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { LandingContent } from "@/components/landing/landing-content";
 import type { Locale } from "@/i18n/routing";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";

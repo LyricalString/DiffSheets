@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
 import { ArrowRight, BarChart, Database, GitBranch, TestTube } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Button } from "@/components/ui/button";
 import { Footer, Header } from "@/components/layout";
+import { Button } from "@/components/ui/button";
 import type { Locale } from "@/i18n/routing";
 
 type Props = {
@@ -79,8 +79,7 @@ export default async function UseCasesPage({ params }: Props) {
           <div
             className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px]"
             style={{
-              background:
-                "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
+              background: "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
             }}
           />
 

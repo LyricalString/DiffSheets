@@ -73,8 +73,7 @@ export async function LandingContent({ locale }: Props) {
         <div
           className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[1200px]"
           style={{
-            background:
-              "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
+            background: "radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 60%)",
           }}
         />
 
@@ -210,10 +209,7 @@ export async function LandingContent({ locale }: Props) {
             <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
               {locale === "es" ? "Características" : "Features"}
             </span>
-            <h2
-              id="features-heading"
-              className="font-display font-bold text-3xl md:text-4xl"
-            >
+            <h2 id="features-heading" className="font-display font-bold text-3xl md:text-4xl">
               {t("h2Features")}
             </h2>
           </div>
@@ -228,12 +224,8 @@ export async function LandingContent({ locale }: Props) {
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-green-500/10">
                   <feature.icon className="h-7 w-7 text-green-500" />
                 </div>
-                <h3 className="font-display font-semibold text-xl mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
+                <h3 className="font-display font-semibold text-xl mb-3">{feature.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -247,10 +239,7 @@ export async function LandingContent({ locale }: Props) {
             <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
               {locale === "es" ? "Cómo funciona" : "How it works"}
             </span>
-            <h2
-              id="how-it-works-heading"
-              className="font-display font-bold text-3xl md:text-4xl"
-            >
+            <h2 id="how-it-works-heading" className="font-display font-bold text-3xl md:text-4xl">
               {t("h2HowItWorks")}
             </h2>
           </div>
@@ -262,7 +251,13 @@ export async function LandingContent({ locale }: Props) {
               title={t("steps.step1")}
               description={t("steps.step1Sub")}
               icon={
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg
+                  className="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
                   <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
                 </svg>
               }
@@ -280,7 +275,13 @@ export async function LandingContent({ locale }: Props) {
               title={t("steps.step2")}
               description={t("steps.step2Sub")}
               icon={
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <svg
+                  className="w-6 h-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
                   <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
                 </svg>
               }
@@ -310,10 +311,7 @@ export async function LandingContent({ locale }: Props) {
             <span className="font-display text-sm font-semibold text-green-600 dark:text-green-400 uppercase tracking-widest mb-4 block">
               FAQ
             </span>
-            <h2
-              id="faq-heading"
-              className="font-display font-bold text-3xl md:text-4xl"
-            >
+            <h2 id="faq-heading" className="font-display font-bold text-3xl md:text-4xl">
               {tFaq("title")}
             </h2>
           </div>
@@ -355,9 +353,7 @@ export async function LandingContent({ locale }: Props) {
       <section className="py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-display font-bold text-3xl md:text-4xl mb-6">
-            {locale === "es"
-              ? "¿Listo para comparar?"
-              : "Ready to compare?"}
+            {locale === "es" ? "¿Listo para comparar?" : "Ready to compare?"}
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
             {locale === "es"
@@ -419,10 +415,7 @@ function DemoRow({
         </div>
       ))}
       {removedCells?.map((cell, i) => (
-        <div
-          key={i}
-          className="px-3 py-2.5 bg-red-500/15 text-red-400 border-l-2 border-red-500"
-        >
+        <div key={i} className="px-3 py-2.5 bg-red-500/15 text-red-400 border-l-2 border-red-500">
           {cell}
         </div>
       ))}

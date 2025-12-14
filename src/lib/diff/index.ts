@@ -8,7 +8,7 @@ import type {
   RowChangeType,
   SheetData,
 } from "@/types";
-import { areCellsEqual, compareCells } from "./cell-diff";
+import { compareCells } from "./cell-diff";
 import { alignRows, type RowAlignment } from "./row-matcher";
 
 export { areCellsEqual, compareCells } from "./cell-diff";
@@ -17,17 +17,16 @@ export { alignRows } from "./row-matcher";
 /**
  * Compare two rows cell by cell
  */
-function compareRows(
+async function compareRows(
   originalRow: DiffRow["cells"] extends (infer T)[] ? T[] : never,
   modifiedRow: DiffRow["cells"] extends (infer T)[] ? T[] : never,
   alignment: RowAlignment,
   originalData: SheetData,
   modifiedData: SheetData,
   options: ComparisonOptions,
-): { cells: DiffCell[]; changeType: RowChangeType; modifiedCellCount: number } {
+): Promise<{ cells: DiffCell[]; changeType: RowChangeType; modifiedCellCount: number }> {
   const maxCols = Math.max(originalData.columns.length, modifiedData.columns.length);
 
-  const cells: DiffCell[] = [];
   let hasChanges = false;
   let modifiedCellCount = 0;
 
@@ -36,13 +35,17 @@ function compareRows(
   const modRow =
     alignment.modifiedIndex !== null ? modifiedData.rows[alignment.modifiedIndex] : null;
 
+  // Process all cells in parallel for better performance
+  const cellPromises: Promise<DiffCell>[] = [];
   for (let colIdx = 0; colIdx < maxCols; colIdx++) {
     const origCell = origRow?.[colIdx] ?? null;
     const modCell = modRow?.[colIdx] ?? null;
+    cellPromises.push(compareCells(colIdx, origCell, modCell, options));
+  }
 
-    const cellDiff = compareCells(colIdx, origCell, modCell, options);
-    cells.push(cellDiff);
+  const cells = await Promise.all(cellPromises);
 
+  for (const cellDiff of cells) {
     if (cellDiff.changeType !== "unchanged") {
       hasChanges = true;
       if (cellDiff.changeType === "modified") {
@@ -151,17 +154,17 @@ function computeSummary(diffRows: DiffRow[]): DiffSummary {
 /**
  * Main diff function - compares two spreadsheets
  */
-export function computeSpreadsheetDiff(
+export async function computeSpreadsheetDiff(
   originalData: SheetData,
   modifiedData: SheetData,
   options: ComparisonOptions,
-): DiffResult {
+): Promise<DiffResult> {
   // Step 1: Align rows based on matching strategy
   const alignments = alignRows(originalData.rows, modifiedData.rows, options);
 
-  // Step 2: Compare each aligned row pair
-  const diffRows: DiffRow[] = alignments.map((alignment) => {
-    const { cells, changeType } = compareRows(
+  // Step 2: Compare each aligned row pair (in parallel for better performance)
+  const rowPromises = alignments.map(async (alignment) => {
+    const { cells, changeType } = await compareRows(
       [],
       [],
       alignment,
@@ -177,6 +180,8 @@ export function computeSpreadsheetDiff(
       cells,
     };
   });
+
+  const diffRows: DiffRow[] = await Promise.all(rowPromises);
 
   // Step 3: Compute column diffs
   const columns = computeColumnDiffs(diffRows, originalData, modifiedData);

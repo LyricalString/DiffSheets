@@ -3,8 +3,8 @@
 import { Github, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 import { Logo, LogoIcon } from "@/components/brand";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";

@@ -1,4 +1,3 @@
-import { diffChars } from "diff";
 import type {
   Cell,
   CellChangeType,
@@ -7,6 +6,16 @@ import type {
   DiffCell,
   InlineDiff,
 } from "@/types";
+
+// Lazy-load diff library - only when needed for inline text diffs (saves ~8KB from initial bundle)
+let diffLib: typeof import("diff") | null = null;
+
+async function getDiffLib() {
+  if (!diffLib) {
+    diffLib = await import("diff");
+  }
+  return diffLib;
+}
 
 /**
  * Normalize cell value for comparison based on options
@@ -64,13 +73,14 @@ export function areCellsEqual(
 /**
  * Generate inline diff for text changes
  */
-export function generateInlineDiff(
+export async function generateInlineDiff(
   originalValue: CellValue,
   modifiedValue: CellValue,
-): InlineDiff[] {
+): Promise<InlineDiff[]> {
   const origStr = originalValue === null ? "" : String(originalValue);
   const modStr = modifiedValue === null ? "" : String(modifiedValue);
 
+  const { diffChars } = await getDiffLib();
   const changes = diffChars(origStr, modStr);
 
   return changes.map((change) => ({
@@ -104,12 +114,12 @@ export function getCellChangeType(
 /**
  * Compare two cells and return diff result
  */
-export function compareCells(
+export async function compareCells(
   columnIndex: number,
   original: Cell | null,
   modified: Cell | null,
   options: ComparisonOptions,
-): DiffCell {
+): Promise<DiffCell> {
   const changeType = getCellChangeType(original, modified, options);
 
   const result: DiffCell = {
@@ -121,7 +131,7 @@ export function compareCells(
 
   // Generate inline diff for modified text cells
   if (changeType === "modified" && original?.type === "string" && modified?.type === "string") {
-    result.inlineDiff = generateInlineDiff(original.value, modified.value);
+    result.inlineDiff = await generateInlineDiff(original.value, modified.value);
   }
 
   return result;
