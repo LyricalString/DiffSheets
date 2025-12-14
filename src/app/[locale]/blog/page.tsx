@@ -80,7 +80,7 @@ export default async function BlogPage({ params }: Props) {
                       </span>
                     </div>
                     <div className="mt-4 flex items-center gap-1 font-medium text-primary text-sm">
-                      {t.rich("posts.${post.slug}.title", {}) ? "Read more" : "Read more"}
+                      {locale === "es" ? "Leer más" : "Read more"}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
