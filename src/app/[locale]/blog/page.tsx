@@ -28,11 +28,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const blogPosts = [
   {
     slug: "how-to-compare-excel",
-    image: "/og?locale=en",
+    image: "/og-image.png",
   },
   {
     slug: "excel-diff-formula",
-    image: "/og?locale=en",
+    image: "/og-image.png",
   },
 ];
 

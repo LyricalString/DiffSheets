@@ -168,8 +168,8 @@ export function JsonLd({ locale = "en" }: JsonLdProps) {
     "@type": "Organization",
     name: "DiffSheets",
     url: BASE_URL,
-    logo: `${BASE_URL}/og?locale=${locale}`,
-    sameAs: ["https://github.com/diffsheets/diffsheets"],
+    logo: `${BASE_URL}/logo.svg`,
+    sameAs: ["https://github.com/LyricalString/diffsheets"],
   };
 
   // FAQPage schema

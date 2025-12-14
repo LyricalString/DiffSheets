@@ -3,7 +3,6 @@
 import { useTranslations } from "next-intl";
 import { useCallback, useMemo, useState } from "react";
 import { ComparisonOptions } from "@/components/sidebar";
-import { Button } from "@/components/ui/button";
 import { filterDiffColumns, filterDiffRows } from "@/lib/diff";
 import { useSpreadsheetStore } from "@/store";
 import type { DiffCell } from "@/types";
@@ -16,7 +15,7 @@ import { type ViewMode, ViewModeSelector } from "./view-mode-selector";
 
 export function DiffView() {
   const t = useTranslations("diff");
-  const { diffResult, options, setDiffResult } = useSpreadsheetStore();
+  const { diffResult, options } = useSpreadsheetStore();
 
   // View state
   const [viewMode, setViewMode] = useState<ViewMode>("side-by-side");
@@ -54,21 +53,11 @@ export function DiffView() {
     return null;
   }
 
-  const handleBack = () => {
-    setDiffResult(null);
-  };
-
   return (
     <div className="space-y-6 animate-slide-up-fade">
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" onClick={handleBack} className="shrink-0">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back
-          </Button>
-          <h2 className="font-semibold text-xl">{t("title")}</h2>
-        </div>
+        <h2 className="font-semibold text-xl">{t("title")}</h2>
 
         {/* View controls */}
         <div className="flex flex-wrap items-center gap-3">

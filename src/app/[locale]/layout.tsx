@@ -88,7 +88,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: ogDescription,
       images: [
         {
-          url: `/og?locale=${locale}`,
+          url: `${BASE_URL}/og-image.png`,
           width: 1200,
           height: 630,
           alt: isSpanish
@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: ogTitle,
       description: ogDescription,
-      images: [`/og?locale=${locale}`],
+      images: [`${BASE_URL}/og-image.png`],
     },
     robots: {
       index: true,
