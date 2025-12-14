@@ -2,7 +2,7 @@
 
 import { useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Globe } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -13,8 +13,8 @@ import {
 import { setLocaleCookie } from "@/lib/locale";
 
 const languages = [
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "es", name: "Español", flag: "🇪🇸" },
+  { code: "en", name: "English", flag: "🇺🇸", short: "EN" },
+  { code: "es", name: "Español", flag: "🇪🇸", short: "ES" },
 ] as const;
 
 export function LanguageSwitcher() {
@@ -33,20 +33,27 @@ export function LanguageSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" disabled={isPending} aria-label={t("language")}>
-          <Globe className="h-5 w-5" />
-          <span className="sr-only">{t("language")}</span>
+        <Button
+          variant="ghost"
+          size="sm"
+          disabled={isPending}
+          aria-label={t("language")}
+          className="h-9 gap-1.5 px-2.5 transition-all duration-200 hover:scale-105 hover:bg-accent"
+        >
+          <span className="text-base leading-none">{currentLanguage?.flag}</span>
+          <span className="text-sm font-medium">{currentLanguage?.short}</span>
+          <ChevronDown className="h-3.5 w-3.5 opacity-50" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="min-w-[140px]">
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
             onClick={() => handleLanguageChange(lang.code)}
-            className={locale === lang.code ? "bg-accent" : ""}
+            className={`gap-2 ${locale === lang.code ? "bg-accent font-medium" : ""}`}
           >
-            <span className="mr-2">{lang.flag}</span>
-            {lang.name}
+            <span className="text-base">{lang.flag}</span>
+            <span>{lang.name}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
