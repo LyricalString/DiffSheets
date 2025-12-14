@@ -3,7 +3,6 @@
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useTranslations } from "next-intl";
 import { useMemo, useRef } from "react";
-import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { DiffResult, DiffRow as DiffRowType } from "@/types";
 import { DiffRow } from "./diff-row";
@@ -99,18 +98,20 @@ export function DiffGrid({ diffResult, visibleRows, visibleColumns, className }:
 
   if (visibleRows.length === 0) {
     return (
-      <Card className={cn("flex items-center justify-center p-12", className)}>
+      <div
+        className={cn("flex items-center justify-center p-12 rounded-xl border bg-card", className)}
+      >
         <p className="text-muted-foreground">{t("noChanges")}</p>
-      </Card>
+      </div>
     );
   }
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
-      <div ref={parentRef} className="max-h-[70vh] overflow-auto">
+    <div className={cn("overflow-hidden rounded-xl border bg-card", className)}>
+      <div ref={parentRef} className="h-[calc(100vh-220px)] overflow-auto">
         <table
-          className="border-collapse text-sm"
-          style={{ tableLayout: "fixed", width: `${totalTableWidth}px` }}
+          className="border-collapse text-sm w-full"
+          style={{ tableLayout: "fixed", minWidth: `${totalTableWidth}px` }}
         >
           <colgroup>
             <col style={{ width: "40px" }} />
@@ -176,6 +177,6 @@ export function DiffGrid({ diffResult, visibleRows, visibleColumns, className }:
           </tbody>
         </table>
       </div>
-    </Card>
+    </div>
   );
 }

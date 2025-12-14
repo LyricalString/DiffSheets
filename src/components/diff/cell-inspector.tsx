@@ -104,16 +104,16 @@ export function CellInspector({
   return (
     <Card
       className={cn(
-        "absolute right-4 top-4 z-50 w-80 overflow-hidden border shadow-xl",
+        "absolute right-4 top-4 z-50 w-72 overflow-hidden rounded-2xl border shadow-2xl shadow-black/20",
         "animate-in slide-in-from-right-4 fade-in duration-200",
         className,
       )}
     >
       {/* Header */}
-      <div className="flex items-center justify-between border-b bg-muted/50 px-4 py-3">
+      <div className="flex items-center justify-between border-b bg-muted/50 px-3 py-2.5">
         <div className="flex items-center gap-2">
-          <MapPin className="h-4 w-4 text-muted-foreground" />
-          <span className="font-semibold">
+          <MapPin className="h-3.5 w-3.5 text-muted-foreground" />
+          <span className="font-display font-semibold text-sm">
             Cell {getColumnLetter(colIndex)}
             {rowIndex + 1}
           </span>
@@ -121,39 +121,44 @@ export function CellInspector({
         <button
           type="button"
           onClick={onClose}
-          className="rounded-md p-1 hover:bg-muted transition-colors"
+          className="rounded-lg p-1 hover:bg-muted transition-colors"
         >
           <X className="h-4 w-4" />
         </button>
       </div>
 
       {/* Content */}
-      <div className="space-y-4 p-4">
+      <div className="space-y-3 p-3">
         {/* Change Type Badge */}
         <div className="flex items-center gap-2">
-          <Badge variant="outline" className={cn("gap-1", config.textColor)}>
+          <Badge
+            variant="outline"
+            className={cn("gap-1 h-6 px-2 text-xs rounded-full", config.textColor)}
+          >
             <span className={cn("h-2 w-2 rounded-full", config.color)} />
             {config.label}
           </Badge>
           {cell.changeType === "modified" && analysis && (
-            <Badge variant="secondary" className="text-xs">
+            <Badge variant="secondary" className="text-xs h-6 px-2 rounded-full">
               {analysis.similarity}% similar
             </Badge>
           )}
         </div>
 
         {/* Values */}
-        <div className="space-y-3">
+        <div className="space-y-2">
           {(cell.changeType === "removed" ||
             cell.changeType === "modified" ||
             cell.changeType === "unchanged") && (
             <div className="space-y-1">
-              <label className="text-xs font-medium text-muted-foreground">Original</label>
+              <label className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide">
+                Original
+              </label>
               <div
                 className={cn(
-                  "rounded-md border p-2 text-sm font-mono break-all",
+                  "rounded-lg border p-2 text-xs font-mono break-all max-h-20 overflow-auto",
                   cell.changeType === "removed" || cell.changeType === "modified"
-                    ? "border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-950/50"
+                    ? "border-red-500/30 bg-red-500/10"
                     : "border-border bg-muted/30",
                 )}
               >
@@ -164,7 +169,7 @@ export function CellInspector({
 
           {cell.changeType === "modified" && (
             <div className="flex justify-center">
-              <ArrowRight className="h-4 w-4 text-muted-foreground" />
+              <ArrowRight className="h-3.5 w-3.5 text-muted-foreground" />
             </div>
           )}
 
@@ -172,14 +177,14 @@ export function CellInspector({
             cell.changeType === "modified" ||
             cell.changeType === "unchanged") && (
             <div className="space-y-1">
-              <label className="text-xs font-medium text-muted-foreground">
+              <label className="text-[11px] font-medium text-muted-foreground uppercase tracking-wide">
                 {cell.changeType === "unchanged" ? "Value" : "Modified"}
               </label>
               <div
                 className={cn(
-                  "rounded-md border p-2 text-sm font-mono break-all",
+                  "rounded-lg border p-2 text-xs font-mono break-all max-h-20 overflow-auto",
                   cell.changeType === "added" || cell.changeType === "modified"
-                    ? "border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-950/50"
+                    ? "border-green-500/30 bg-green-500/10"
                     : "border-border bg-muted/30",
                 )}
               >
@@ -191,29 +196,29 @@ export function CellInspector({
 
         {/* Stats */}
         {cell.changeType === "modified" && analysis && (
-          <div className="grid grid-cols-3 gap-2 rounded-lg bg-muted/50 p-3">
+          <div className="grid grid-cols-3 gap-1.5 rounded-xl bg-muted/50 p-2">
             <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground">
-                <Hash className="h-3 w-3" />
+              <div className="flex items-center justify-center gap-0.5 text-[10px] text-muted-foreground">
+                <Hash className="h-2.5 w-2.5" />
                 Chars
               </div>
-              <div className="text-sm font-semibold">
-                {analysis.originalLength} → {analysis.modifiedLength}
+              <div className="text-xs font-semibold">
+                {analysis.originalLength}→{analysis.modifiedLength}
               </div>
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground">
-                <Type className="h-3 w-3" />
-                Edit dist.
+              <div className="flex items-center justify-center gap-0.5 text-[10px] text-muted-foreground">
+                <Type className="h-2.5 w-2.5" />
+                Edit
               </div>
-              <div className="text-sm font-semibold">{analysis.levenshtein}</div>
+              <div className="text-xs font-semibold">{analysis.levenshtein}</div>
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground">
-                <Binary className="h-3 w-3" />
-                Similar
+              <div className="flex items-center justify-center gap-0.5 text-[10px] text-muted-foreground">
+                <Binary className="h-2.5 w-2.5" />
+                Match
               </div>
-              <div className="text-sm font-semibold">{analysis.similarity}%</div>
+              <div className="text-xs font-semibold">{analysis.similarity}%</div>
             </div>
           </div>
         )}

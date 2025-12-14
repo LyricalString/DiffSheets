@@ -1,8 +1,17 @@
 "use client";
 
+import { Settings2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useCallback, useMemo, useState } from "react";
-import { ComparisonOptions } from "@/components/sidebar";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { filterDiffColumns, filterDiffRows } from "@/lib/diff";
 import { useSpreadsheetStore } from "@/store";
 import type { DiffCell } from "@/types";
@@ -15,7 +24,8 @@ import { type ViewMode, ViewModeSelector } from "./view-mode-selector";
 
 export function DiffView() {
   const t = useTranslations("diff");
-  const { diffResult, options } = useSpreadsheetStore();
+  const tOptions = useTranslations("diff.options");
+  const { diffResult, options, setOptions } = useSpreadsheetStore();
 
   // View state
   const [viewMode, setViewMode] = useState<ViewMode>("side-by-side");
@@ -54,14 +64,18 @@ export function DiffView() {
   }
 
   return (
-    <div className="space-y-6 animate-slide-up-fade">
-      {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="font-semibold text-xl">{t("title")}</h2>
+    <div className="flex flex-col h-full animate-slide-up-fade">
+      {/* Header - compact toolbar */}
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-border">
+        <div className="flex items-center gap-3">
+          <h2 className="font-display font-semibold text-base">{t("title")}</h2>
+          <DiffSummary summary={diffResult.summary} />
+        </div>
 
-        {/* View controls */}
-        <div className="flex flex-wrap items-center gap-3">
+        {/* Controls */}
+        <div className="flex items-center gap-2">
           <ViewModeSelector mode={viewMode} onChange={setViewMode} />
+
           {totalChanges > 0 && (
             <ChangeNavigation
               currentIndex={currentChangeIndex}
@@ -69,69 +83,85 @@ export function DiffView() {
               onNavigate={setCurrentChangeIndex}
             />
           )}
+
+          {/* Options dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="h-8 gap-1.5">
+                <Settings2 className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">{tOptions("title")}</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>Display</DropdownMenuLabel>
+              <DropdownMenuCheckboxItem
+                checked={options.hideUnchangedRows}
+                onCheckedChange={(checked) => setOptions({ hideUnchangedRows: checked })}
+              >
+                {tOptions("hideUnchangedRows")}
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem
+                checked={options.hideUnchangedColumns}
+                onCheckedChange={(checked) => setOptions({ hideUnchangedColumns: checked })}
+              >
+                {tOptions("hideUnchangedCols")}
+              </DropdownMenuCheckboxItem>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuLabel>Comparison</DropdownMenuLabel>
+              <DropdownMenuCheckboxItem
+                checked={options.ignoreWhitespace}
+                onCheckedChange={(checked) => setOptions({ ignoreWhitespace: checked })}
+              >
+                {tOptions("ignoreWhitespace")}
+              </DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem
+                checked={options.ignoreCase}
+                onCheckedChange={(checked) => setOptions({ ignoreCase: checked })}
+              >
+                {tOptions("ignoreCase")}
+              </DropdownMenuCheckboxItem>
+
+              <DropdownMenuSeparator />
+
+              <div className="px-2 py-1.5 text-xs text-muted-foreground">
+                <span className="font-medium">Shortcuts:</span>{" "}
+                <kbd className="rounded bg-muted px-1 py-0.5 font-mono text-[10px]">n</kbd>/
+                <kbd className="rounded bg-muted px-1 py-0.5 font-mono text-[10px]">p</kbd> navigate
+              </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
-      {/* Summary */}
-      <DiffSummary summary={diffResult.summary} />
+      {/* Main grid - FULL WIDTH */}
+      <div className="relative flex-1 mt-3 min-h-0">
+        {viewMode === "side-by-side" ? (
+          <SideBySideGrid
+            diffResult={diffResult}
+            visibleRows={visibleRows}
+            visibleColumns={visibleColumns}
+            currentChangeIndex={currentChangeIndex}
+            onCellClick={handleCellClick}
+          />
+        ) : (
+          <DiffGrid
+            diffResult={diffResult}
+            visibleRows={visibleRows}
+            visibleColumns={visibleColumns}
+          />
+        )}
 
-      {/* Main content */}
-      <div className="relative grid gap-6 lg:grid-cols-[1fr_280px]">
-        {/* Diff Grid - switches based on view mode */}
-        <div className="relative min-w-0">
-          {viewMode === "side-by-side" ? (
-            <SideBySideGrid
-              diffResult={diffResult}
-              visibleRows={visibleRows}
-              visibleColumns={visibleColumns}
-              currentChangeIndex={currentChangeIndex}
-              onCellClick={handleCellClick}
-            />
-          ) : (
-            <DiffGrid
-              diffResult={diffResult}
-              visibleRows={visibleRows}
-              visibleColumns={visibleColumns}
-            />
-          )}
-
-          {/* Cell Inspector - floating panel */}
-          {selectedCell && (
-            <CellInspector
-              cell={selectedCell.cell}
-              rowIndex={selectedCell.rowIndex}
-              colIndex={selectedCell.colIndex}
-              onClose={handleCloseInspector}
-            />
-          )}
-        </div>
-
-        {/* Sidebar */}
-        <div className="space-y-4">
-          <ComparisonOptions />
-
-          {/* Keyboard shortcuts help */}
-          <div className="rounded-lg border bg-muted/30 p-4">
-            <h4 className="mb-3 text-sm font-semibold">Keyboard Shortcuts</h4>
-            <div className="space-y-2 text-xs text-muted-foreground">
-              <div className="flex justify-between">
-                <span>Next change</span>
-                <kbd className="rounded bg-muted px-1.5 py-0.5 font-mono">n</kbd>
-              </div>
-              <div className="flex justify-between">
-                <span>Previous change</span>
-                <kbd className="rounded bg-muted px-1.5 py-0.5 font-mono">p</kbd>
-              </div>
-              <div className="flex justify-between">
-                <span>Navigate</span>
-                <span className="flex gap-1">
-                  <kbd className="rounded bg-muted px-1.5 py-0.5 font-mono">Ctrl</kbd>
-                  <kbd className="rounded bg-muted px-1.5 py-0.5 font-mono">↑↓</kbd>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Cell Inspector - floating panel */}
+        {selectedCell && (
+          <CellInspector
+            cell={selectedCell.cell}
+            rowIndex={selectedCell.rowIndex}
+            colIndex={selectedCell.colIndex}
+            onClose={handleCloseInspector}
+          />
+        )}
       </div>
     </div>
   );

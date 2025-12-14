@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { useMemo } from "react";
-import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { Cell, SheetData } from "@/types";
 
@@ -39,56 +38,80 @@ export function SpreadsheetPreview({
   }, [data, maxRows, maxCols]);
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
+    <div
+      className={cn(
+        "overflow-hidden rounded-xl border border-slate-700 bg-slate-900 shadow-lg",
+        className,
+      )}
+    >
+      {/* macOS-style window header */}
+      <div className="flex items-center gap-2 px-3 py-2 bg-slate-800 border-b border-slate-700">
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-500" />
+          <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+          <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+        </div>
+        <span className="ml-2 font-mono text-xs text-slate-500">
+          {t("fileInfo", { rows: data.rows.length, cols: data.columns.length })}
+        </span>
+      </div>
+
+      {/* Table content */}
       <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full font-mono text-xs">
           <thead>
-            <tr className="border-b bg-muted/50">
-              <th className="w-10 border-r px-2 py-1.5 text-center text-muted-foreground text-xs font-normal">
+            <tr className="border-b border-slate-700 bg-slate-800/50">
+              <th className="w-8 border-r border-slate-700 px-2 py-1.5 text-center text-slate-500 font-normal">
                 #
               </th>
               {previewData.cols.map((col) => (
                 <th
                   key={col.index}
-                  className="min-w-[80px] border-r px-2 py-1.5 text-center text-muted-foreground text-xs font-medium"
+                  className="min-w-[60px] border-r border-slate-700 px-2 py-1.5 text-center text-slate-400 font-medium"
                 >
                   {col.letter}
                 </th>
               ))}
               {previewData.hasMoreCols && (
-                <th className="px-2 py-1.5 text-center text-muted-foreground text-xs">...</th>
+                <th className="px-2 py-1.5 text-center text-slate-500">...</th>
               )}
             </tr>
           </thead>
           <tbody>
             {previewData.rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className="border-b last:border-b-0 hover:bg-muted/30">
-                <td className="border-r px-2 py-1.5 text-center text-muted-foreground text-xs">
+              <tr
+                key={rowIndex}
+                className={cn(
+                  "border-b border-slate-800 last:border-b-0 hover:bg-slate-800/50 transition-colors",
+                  rowIndex % 2 === 1 && "bg-slate-800/20",
+                )}
+              >
+                <td className="border-r border-slate-700 px-2 py-1 text-center text-slate-500">
                   {rowIndex + 1}
                 </td>
                 {row.slice(0, maxCols).map((cell, colIndex) => (
                   <td
                     key={colIndex}
                     className={cn(
-                      "max-w-[150px] truncate border-r px-2 py-1.5",
-                      cell.type === "number" && "text-right",
-                      cell.type === "empty" && "text-muted-foreground",
+                      "max-w-[120px] truncate border-r border-slate-800 px-2 py-1 text-slate-300",
+                      cell.type === "number" && "text-right text-green-400",
+                      cell.type === "empty" && "text-slate-600",
                     )}
                     title={formatCellValue(cell)}
                   >
-                    {formatCellValue(cell) || <span className="text-muted-foreground">-</span>}
+                    {formatCellValue(cell) || <span className="text-slate-600">-</span>}
                   </td>
                 ))}
                 {previewData.hasMoreCols && (
-                  <td className="px-2 py-1.5 text-center text-muted-foreground">...</td>
+                  <td className="px-2 py-1 text-center text-slate-500">...</td>
                 )}
               </tr>
             ))}
             {previewData.hasMoreRows && (
-              <tr className="bg-muted/30">
+              <tr className="bg-slate-800/30">
                 <td
                   colSpan={previewData.cols.length + 2}
-                  className="px-2 py-1.5 text-center text-muted-foreground text-xs"
+                  className="px-2 py-1.5 text-center text-slate-500 text-xs"
                 >
                   ... {data.rows.length - maxRows} more rows
                 </td>
@@ -97,11 +120,6 @@ export function SpreadsheetPreview({
           </tbody>
         </table>
       </div>
-      <div className="border-t bg-muted/30 px-3 py-2">
-        <p className="text-muted-foreground text-xs">
-          {t("fileInfo", { rows: data.rows.length, cols: data.columns.length })}
-        </p>
-      </div>
-    </Card>
+    </div>
   );
 }

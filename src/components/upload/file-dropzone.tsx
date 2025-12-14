@@ -59,11 +59,11 @@ export function FileDropzone({
   // File is loaded - show file info
   if (file && !isLoading) {
     return (
-      <Card className="relative p-4">
+      <Card className="relative rounded-2xl border-green-500/30 bg-green-500/5 p-4 transition-all duration-300">
         <Button
           variant="ghost"
           size="icon"
-          className="absolute top-2 right-2 h-6 w-6"
+          className="absolute top-2 right-2 h-6 w-6 text-muted-foreground hover:text-foreground"
           onClick={onFileClear}
           aria-label={t("clear")}
         >
@@ -71,8 +71,8 @@ export function FileDropzone({
         </Button>
 
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-            <FileSpreadsheet className="h-5 w-5 text-primary" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-500/15">
+            <FileSpreadsheet className="h-5 w-5 text-green-600 dark:text-green-400" />
           </div>
           <div className="min-w-0 flex-1">
             <p className="truncate font-medium text-sm">{file.name}</p>
@@ -88,8 +88,10 @@ export function FileDropzone({
   // Loading state
   if (isLoading) {
     return (
-      <Card className="flex min-h-[200px] flex-col items-center justify-center p-8">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      <Card className="flex min-h-[180px] flex-col items-center justify-center rounded-2xl border-green-500/30 p-6">
+        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-500/10">
+          <Loader2 className="h-6 w-6 animate-spin text-green-500" />
+        </div>
         <p className="mt-3 text-muted-foreground text-sm">{t("processing")}</p>
       </Card>
     );
@@ -103,10 +105,11 @@ export function FileDropzone({
     <Card
       {...getRootProps()}
       className={cn(
-        "flex min-h-[200px] cursor-pointer flex-col items-center justify-center border-2 border-dashed p-8 transition-all duration-200",
-        isDragActive && !isDragReject && "border-primary bg-primary/5 scale-[1.02]",
+        "flex min-h-[180px] cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed p-6 transition-all duration-300",
+        isDragActive && !isDragReject && "border-green-500 bg-green-500/10 scale-[1.01]",
         isDragReject && "border-destructive bg-destructive/5",
-        !isDragActive && "hover:border-primary/50 hover:bg-muted/30",
+        !isDragActive &&
+          "hover:border-green-500/40 hover:bg-green-500/5 hover:shadow-md hover:shadow-green-500/5",
       )}
     >
       <label htmlFor={inputId} className="sr-only">
@@ -116,24 +119,29 @@ export function FileDropzone({
 
       <div
         className={cn(
-          "flex h-14 w-14 items-center justify-center rounded-full transition-colors",
-          isDragActive ? "bg-primary/20" : "bg-muted",
+          "flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-300",
+          isDragActive ? "bg-green-500/20" : "bg-green-500/10",
         )}
       >
         <Upload
-          className={cn("h-7 w-7", isDragActive ? "text-primary" : "text-muted-foreground")}
+          className={cn(
+            "h-6 w-6 transition-colors",
+            isDragActive ? "text-green-500" : "text-green-600 dark:text-green-400",
+          )}
         />
       </div>
 
-      <div className="mt-5 text-center">
-        <p className="font-semibold">{side === "original" ? t("original") : t("modified")}</p>
-        <p className="mt-1.5 text-muted-foreground text-sm">{t("dropzone.title")}</p>
+      <div className="mt-4 text-center">
+        <p className="font-display font-semibold text-sm">
+          {side === "original" ? t("original") : t("modified")}
+        </p>
+        <p className="mt-1 text-muted-foreground text-sm">{t("dropzone.title")}</p>
         <p className="text-muted-foreground text-xs">{t("dropzone.subtitle")}</p>
       </div>
 
       <p
         id={`${inputId}-formats`}
-        className="mt-5 rounded-full bg-muted/50 px-3 py-1 text-muted-foreground text-xs"
+        className="mt-4 rounded-full bg-muted/50 px-3 py-1 text-muted-foreground text-xs"
       >
         {t("dropzone.formats")}
       </p>

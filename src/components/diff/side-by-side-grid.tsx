@@ -2,7 +2,6 @@
 
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { DiffCell, DiffResult, DiffRow } from "@/types";
 
@@ -27,9 +26,9 @@ function getColumnLetter(index: number): string {
 
 function calculateColumnWidths(rows: DiffRow[], columns: number[]): Map<number, number> {
   const CHAR_WIDTH = 8;
-  const MIN_WIDTH = 60;
-  const MAX_WIDTH = 250;
-  const PADDING = 16;
+  const MIN_WIDTH = 80;
+  const MAX_WIDTH = 400;
+  const PADDING = 20;
   const SAMPLE_SIZE = 100;
 
   const maxChars = new Map<number, number>();
@@ -196,12 +195,12 @@ export function SideBySideGrid({
       </div>
       <div
         ref={ref}
-        className="max-h-[60vh] overflow-auto"
+        className="h-[calc(100vh-220px)] overflow-auto"
         onScroll={() => handleScroll(side === "original" ? "left" : "right")}
       >
         <table
-          className="border-collapse text-sm"
-          style={{ tableLayout: "fixed", width: totalWidth }}
+          className="border-collapse text-sm w-full"
+          style={{ tableLayout: "fixed", minWidth: totalWidth }}
         >
           <thead className="sticky top-0 z-10">
             <tr className="border-b bg-muted">
@@ -272,18 +271,20 @@ export function SideBySideGrid({
 
   if (visibleRows.length === 0) {
     return (
-      <Card className={cn("flex items-center justify-center p-12", className)}>
+      <div
+        className={cn("flex items-center justify-center p-12 rounded-xl border bg-card", className)}
+      >
         <p className="text-muted-foreground">No differences found</p>
-      </Card>
+      </div>
     );
   }
 
   return (
-    <Card className={cn("overflow-hidden", className)}>
-      <div className="flex divide-x">
+    <div className={cn("overflow-hidden rounded-xl border bg-card", className)}>
+      <div className="flex divide-x divide-border">
         {renderTable("original", leftRef)}
         {renderTable("modified", rightRef)}
       </div>
-    </Card>
+    </div>
   );
 }

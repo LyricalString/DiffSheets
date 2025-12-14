@@ -115,11 +115,19 @@ export function ComparisonUploader() {
   const modifiedSheetData = modifiedFile.parsed?.data.get(modifiedFile.selectedSheet);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* File Upload Grid */}
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-6 lg:grid-cols-2">
         {/* Original File */}
-        <div className="space-y-4">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-red-500/10 font-mono text-xs font-semibold text-red-600 dark:text-red-400">
+              A
+            </span>
+            <span className="font-display text-sm font-medium text-muted-foreground">
+              {t("original")}
+            </span>
+          </div>
           <FileDropzone
             side="original"
             file={originalFile.file}
@@ -141,7 +149,15 @@ export function ComparisonUploader() {
         </div>
 
         {/* Modified File */}
-        <div className="space-y-4">
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <span className="flex h-6 w-6 items-center justify-center rounded-md bg-green-500/10 font-mono text-xs font-semibold text-green-600 dark:text-green-400">
+              B
+            </span>
+            <span className="font-display text-sm font-medium text-muted-foreground">
+              {t("modified")}
+            </span>
+          </div>
           <FileDropzone
             side="modified"
             file={modifiedFile.file}
@@ -164,22 +180,22 @@ export function ComparisonUploader() {
       </div>
 
       {/* Compare Button */}
-      <div className="flex justify-center pt-4">
+      <div className="flex justify-center pt-2">
         <Button
           size="lg"
           disabled={!canCompare || isComparing}
           onClick={handleCompare}
-          className="min-w-[220px]"
+          className="gap-2 bg-green-500 hover:bg-green-400 text-slate-950 font-semibold px-8 shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all disabled:opacity-50 disabled:shadow-none"
         >
           {isComparing ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              <Loader2 className="h-4 w-4 animate-spin" />
               {t("processing")}
             </>
           ) : (
             <>
               {t("findDifference")}
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="h-4 w-4" />
             </>
           )}
         </Button>
