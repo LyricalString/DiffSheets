@@ -1,6 +1,6 @@
 import type { Locale } from "@/i18n/routing";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://diffsheets.com";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
 
 interface JsonLdProps {
   locale?: Locale;
