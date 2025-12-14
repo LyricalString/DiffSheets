@@ -412,6 +412,16 @@
       }
     }
   },
+  "compare": {
+    "meta": {
+      "title": "Comparar Hojas de Cálculo - Herramienta Gratuita Excel y CSV",
+      "description": "Sube y compara archivos Excel, CSV y ODS al instante. Gratis, privado, y funciona completamente en tu navegador."
+    },
+    "header": {
+      "back": "Volver",
+      "newComparison": "Nueva Comparación"
+    }
+  },
   "footer": {
     "privacy": "Tus archivos se procesan localmente y nunca se suben a ningún servidor.",
     "madeWith": "Hecho con",

@@ -1779,7 +1779,7 @@ export default async function SpreadsheetComparisonGuidePage({ params }: Props) 
                 : "Compare your spreadsheets in seconds with our free tool. No installation, 100% private."}
             </p>
             <Button asChild className="mt-6" size="lg">
-              <Link href="/">{t("ctaButton")}</Link>
+              <Link href="/compare">{t("ctaButton")}</Link>
             </Button>
           </div>
         </article>

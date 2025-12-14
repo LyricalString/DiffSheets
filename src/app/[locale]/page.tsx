@@ -1,7 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
-import { DynamicComparisonSection } from "@/components/landing/dynamic-comparison";
 import { LandingContent } from "@/components/landing/landing-content";
 import type { Locale } from "@/i18n/routing";
 
@@ -17,11 +16,7 @@ export default async function Home({ params }: Props) {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
-        {/* SSR Content - Available immediately for LCP */}
         <LandingContent locale={locale as Locale} />
-
-        {/* Dynamic Client Component - Loads after initial paint */}
-        <DynamicComparisonSection />
       </main>
       <Footer />
     </div>

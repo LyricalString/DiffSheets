@@ -88,7 +88,7 @@ export function LandingPage({ type }: LandingPageProps) {
             </p>
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
               <Button asChild size="lg" className="min-w-[200px]">
-                <Link href="/">
+                <Link href="/compare">
                   {t("cta")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -170,7 +170,7 @@ export function LandingPage({ type }: LandingPageProps) {
             </p>
             <div className="mt-8">
               <Button asChild size="lg">
-                <Link href="/">
+                <Link href="/compare">
                   {t("cta")}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

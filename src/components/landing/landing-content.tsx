@@ -1,5 +1,7 @@
-import { CheckCircle, Code, Lock, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle, Code, Lock, Zap } from "lucide-react";
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { Button } from "@/components/ui/button";
 import type { Locale } from "@/i18n/routing";
 
 type Props = {
@@ -42,6 +44,8 @@ export async function LandingContent({ locale }: Props) {
     { key: "how" },
   ] as const;
 
+  const tCommon = await getTranslations({ locale, namespace: "common" });
+
   return (
     <div className="mx-auto max-w-4xl">
       {/* Hero Section - This is the LCP element */}
@@ -50,6 +54,14 @@ export async function LandingContent({ locale }: Props) {
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
           {tUpload("subtitle")}
         </p>
+        <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <Button asChild size="lg" className="gap-2">
+            <Link href={`/${locale}/compare`}>
+              {tCommon("tryNow")}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </header>
 
       {/* Features Grid */}

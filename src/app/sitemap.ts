@@ -7,6 +7,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com
 const routes = [
   // Core pages
   { path: "", priority: 1, changeFrequency: "weekly" as const },
+  { path: "/compare", priority: 0.95, changeFrequency: "weekly" as const },
 
   // Format-specific landing pages
   { path: "/compare-excel-files", priority: 0.9, changeFrequency: "monthly" as const },

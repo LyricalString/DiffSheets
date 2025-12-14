@@ -412,6 +412,16 @@
       }
     }
   },
+  "compare": {
+    "meta": {
+      "title": "Compare Spreadsheets - Free Online Excel & CSV Diff Tool",
+      "description": "Upload and compare Excel, CSV, and ODS files instantly. Free, private, and runs entirely in your browser."
+    },
+    "header": {
+      "back": "Back",
+      "newComparison": "New Comparison"
+    }
+  },
   "footer": {
     "privacy": "Your files are processed locally and never uploaded to any server.",
     "madeWith": "Made with",
