@@ -31,7 +31,7 @@ export function Header() {
         <Link href="/" className="flex items-center gap-2.5 transition-opacity hover:opacity-80">
           <LogoIcon size={32} />
           <span className="font-display font-bold text-lg hidden sm:block">
-            DiffSheets
+            Diff<span className="text-green-900 dark:text-green-100">Sheets</span>
           </span>
         </Link>
 

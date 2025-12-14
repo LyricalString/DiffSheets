@@ -44,7 +44,7 @@ export function CompareHeader({ locale }: CompareHeaderProps) {
           >
             <LogoIcon size={28} />
             <span className="font-display font-bold text-base hidden sm:block">
-              DiffSheets
+              Diff<span className="text-green-900 dark:text-green-100">Sheets</span>
             </span>
           </Link>
         </div>
