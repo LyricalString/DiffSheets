@@ -32,10 +32,11 @@
     "zustand": "^5.0.9"
   },
   "browserslist": [
-    "last 2 Chrome versions",
-    "last 2 Firefox versions",
-    "last 2 Safari versions",
-    "last 2 Edge versions"
+    "Chrome >= 100",
+    "Firefox >= 100",
+    "Safari >= 15",
+    "Edge >= 100",
+    "not dead"
   ],
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
