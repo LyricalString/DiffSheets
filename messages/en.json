@@ -15,13 +15,25 @@
     "upload": "Upload",
     "compare": "Compare",
     "clear": "Clear",
-    "reset": "Reset"
+    "reset": "Reset",
+    "learnMore": "Learn more",
+    "tryNow": "Try it now",
+    "free": "Free",
+    "readMore": "Read more",
+    "backToHome": "Back to home",
+    "allPosts": "All posts"
   },
   "header": {
     "tagline": "Compare spreadsheets instantly",
     "github": "GitHub",
     "theme": "Toggle theme",
     "language": "Language"
+  },
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "compareExcel": "Compare Excel",
+    "compareCsv": "Compare CSV"
   },
   "upload": {
     "title": "Compare Excel files and spreadsheets",
@@ -89,6 +101,149 @@
         "step1": "Upload your original file",
         "step2": "Upload the modified file",
         "step3": "Click 'Find Difference' to see changes"
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": {
+      "free": {
+        "question": "Is DiffSheets free to use?",
+        "answer": "Yes, DiffSheets is completely free to use. There are no hidden fees, subscriptions, or premium features locked behind a paywall."
+      },
+      "safe": {
+        "question": "Is my data safe when using DiffSheets?",
+        "answer": "Absolutely. DiffSheets processes all files 100% client-side in your browser. Your spreadsheet data never leaves your computer or gets uploaded to any server."
+      },
+      "formats": {
+        "question": "What file formats does DiffSheets support?",
+        "answer": "DiffSheets supports Excel files (.xlsx, .xls), CSV files, and OpenDocument Spreadsheets (.ods). You can compare files of the same or different formats."
+      },
+      "large": {
+        "question": "Can I compare large Excel files?",
+        "answer": "Yes, DiffSheets uses virtual scrolling technology to efficiently handle large spreadsheets with thousands of rows without performance issues."
+      },
+      "how": {
+        "question": "How does DiffSheets compare spreadsheets?",
+        "answer": "DiffSheets offers multiple comparison modes: position-based matching (row by row), key column matching (by a unique identifier), and intelligent LCS algorithm for best alignment detection."
+      }
+    }
+  },
+  "landing": {
+    "excel": {
+      "title": "Compare Excel Files Online - Free XLSX & XLS Diff Tool",
+      "description": "Compare two Excel files instantly. Find differences between XLSX and XLS spreadsheets with our free online tool. No upload required - 100% private.",
+      "h1": "Compare Excel Files Online",
+      "subtitle": "Find every difference between two Excel spreadsheets in seconds. Free, private, and works entirely in your browser.",
+      "benefits": {
+        "title": "Why Use DiffSheets for Excel Comparison?",
+        "items": {
+          "visual": {
+            "title": "Visual Side-by-Side Comparison",
+            "description": "See changes highlighted in color. Added rows in green, deleted in red, modified in yellow."
+          },
+          "privacy": {
+            "title": "Complete Privacy",
+            "description": "Your Excel files never leave your computer. All processing happens locally in your browser."
+          },
+          "formats": {
+            "title": "All Excel Formats",
+            "description": "Works with .xlsx, .xls, and even compare Excel to CSV files."
+          },
+          "free": {
+            "title": "100% Free",
+            "description": "No registration, no limits, no watermarks. Use it as much as you need."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Common Use Cases",
+        "items": {
+          "audit": {
+            "title": "Financial Auditing",
+            "description": "Compare budget versions, track changes in financial reports, audit expense sheets."
+          },
+          "version": {
+            "title": "Version Control",
+            "description": "Track changes between document versions when collaborating with teams."
+          },
+          "migration": {
+            "title": "Data Migration",
+            "description": "Verify data integrity after importing or exporting between systems."
+          },
+          "qa": {
+            "title": "Quality Assurance",
+            "description": "Validate test results, compare expected vs actual outputs."
+          }
+        }
+      },
+      "cta": "Compare Your Excel Files Now"
+    },
+    "csv": {
+      "title": "CSV Diff Tool - Compare CSV Files Online Free",
+      "description": "Compare two CSV files online for free. Find differences between CSV spreadsheets instantly. No upload to servers - your data stays private.",
+      "h1": "Compare CSV Files Online",
+      "subtitle": "The fastest way to find differences between CSV files. Free, secure, and runs entirely in your browser.",
+      "benefits": {
+        "title": "Why Use DiffSheets for CSV Comparison?",
+        "items": {
+          "instant": {
+            "title": "Instant Results",
+            "description": "Compare CSV files in milliseconds. No waiting for server processing."
+          },
+          "large": {
+            "title": "Handle Large Files",
+            "description": "Virtual scrolling lets you compare CSV files with hundreds of thousands of rows."
+          },
+          "delimiters": {
+            "title": "Smart Parsing",
+            "description": "Automatically detects delimiters. Works with comma, semicolon, tab-separated files."
+          },
+          "export": {
+            "title": "Compare Across Formats",
+            "description": "Compare CSV to Excel, or CSV to CSV. Mix and match file types."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Perfect For",
+        "items": {
+          "database": {
+            "title": "Database Exports",
+            "description": "Compare database dumps, verify backup integrity, track schema changes."
+          },
+          "api": {
+            "title": "API Responses",
+            "description": "Diff API response data, compare test results, validate integrations."
+          },
+          "logs": {
+            "title": "Log Analysis",
+            "description": "Compare log files, find configuration differences, track changes over time."
+          },
+          "etl": {
+            "title": "ETL Pipelines",
+            "description": "Validate data transformations, verify ETL output, ensure data quality."
+          }
+        }
+      },
+      "cta": "Compare Your CSV Files Now"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Tips, tutorials, and updates about spreadsheet comparison",
+    "posts": {
+      "how-to-compare-excel": {
+        "title": "How to Compare Two Excel Files: 5 Easy Methods",
+        "excerpt": "Learn the best ways to compare Excel spreadsheets, from manual methods to automated tools like DiffSheets.",
+        "date": "2025-01-15",
+        "readTime": "5 min read"
+      },
+      "excel-diff-formula": {
+        "title": "Excel VLOOKUP vs Diff Tools: Which is Better?",
+        "excerpt": "When should you use Excel formulas vs dedicated comparison tools? We break down the pros and cons.",
+        "date": "2025-01-10",
+        "readTime": "4 min read"
       }
     }
   },

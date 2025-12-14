@@ -115,13 +115,7 @@ export function ComparisonUploader() {
   const modifiedSheetData = modifiedFile.parsed?.data.get(modifiedFile.selectedSheet);
 
   return (
-    <div className="mx-auto max-w-4xl space-y-10 py-8">
-      {/* Header */}
-      <div className="text-center">
-        <h1 className="font-bold text-3xl tracking-tight md:text-4xl">{t("title")}</h1>
-        <p className="mx-auto mt-3 max-w-md text-muted-foreground">{t("subtitle")}</p>
-      </div>
-
+    <div className="space-y-8">
       {/* File Upload Grid */}
       <div className="grid gap-8 md:grid-cols-2">
         {/* Original File */}

@@ -96,6 +96,9 @@ export function FileDropzone({
   }
 
   // Dropzone
+  const inputId = `file-input-${side}`;
+  const labelText = side === "original" ? t("original") : t("modified");
+
   return (
     <Card
       {...getRootProps()}
@@ -106,7 +109,10 @@ export function FileDropzone({
         !isDragActive && "hover:border-primary/50 hover:bg-muted/30",
       )}
     >
-      <input {...getInputProps()} />
+      <label htmlFor={inputId} className="sr-only">
+        {t("dropzone.title")} - {labelText}
+      </label>
+      <input {...getInputProps()} id={inputId} aria-describedby={`${inputId}-formats`} />
 
       <div
         className={cn(
@@ -122,10 +128,13 @@ export function FileDropzone({
       <div className="mt-5 text-center">
         <p className="font-semibold">{side === "original" ? t("original") : t("modified")}</p>
         <p className="mt-1.5 text-muted-foreground text-sm">{t("dropzone.title")}</p>
-        <p className="text-muted-foreground/80 text-xs">{t("dropzone.subtitle")}</p>
+        <p className="text-muted-foreground text-xs">{t("dropzone.subtitle")}</p>
       </div>
 
-      <p className="mt-5 rounded-full bg-muted/50 px-3 py-1 text-muted-foreground text-xs">
+      <p
+        id={`${inputId}-formats`}
+        className="mt-5 rounded-full bg-muted/50 px-3 py-1 text-muted-foreground text-xs"
+      >
         {t("dropzone.formats")}
       </p>
 

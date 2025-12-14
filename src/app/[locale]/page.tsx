@@ -1,18 +1,27 @@
-"use client";
+import { setRequestLocale } from "next-intl/server";
+import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
+import { DynamicComparisonSection } from "@/components/landing/dynamic-comparison";
+import { LandingContent } from "@/components/landing/landing-content";
+import type { Locale } from "@/i18n/routing";
 
-import { DiffView } from "@/components/diff";
-import { Footer, Header } from "@/components/layout";
-import { ComparisonUploader } from "@/components/upload";
-import { useSpreadsheetStore } from "@/store";
+type Props = {
+  params: Promise<{ locale: string }>;
+};
 
-export default function Home() {
-  const { diffResult } = useSpreadsheetStore();
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
-        {diffResult ? <DiffView /> : <ComparisonUploader />}
+        {/* SSR Content - Available immediately for LCP */}
+        <LandingContent locale={locale as Locale} />
+
+        {/* Dynamic Client Component - Loads after initial paint */}
+        <DynamicComparisonSection />
       </main>
       <Footer />
     </div>
