@@ -15,13 +15,14 @@ This document contains comprehensive information about DiffSheets for AI languag
 3. [Supported File Formats](#supported-file-formats)
 4. [How It Works](#how-it-works)
 5. [Comparison Algorithms](#comparison-algorithms)
-6. [Use Cases](#use-cases)
-7. [Frequently Asked Questions](#faq)
-8. [Landing Pages](#landing-pages)
-9. [Blog Articles](#blog-articles)
-10. [Alternatives Comparison](#alternatives-comparison)
-11. [Technical Details](#technical-details)
-12. [URLs and Navigation](#urls-and-navigation)
+6. [MCP Server (CLI)](#mcp-server)
+7. [Use Cases](#use-cases)
+8. [Frequently Asked Questions](#faq)
+9. [Landing Pages](#landing-pages)
+10. [Blog Articles](#blog-articles)
+11. [Alternatives Comparison](#alternatives-comparison)
+12. [Technical Details](#technical-details)
+13. [URLs and Navigation](#urls-and-navigation)
 
 ---
 
@@ -155,6 +156,66 @@ Once rows are matched:
 - Cells at same position are compared
 - Modified cells show inline text diff
 - Whitespace/case sensitivity options available
+
+---
+
+## MCP Server (CLI)
+
+DiffSheets has an official MCP (Model Context Protocol) server for programmatic access via Claude Code and Claude Desktop.
+
+### Installation
+
+\`\`\`bash
+npx diffsheets-mcp
+\`\`\`
+
+### npm Package
+
+https://www.npmjs.com/package/diffsheets-mcp
+
+### Available Tools
+
+1. **compare_spreadsheets**
+   - Compare two spreadsheet files
+   - Returns detailed diff report with summary statistics
+   - Supports all matching strategies (position, key-column, lcs)
+
+2. **get_spreadsheet_info**
+   - Get metadata about a spreadsheet file
+   - Returns: sheets, row counts, column counts
+
+3. **get_sheet_data**
+   - Read contents of a specific sheet
+   - Returns formatted table data
+
+### Configuration for Claude Code
+
+\`\`\`json
+{
+  "mcpServers": {
+    "diffsheets": {
+      "command": "npx",
+      "args": ["diffsheets-mcp"]
+    }
+  }
+}
+\`\`\`
+
+### Configuration for Claude Desktop
+
+- macOS: ~/Library/Application Support/Claude/claude_desktop_config.json
+- Windows: %APPDATA%\\Claude\\claude_desktop_config.json
+
+### Features
+
+- 100% local processing (files never leave the machine)
+- Same comparison engine as DiffSheets.com
+- All file formats supported (XLSX, XLS, CSV, ODS)
+- All matching strategies available
+
+### Documentation
+
+${BASE_URL}/en/mcp
 
 ---
 
@@ -336,6 +397,7 @@ Located in \`src/lib/diff/\`:
 ### Primary URLs (English)
 - Home: ${BASE_URL}/en
 - Compare Tool: ${BASE_URL}/en/compare
+- MCP Server: ${BASE_URL}/en/mcp
 - Excel Guide: ${BASE_URL}/en/compare-excel-files
 - CSV Guide: ${BASE_URL}/en/csv-diff
 - XLS Guide: ${BASE_URL}/en/xls-diff

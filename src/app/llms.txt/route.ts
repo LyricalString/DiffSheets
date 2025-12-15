@@ -26,6 +26,7 @@ DiffSheets is a client-side spreadsheet comparison tool that helps users find di
 
 - [Home](${BASE_URL}/en): Landing page with product overview
 - [Compare Tool](${BASE_URL}/en/compare): The main comparison application
+- [MCP Server](${BASE_URL}/en/mcp): CLI tool for Claude Code and Claude Desktop
 - [Excel Comparison](${BASE_URL}/en/compare-excel-files): Guide for comparing Excel files
 - [CSV Diff](${BASE_URL}/en/csv-diff): Guide for comparing CSV files
 - [XLS Diff](${BASE_URL}/en/xls-diff): Guide for legacy Excel format
@@ -54,9 +55,20 @@ DiffSheets is a client-side spreadsheet comparison tool that helps users find di
 4. Diff algorithm compares rows and cells
 5. Results displayed with color-coded changes (green=added, red=removed, amber=modified)
 
+## MCP Server (CLI)
+
+DiffSheets has an official MCP (Model Context Protocol) server for use with Claude Code and Claude Desktop.
+
+- **Install**: \`npx diffsheets-mcp\`
+- **npm**: https://www.npmjs.com/package/diffsheets-mcp
+- **Tools available**:
+  - \`compare_spreadsheets\`: Compare two spreadsheet files
+  - \`get_spreadsheet_info\`: Get metadata about a spreadsheet
+  - \`get_sheet_data\`: Read contents of a specific sheet
+
 ## API
 
-DiffSheets does not have a public API. All functionality runs client-side in the browser.
+DiffSheets does not have a public REST API. All web functionality runs client-side in the browser. For programmatic access, use the MCP server.
 
 ## Pricing
 

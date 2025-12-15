@@ -8,6 +8,7 @@ const routes = [
   // Core pages
   { path: "", priority: 1, changeFrequency: "weekly" as const },
   { path: "/compare", priority: 0.95, changeFrequency: "weekly" as const },
+  { path: "/mcp", priority: 0.85, changeFrequency: "monthly" as const },
 
   // Format-specific landing pages
   { path: "/compare-excel-files", priority: 0.9, changeFrequency: "monthly" as const },
