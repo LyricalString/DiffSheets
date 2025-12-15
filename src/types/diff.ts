@@ -64,5 +64,5 @@ export const defaultComparisonOptions: ComparisonOptions = {
   hideUnchangedRows: false,
   hideUnchangedColumns: false,
   compareFormulas: false,
-  matchingStrategy: "position",
+  matchingStrategy: "lcs",
 };

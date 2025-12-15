@@ -39,5 +39,5 @@ export interface ColumnProfile {
 export const defaultComparisonOptions: ComparisonOptions = {
   ignoreWhitespace: false,
   ignoreCase: false,
-  matchingStrategy: "position",
+  matchingStrategy: "lcs",
 };

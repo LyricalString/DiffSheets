@@ -274,7 +274,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         // Build comparison options
         const options: ComparisonOptions = {
           ...defaultComparisonOptions,
-          matchingStrategy: (args?.matching_strategy as MatchingStrategy) || "position",
+          matchingStrategy: (args?.matching_strategy as MatchingStrategy) || "lcs",
           keyColumnIndex: args?.key_column as number | undefined,
           ignoreCase: (args?.ignore_case as boolean) || false,
           ignoreWhitespace: (args?.ignore_whitespace as boolean) || false,

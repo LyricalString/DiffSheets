@@ -29,7 +29,7 @@ export function MatchingOptions({
   onOptionsChange,
 }: MatchingOptionsProps) {
   const t = useTranslations("matching");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const hasSheets = originalSheet && modifiedSheet;
 
