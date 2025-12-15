@@ -179,6 +179,10 @@
       "how": {
         "question": "How does DiffSheets compare spreadsheets?",
         "answer": "DiffSheets offers multiple comparison modes: position-based matching (row by row), key column matching (by a unique identifier), and intelligent LCS algorithm for best alignment detection."
+      },
+      "cli": {
+        "question": "Can I use DiffSheets from the command line?",
+        "answer": "Yes! DiffSheets has an official MCP server that works with Claude Code and Claude Desktop. Install it with 'npx diffsheets-mcp' and compare spreadsheets directly from your terminal. Visit our MCP page for installation instructions."
       }
     }
   },
@@ -429,7 +433,8 @@
   "footer": {
     "privacy": "Your files are processed locally and never uploaded to any server.",
     "madeWith": "Made with",
-    "opensource": "Open Source on GitHub"
+    "opensource": "Open Source on GitHub",
+    "mcp": "CLI / MCP"
   },
   "guide": {
     "spreadsheetComparison": {
@@ -743,6 +748,79 @@
         "question": "Can I compare files from {competitor}?",
         "answer": "Yes, DiffSheets works with the same Excel, CSV, and ODS files. Just upload them to get started."
       }
+    }
+  },
+  "mcp": {
+    "title": "DiffSheets MCP - Compare Spreadsheets with Claude",
+    "description": "Use DiffSheets with Claude Code and Claude Desktop. Compare Excel, CSV, and ODS files directly from your terminal with our official MCP server.",
+    "h1": "Compare Spreadsheets with Claude",
+    "subtitle": "Use DiffSheets directly from Claude Code or Claude Desktop. Same powerful comparison engine, now available from your terminal.",
+    "badge": "Official MCP Server",
+    "install": {
+      "title": "Quick Install",
+      "command": "npx diffsheets-mcp",
+      "copy": "Copy command"
+    },
+    "features": {
+      "title": "Features",
+      "local": {
+        "title": "100% Local",
+        "description": "All processing happens on your machine. Your spreadsheets never leave your computer."
+      },
+      "same": {
+        "title": "Same Engine",
+        "description": "Uses the exact same comparison logic as DiffSheets.com - production tested and reliable."
+      },
+      "formats": {
+        "title": "All Formats",
+        "description": "Excel (.xlsx, .xls), CSV, TSV, and OpenDocument (.ods) files supported."
+      },
+      "strategies": {
+        "title": "Smart Matching",
+        "description": "Position-based, key-column, or LCS algorithm for intelligent row alignment."
+      }
+    },
+    "tools": {
+      "title": "Available Tools",
+      "compare": {
+        "title": "compare_spreadsheets",
+        "description": "Compare two spreadsheet files and get a detailed diff report with summary statistics."
+      },
+      "info": {
+        "title": "get_spreadsheet_info",
+        "description": "Get metadata about a spreadsheet: sheets, row counts, column counts."
+      },
+      "data": {
+        "title": "get_sheet_data",
+        "description": "Read the contents of a specific sheet as a formatted table."
+      }
+    },
+    "setup": {
+      "title": "Setup Instructions",
+      "claudeCode": {
+        "title": "Claude Code",
+        "description": "Add to your Claude Code MCP settings:"
+      },
+      "claudeDesktop": {
+        "title": "Claude Desktop",
+        "description": "Add to your Claude Desktop config:"
+      },
+      "configPath": {
+        "mac": "macOS:",
+        "windows": "Windows:"
+      }
+    },
+    "examples": {
+      "title": "Example Usage",
+      "compare": "Compare /path/to/original.xlsx with /path/to/modified.xlsx",
+      "strategy": "Compare files using key-column matching on column 0",
+      "info": "What sheets are in /path/to/file.xlsx?"
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "subtitle": "Install the MCP server and start comparing spreadsheets from your terminal.",
+      "npm": "View on npm",
+      "github": "View on GitHub"
     }
   }
 }

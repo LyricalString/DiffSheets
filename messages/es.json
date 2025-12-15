@@ -179,6 +179,10 @@
       "how": {
         "question": "¿Cómo compara DiffSheets las hojas de cálculo?",
         "answer": "DiffSheets ofrece múltiples modos de comparación: coincidencia por posición (fila por fila), coincidencia por columna clave (por identificador único), y algoritmo LCS inteligente para mejor detección de alineación."
+      },
+      "cli": {
+        "question": "¿Puedo usar DiffSheets desde la línea de comandos?",
+        "answer": "¡Sí! DiffSheets tiene un servidor MCP oficial que funciona con Claude Code y Claude Desktop. Instálalo con 'npx diffsheets-mcp' y compara hojas de cálculo directamente desde tu terminal. Visita nuestra página MCP para instrucciones de instalación."
       }
     }
   },
@@ -429,7 +433,8 @@
   "footer": {
     "privacy": "Tus archivos se procesan localmente y nunca se suben a ningún servidor.",
     "madeWith": "Hecho con",
-    "opensource": "Código abierto en GitHub"
+    "opensource": "Código abierto en GitHub",
+    "mcp": "CLI / MCP"
   },
   "guide": {
     "spreadsheetComparison": {
@@ -743,6 +748,79 @@
         "question": "¿Puedo comparar archivos de {competitor}?",
         "answer": "Sí, DiffSheets funciona con los mismos archivos Excel, CSV y ODS. Solo súbelos para comenzar."
       }
+    }
+  },
+  "mcp": {
+    "title": "DiffSheets MCP - Compara Hojas de Cálculo con Claude",
+    "description": "Usa DiffSheets con Claude Code y Claude Desktop. Compara archivos Excel, CSV y ODS directamente desde tu terminal con nuestro servidor MCP oficial.",
+    "h1": "Compara Hojas de Cálculo con Claude",
+    "subtitle": "Usa DiffSheets directamente desde Claude Code o Claude Desktop. El mismo motor de comparación potente, ahora disponible desde tu terminal.",
+    "badge": "Servidor MCP Oficial",
+    "install": {
+      "title": "Instalación Rápida",
+      "command": "npx diffsheets-mcp",
+      "copy": "Copiar comando"
+    },
+    "features": {
+      "title": "Características",
+      "local": {
+        "title": "100% Local",
+        "description": "Todo el procesamiento ocurre en tu máquina. Tus hojas de cálculo nunca salen de tu ordenador."
+      },
+      "same": {
+        "title": "Mismo Motor",
+        "description": "Usa exactamente la misma lógica de comparación que DiffSheets.com - probado en producción y confiable."
+      },
+      "formats": {
+        "title": "Todos los Formatos",
+        "description": "Excel (.xlsx, .xls), CSV, TSV y archivos OpenDocument (.ods) soportados."
+      },
+      "strategies": {
+        "title": "Matching Inteligente",
+        "description": "Basado en posición, columna clave o algoritmo LCS para alineación inteligente de filas."
+      }
+    },
+    "tools": {
+      "title": "Herramientas Disponibles",
+      "compare": {
+        "title": "compare_spreadsheets",
+        "description": "Compara dos archivos de hoja de cálculo y obtén un informe detallado con estadísticas de resumen."
+      },
+      "info": {
+        "title": "get_spreadsheet_info",
+        "description": "Obtén metadatos de una hoja de cálculo: hojas, número de filas, número de columnas."
+      },
+      "data": {
+        "title": "get_sheet_data",
+        "description": "Lee el contenido de una hoja específica como tabla formateada."
+      }
+    },
+    "setup": {
+      "title": "Instrucciones de Configuración",
+      "claudeCode": {
+        "title": "Claude Code",
+        "description": "Añade a la configuración MCP de Claude Code:"
+      },
+      "claudeDesktop": {
+        "title": "Claude Desktop",
+        "description": "Añade a la configuración de Claude Desktop:"
+      },
+      "configPath": {
+        "mac": "macOS:",
+        "windows": "Windows:"
+      }
+    },
+    "examples": {
+      "title": "Ejemplos de Uso",
+      "compare": "Compara /ruta/a/original.xlsx con /ruta/a/modificado.xlsx",
+      "strategy": "Compara archivos usando coincidencia por columna clave en columna 0",
+      "info": "¿Qué hojas hay en /ruta/a/archivo.xlsx?"
+    },
+    "cta": {
+      "title": "¿Listo para Comenzar?",
+      "subtitle": "Instala el servidor MCP y comienza a comparar hojas de cálculo desde tu terminal.",
+      "npm": "Ver en npm",
+      "github": "Ver en GitHub"
     }
   }
 }

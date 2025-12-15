@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Heart, Shield } from "lucide-react";
+import { Github, Heart, Shield, Terminal } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { LogoIcon } from "@/components/brand";
@@ -30,11 +30,19 @@ export function Footer() {
           </div>
 
           {/* Links and credits */}
-          <div className="flex items-center gap-4 text-muted-foreground text-sm">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-muted-foreground text-sm">
             <div className="flex items-center gap-1.5">
               <span>{t("madeWith")}</span>
               <Heart className="h-4 w-4 fill-red-500 text-red-500" />
             </div>
+            <span className="text-border">•</span>
+            <Link
+              href="/mcp"
+              className="flex items-center gap-1.5 hover:text-green-400 transition-colors"
+            >
+              <Terminal className="h-4 w-4" />
+              {t("mcp")}
+            </Link>
             <span className="text-border">•</span>
             <a
               href="https://github.com/LyricalString/diffsheets"
