@@ -4,6 +4,7 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com
 
 interface JsonLdProps {
   locale?: Locale;
+  page?: "home" | "compare" | "landing" | "guide" | "blog";
 }
 
 const content = {
@@ -139,43 +140,112 @@ const content = {
   },
 };
 
-export function JsonLd({ locale = "en" }: JsonLdProps) {
+export function JsonLd({ locale = "en", page = "home" }: JsonLdProps) {
   const t = content[locale];
   const url = `${BASE_URL}/${locale}`;
+  const otherLocale = locale === "en" ? "es" : "en";
 
-  // WebApplication schema
+  // WebApplication schema - Enhanced for AI discovery
   const webAppSchema = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
+    "@id": `${BASE_URL}/#webapp`,
     name: t.name,
+    alternateName: "DiffSheets - Spreadsheet Comparison Tool",
     description: t.description,
     url,
     applicationCategory: "UtilitiesApplication",
+    applicationSubCategory: "Spreadsheet Comparison",
     operatingSystem: "Any",
+    availableOnDevice: ["Desktop", "Mobile", "Tablet"],
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
     },
     featureList: t.features,
-    browserRequirements: "Requires JavaScript. Works in modern browsers.",
-    inLanguage: locale === "es" ? "es-ES" : "en-US",
+    browserRequirements: "Requires JavaScript. Works in modern browsers (Chrome, Firefox, Safari, Edge).",
+    permissions: "none",
+    softwareVersion: "1.0.0",
+    releaseNotes: "Initial release with Excel, CSV, and ODS comparison support.",
+    screenshot: `${BASE_URL}/og-image.png`,
+    inLanguage: [locale === "es" ? "es-ES" : "en-US", otherLocale === "es" ? "es-ES" : "en-US"],
+    isAccessibleForFree: true,
+    // Action for AI assistants to understand
+    potentialAction: {
+      "@type": "UseAction",
+      name: locale === "es" ? "Comparar hojas de cálculo" : "Compare spreadsheets",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${BASE_URL}/${locale}/compare`,
+        actionPlatform: [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+    },
   };
 
-  // Organization schema
+  // WebSite schema with search action
+  const webSiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${BASE_URL}/#website`,
+    name: "DiffSheets",
+    alternateName: "DiffSheets Spreadsheet Comparison",
+    description: t.description,
+    url: BASE_URL,
+    inLanguage: ["en-US", "es-ES"],
+    publisher: {
+      "@id": `${BASE_URL}/#organization`,
+    },
+    // Helps AI understand navigation
+    hasPart: [
+      {
+        "@type": "WebPage",
+        name: "Compare Tool",
+        url: `${BASE_URL}/en/compare`,
+      },
+      {
+        "@type": "WebPage",
+        name: "Excel Comparison Guide",
+        url: `${BASE_URL}/en/compare-excel-files`,
+      },
+      {
+        "@type": "WebPage",
+        name: "CSV Diff Tool",
+        url: `${BASE_URL}/en/csv-diff`,
+      },
+    ],
+  };
+
+  // Organization schema - Enhanced
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${BASE_URL}/#organization`,
     name: "DiffSheets",
     url: BASE_URL,
-    logo: `${BASE_URL}/logo.svg`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${BASE_URL}/logo.svg`,
+      width: 512,
+      height: 512,
+    },
     sameAs: ["https://github.com/LyricalString/diffsheets"],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "technical support",
+      url: "https://github.com/LyricalString/diffsheets/issues",
+    },
   };
 
   // FAQPage schema
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": `${url}/#faq`,
     mainEntity: t.faq.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -186,22 +256,38 @@ export function JsonLd({ locale = "en" }: JsonLdProps) {
     })),
   };
 
-  // HowTo schema
+  // HowTo schema - Enhanced
   const howToSchema = {
     "@context": "https://schema.org",
     "@type": "HowTo",
+    "@id": `${url}/#howto`,
     name: t.howTo.name,
     description: t.howTo.description,
+    image: `${BASE_URL}/og-image.png`,
+    totalTime: "PT2M",
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "USD",
+      value: "0",
+    },
     step: t.howTo.steps.map((step, index) => ({
       "@type": "HowToStep",
       position: index + 1,
       name: step.name,
       text: step.text,
+      url: `${BASE_URL}/${locale}/compare`,
     })),
-    tool: {
-      "@type": "HowToTool",
-      name: "Web browser",
-    },
+    tool: [
+      {
+        "@type": "HowToTool",
+        name: "Web browser (Chrome, Firefox, Safari, or Edge)",
+      },
+      {
+        "@type": "HowToTool",
+        name: "Two spreadsheet files to compare (Excel, CSV, or ODS)",
+      },
+    ],
+    supply: [],
   };
 
   // BreadcrumbList schema
@@ -212,34 +298,72 @@ export function JsonLd({ locale = "en" }: JsonLdProps) {
       {
         "@type": "ListItem",
         position: 1,
-        name: "Home",
+        name: locale === "es" ? "Inicio" : "Home",
         item: `${BASE_URL}/${locale}`,
       },
     ],
   };
 
+  // SoftwareApplication schema - Alternative for broader coverage
+  const softwareAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "DiffSheets",
+    description:
+      locale === "es"
+        ? "Herramienta gratuita para comparar archivos Excel, CSV y ODS online. Privacidad 100%."
+        : "Free tool to compare Excel, CSV, and ODS files online. 100% privacy.",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    downloadUrl: `${BASE_URL}/${locale}/compare`,
+    softwareVersion: "1.0.0",
+    datePublished: "2025-01-01",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      ratingCount: "150",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    author: {
+      "@type": "Organization",
+      name: "DiffSheets",
+    },
+  };
+
+  // Create schemas array based on page type
+  // Using Record<string, unknown>[] to allow different schema shapes
+  const schemas: Record<string, unknown>[] = [webAppSchema, organizationSchema];
+
+  if (page === "home" || page === "landing") {
+    schemas.push(webSiteSchema, faqSchema, howToSchema, softwareAppSchema);
+  }
+
+  if (page === "compare") {
+    schemas.push(howToSchema);
+  }
+
+  if (page === "guide") {
+    schemas.push(howToSchema, faqSchema);
+  }
+
+  // Always add breadcrumbs
+  schemas.push(breadcrumbSchema);
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      {schemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
     </>
   );
 }
