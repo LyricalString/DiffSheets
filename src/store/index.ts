@@ -11,6 +11,7 @@ interface SpreadsheetStore {
   diffResult: DiffResult | null;
   isComparing: boolean;
   comparisonError: string | null;
+  comparisonVersion: number; // Used for cancellation
 
   // Options
   options: ComparisonOptions;
@@ -43,6 +44,9 @@ interface SpreadsheetStore {
   reset: () => void;
   resetOriginal: () => void;
   resetModified: () => void;
+
+  // Actions - Recompare
+  recompare: () => Promise<void>;
 }
 
 const initialFileState: FileUploadState = {
@@ -61,6 +65,7 @@ export const useSpreadsheetStore = create<SpreadsheetStore>((set) => ({
   diffResult: null,
   isComparing: false,
   comparisonError: null,
+  comparisonVersion: 0,
   options: { ...defaultComparisonOptions },
 
   // Original file actions
@@ -162,4 +167,64 @@ export const useSpreadsheetStore = create<SpreadsheetStore>((set) => ({
       modifiedFile: { ...initialFileState },
       diffResult: null,
     }),
+
+  // Recompare with current options (supports cancellation via version check)
+  recompare: async () => {
+    const currentState = useSpreadsheetStore.getState();
+    console.log("[DEBUG] recompare called, options:", {
+      ignoredColumns: currentState.options.ignoredColumns,
+      matchingStrategy: currentState.options.matchingStrategy,
+    });
+
+    const origData = currentState.originalFile.parsed?.data.get(
+      currentState.originalFile.selectedSheet,
+    );
+    const modData = currentState.modifiedFile.parsed?.data.get(
+      currentState.modifiedFile.selectedSheet,
+    );
+
+    if (!origData || !modData) {
+      set({ comparisonError: "Missing sheet data" });
+      return;
+    }
+
+    // Increment version to cancel any ongoing comparison
+    const newVersion = currentState.comparisonVersion + 1;
+    set({ isComparing: true, comparisonError: null, comparisonVersion: newVersion });
+
+    try {
+      const { computeSpreadsheetDiff } = await import("@/lib/diff");
+
+      // Use setTimeout to yield to main thread before heavy computation
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      const optionsForCompare = useSpreadsheetStore.getState().options;
+      console.log("[DEBUG] computeSpreadsheetDiff with options:", {
+        ignoredColumns: optionsForCompare.ignoredColumns,
+      });
+
+      const result = await computeSpreadsheetDiff(
+        origData,
+        modData,
+        optionsForCompare,
+      );
+
+      // Check if this comparison is still current (not cancelled)
+      const latestState = useSpreadsheetStore.getState();
+      if (latestState.comparisonVersion === newVersion) {
+        console.log("[DEBUG] diff result summary:", result.summary);
+        set({ diffResult: result, isComparing: false });
+      }
+      // If version doesn't match, another comparison started - don't update state
+    } catch (error) {
+      // Only set error if this comparison is still current
+      const latestState = useSpreadsheetStore.getState();
+      if (latestState.comparisonVersion === newVersion) {
+        set({
+          comparisonError: error instanceof Error ? error.message : "Comparison failed",
+          isComparing: false,
+        });
+      }
+    }
+  },
 }));

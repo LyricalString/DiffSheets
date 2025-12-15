@@ -8,11 +8,14 @@ import type {
   RowChangeType,
   SheetData,
 } from "@/types";
-import { compareCells } from "./cell-diff";
+import { compareCells, _resetDebugFlag } from "./cell-diff";
 import { alignRows, type RowAlignment } from "./row-matcher";
 
 export { areCellsEqual, compareCells } from "./cell-diff";
 export { alignRows } from "./row-matcher";
+
+// Debug counter for row comparison logging
+let _debugRowCount = 0;
 
 /**
  * Compare two rows cell by cell
@@ -45,9 +48,12 @@ async function compareRows(
 
   const cells = await Promise.all(cellPromises);
 
+  // Debug: track which columns have changes
+  const changedColumns: number[] = [];
   for (const cellDiff of cells) {
     if (cellDiff.changeType !== "unchanged") {
       hasChanges = true;
+      changedColumns.push(cellDiff.columnIndex);
       if (cellDiff.changeType === "modified") {
         modifiedCellCount++;
       }
@@ -63,6 +69,18 @@ async function compareRows(
     changeType = "modified";
   } else {
     changeType = "unchanged";
+  }
+
+  // Debug: log first few rows to see what's happening
+  _debugRowCount++;
+  if (_debugRowCount <= 5 && alignment.type === "matched") {
+    console.log("[DEBUG] compareRows #" + _debugRowCount + ":", {
+      alignmentType: alignment.type,
+      hasChanges,
+      changedColumns: JSON.stringify(changedColumns),  // Show actual column indices
+      ignoredColumns: JSON.stringify(options.ignoredColumns),
+      resultChangeType: changeType,
+    });
   }
 
   return { cells, changeType, modifiedCellCount };
@@ -159,8 +177,14 @@ export async function computeSpreadsheetDiff(
   modifiedData: SheetData,
   options: ComparisonOptions,
 ): Promise<DiffResult> {
-  // Step 1: Align rows based on matching strategy
-  const alignments = alignRows(originalData.rows, modifiedData.rows, options);
+  // Reset debug flags for logging
+  _resetDebugFlag();
+  _debugRowCount = 0;
+
+  console.log("[DEBUG] computeSpreadsheetDiff started with options.ignoredColumns:", options.ignoredColumns);
+
+  // Step 1: Align rows based on matching strategy (async to allow UI responsiveness)
+  const alignments = await alignRows(originalData.rows, modifiedData.rows, options);
 
   // Step 2: Compare each aligned row pair (in parallel for better performance)
   const rowPromises = alignments.map(async (alignment) => {
@@ -182,6 +206,18 @@ export async function computeSpreadsheetDiff(
   });
 
   const diffRows: DiffRow[] = await Promise.all(rowPromises);
+
+  // DEBUG: Count changes per column across ALL rows
+  const columnChangeCounts: Record<number, number> = {};
+  for (const row of diffRows) {
+    for (const cell of row.cells) {
+      if (cell.changeType !== "unchanged") {
+        columnChangeCounts[cell.columnIndex] = (columnChangeCounts[cell.columnIndex] || 0) + 1;
+      }
+    }
+  }
+  console.log("[DEBUG] Changes per column (ALL rows):", JSON.stringify(columnChangeCounts));
+  console.log("[DEBUG] Ignored columns:", JSON.stringify(options.ignoredColumns));
 
   // Step 3: Compute column diffs
   const columns = computeColumnDiffs(diffRows, originalData, modifiedData);

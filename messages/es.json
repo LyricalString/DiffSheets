@@ -78,7 +78,43 @@
       "ignoreCase": "Ignorar mayúsculas/minúsculas"
     },
     "noChanges": "No se encontraron diferencias",
-    "emptyState": "Sube dos archivos para comparar"
+    "emptyState": "Sube dos archivos para comparar",
+    "processing": "Reprocesando..."
+  },
+  "matching": {
+    "title": "Opciones de comparación",
+    "description": "Elige cómo se emparejan las filas entre archivos",
+    "strategy": {
+      "label": "Emparejamiento de filas",
+      "position": {
+        "label": "Por posición",
+        "description": "Fila 1 con fila 1, fila 2 con fila 2, etc."
+      },
+      "keyColumn": {
+        "label": "Por columna clave",
+        "description": "Emparejar filas por un identificador único (ID, SKU, email)"
+      },
+      "lcs": {
+        "label": "Matching inteligente",
+        "description": "Detecta automáticamente filas reordenadas o movidas"
+      }
+    },
+    "keyColumn": {
+      "label": "Columna clave",
+      "placeholder": "Seleccionar columna",
+      "preview": "Valores de ejemplo",
+      "noData": "No hay datos disponibles"
+    },
+    "warnings": {
+      "duplicates": "Esta columna tiene valores duplicados - el emparejamiento puede ser impreciso",
+      "empty": "Muchas celdas en esta columna están vacías"
+    },
+    "ignoredColumns": {
+      "label": "Ignorar columnas",
+      "description": "Selecciona columnas para excluir de la comparación (ej: IDs auto-generados, fechas)",
+      "selected": "{count} columna(s) ignorada(s)",
+      "clearAll": "Limpiar todo"
+    }
   },
   "seo": {
     "home": {

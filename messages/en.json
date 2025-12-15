@@ -78,7 +78,43 @@
       "ignoreCase": "Ignore case"
     },
     "noChanges": "No differences found",
-    "emptyState": "Upload two files to compare"
+    "emptyState": "Upload two files to compare",
+    "processing": "Reprocessing..."
+  },
+  "matching": {
+    "title": "Matching Options",
+    "description": "Choose how rows are matched between files",
+    "strategy": {
+      "label": "Row matching",
+      "position": {
+        "label": "By position",
+        "description": "Row 1 matches row 1, row 2 matches row 2, etc."
+      },
+      "keyColumn": {
+        "label": "By key column",
+        "description": "Match rows by a unique identifier (ID, SKU, email)"
+      },
+      "lcs": {
+        "label": "Smart matching",
+        "description": "Automatically detect reordered or moved rows"
+      }
+    },
+    "keyColumn": {
+      "label": "Key column",
+      "placeholder": "Select column",
+      "preview": "Sample values",
+      "noData": "No data available"
+    },
+    "warnings": {
+      "duplicates": "This column has duplicate values - matching may be imprecise",
+      "empty": "Many cells in this column are empty"
+    },
+    "ignoredColumns": {
+      "label": "Ignore columns",
+      "description": "Select columns to exclude from comparison (e.g., auto-generated IDs, timestamps)",
+      "selected": "{count} column(s) ignored",
+      "clearAll": "Clear all"
+    }
   },
   "seo": {
     "home": {

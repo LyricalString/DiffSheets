@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { parseSpreadsheet } from "@/lib/parser";
 import { useSpreadsheetStore } from "@/store";
 import { FileDropzone } from "./file-dropzone";
+import { MatchingOptions } from "./matching-options";
 import { SheetSelector } from "./sheet-selector";
 import { SpreadsheetPreview } from "./spreadsheet-preview";
 
@@ -31,6 +32,7 @@ export function ComparisonUploader() {
     setDiffResult,
     setIsComparing,
     setComparisonError,
+    setOptions,
     resetOriginal,
     resetModified,
   } = useSpreadsheetStore();
@@ -179,6 +181,14 @@ export function ComparisonUploader() {
           {modifiedSheetData && <SpreadsheetPreview data={modifiedSheetData} />}
         </div>
       </div>
+
+      {/* Matching Options */}
+      <MatchingOptions
+        originalSheet={originalSheetData ?? null}
+        modifiedSheet={modifiedSheetData ?? null}
+        options={options}
+        onOptionsChange={setOptions}
+      />
 
       {/* Compare Button */}
       <div className="flex justify-center pt-2">

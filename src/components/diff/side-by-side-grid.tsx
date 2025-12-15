@@ -281,8 +281,12 @@ export function SideBySideGrid({
 
   return (
     <div className={cn("overflow-hidden rounded-xl border bg-card", className)}>
-      <div className="flex divide-x divide-border">
+      <div className="flex">
         {renderTable("original", leftRef)}
+        {/* Central divider */}
+        <div className="relative w-1 bg-border flex-shrink-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-red-500/20 via-muted-foreground/20 to-green-500/20" />
+        </div>
         {renderTable("modified", rightRef)}
       </div>
     </div>

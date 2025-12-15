@@ -112,6 +112,21 @@ export function getCellChangeType(
 }
 
 /**
+ * Check if a column should be ignored
+ */
+function isColumnIgnored(columnIndex: number, options: ComparisonOptions): boolean {
+  return options.ignoredColumns?.includes(columnIndex) ?? false;
+}
+
+// Debug: track if we've logged ignored columns info
+let _debugIgnoredLogged = false;
+
+// Reset debug flag (call at start of each comparison)
+export function _resetDebugFlag() {
+  _debugIgnoredLogged = false;
+}
+
+/**
  * Compare two cells and return diff result
  */
 export async function compareCells(
@@ -120,6 +135,22 @@ export async function compareCells(
   modified: Cell | null,
   options: ComparisonOptions,
 ): Promise<DiffCell> {
+  // Log ignored columns info once per comparison
+  if (!_debugIgnoredLogged && options.ignoredColumns && options.ignoredColumns.length > 0) {
+    console.log("[DEBUG] compareCells - ignoredColumns in options:", options.ignoredColumns);
+    _debugIgnoredLogged = true;
+  }
+
+  // If column is ignored, always return unchanged
+  if (isColumnIgnored(columnIndex, options)) {
+    return {
+      columnIndex,
+      original,
+      modified,
+      changeType: "unchanged",
+    };
+  }
+
   const changeType = getCellChangeType(original, modified, options);
 
   const result: DiffCell = {

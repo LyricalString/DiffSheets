@@ -54,6 +54,8 @@ export interface ComparisonOptions {
   compareFormulas: boolean;
   matchingStrategy: MatchingStrategy;
   keyColumnIndex?: number;
+  /** Column indices to ignore when comparing (0-based) */
+  ignoredColumns?: number[];
 }
 
 export const defaultComparisonOptions: ComparisonOptions = {
