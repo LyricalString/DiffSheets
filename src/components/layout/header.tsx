@@ -15,11 +15,12 @@ export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Check if we're on the compare page to hide the CTA
-  const isComparePage = pathname?.includes("/compare");
+  // Check if we're on a tool page to hide the CTA
+  const isToolPage = pathname?.includes("/compare") || pathname?.includes("/merge");
 
   const navLinks = [
     { href: "/compare", label: t("nav.compare") },
+    { href: "/merge", label: t("nav.merge") },
     { href: "/guide/spreadsheet-comparison", label: t("nav.guide") },
     { href: "/blog", label: t("nav.blog") },
   ];
@@ -70,7 +71,7 @@ export function Header() {
 
           <ThemeToggle />
 
-          {!isComparePage && (
+          {!isToolPage && (
             <>
               <div className="h-5 w-px bg-border mx-1" aria-hidden="true" />
               <Button
@@ -127,7 +128,7 @@ export function Header() {
               </a>
             </div>
 
-            {!isComparePage && (
+            {!isToolPage && (
               <div className="pt-3">
                 <Button
                   asChild

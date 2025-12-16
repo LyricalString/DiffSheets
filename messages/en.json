@@ -30,6 +30,7 @@
     "language": "Language",
     "nav": {
       "compare": "Compare",
+      "merge": "Merge",
       "guide": "Guide",
       "blog": "Blog"
     }
@@ -382,6 +383,59 @@
         }
       },
       "cta": "Compare Your ODS Files Now"
+    },
+    "merge": {
+      "meta": {
+        "title": "Merge Excel Files Online - Free XLSX Combiner Tool",
+        "description": "Combine multiple Excel files into one workbook. Free, private, works in your browser. Merge XLSX, CSV, and ODS files."
+      },
+      "title": "Merge Excel Files Online - Free XLSX Combiner Tool",
+      "description": "Combine multiple Excel files into one workbook. Free, private, works in your browser.",
+      "h1": "Combine Excel Files Online",
+      "subtitle": "Merge multiple spreadsheets into one workbook. Free, secure, and runs entirely in your browser.",
+      "benefits": {
+        "title": "Why Use DiffSheets for Merging?",
+        "items": {
+          "multiple": {
+            "title": "Multiple Files",
+            "description": "Combine 2, 10, or 100 files at once. No limits on the number of files."
+          },
+          "modes": {
+            "title": "Flexible Merge Modes",
+            "description": "Combine as sheets, append rows vertically, or merge columns horizontally."
+          },
+          "privacy": {
+            "title": "Complete Privacy",
+            "description": "Your files never leave your computer. All processing happens locally."
+          },
+          "free": {
+            "title": "100% Free",
+            "description": "No registration, no limits, no watermarks. Use it as much as you need."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Common Use Cases",
+        "items": {
+          "reports": {
+            "title": "Monthly Reports",
+            "description": "Combine monthly reports into annual summaries or quarterly compilations."
+          },
+          "departments": {
+            "title": "Department Data",
+            "description": "Merge data from different teams or departments into a single master file."
+          },
+          "surveys": {
+            "title": "Survey Responses",
+            "description": "Consolidate responses from multiple collection periods or sources."
+          },
+          "imports": {
+            "title": "Data Imports",
+            "description": "Prepare data for import by combining multiple source files into one."
+          }
+        }
+      },
+      "cta": "Merge Your Excel Files Now"
     }
   },
   "blog": {
@@ -821,6 +875,85 @@
       "subtitle": "Install the MCP server and start comparing spreadsheets from your terminal.",
       "npm": "View on npm",
       "github": "View on GitHub"
+    }
+  },
+  "merge": {
+    "meta": {
+      "title": "Merge Excel Files - Free Online Spreadsheet Combiner",
+      "description": "Combine multiple Excel files into one. Merge XLSX, CSV, and ODS spreadsheets online for free. 100% private - files never leave your browser."
+    },
+    "title": "Merge Excel Files",
+    "subtitle": "Combine multiple spreadsheets into one. Your data stays in your browser.",
+    "dropzone": {
+      "title": "Drop files here",
+      "subtitle": "or click to add more",
+      "count": "{count} files selected"
+    },
+    "fileList": {
+      "title": "Files to merge",
+      "empty": "No files added yet",
+      "reorderHint": "Drag to reorder"
+    },
+    "fileCard": {
+      "loading": "Processing...",
+      "remove": "Remove file",
+      "sheets": "sheets",
+      "rows": "rows",
+      "cols": "cols",
+      "files": "files"
+    },
+    "options": {
+      "title": "Merge Options",
+      "mode": {
+        "label": "Merge Mode",
+        "combine-workbooks": {
+          "label": "Combine Workbooks",
+          "description": "Each file becomes a separate sheet"
+        },
+        "append-rows": {
+          "label": "Append Rows",
+          "description": "Stack all rows vertically"
+        },
+        "append-columns": {
+          "label": "Append Columns",
+          "description": "Place columns side by side"
+        }
+      },
+      "sheetNaming": {
+        "label": "Sheet naming",
+        "filename": "Use filename",
+        "original": "Use original sheet name",
+        "numbered": "Sheet1, Sheet2, etc."
+      },
+      "includeHeaders": {
+        "label": "Include headers from all files",
+        "description": "Keep header rows from files 2+"
+      },
+      "filename": {
+        "label": "Output filename"
+      }
+    },
+    "preview": {
+      "title": "Preview",
+      "sheets": "sheets",
+      "rows": "rows",
+      "columns": "columns",
+      "empty": "No data",
+      "moreRows": "+ {count} more rows"
+    },
+    "result": {
+      "success": "Files merged successfully!",
+      "filename": "Output file",
+      "download": "Download XLSX",
+      "newMerge": "New Merge"
+    },
+    "actions": {
+      "merge": "Merge Files",
+      "merging": "Merging..."
+    },
+    "hints": {
+      "addMore": "Add at least one more file to merge",
+      "privacy": "All files are processed locally in your browser"
     }
   }
 }
