@@ -4,8 +4,7 @@ import { LandingContent } from "@/components/landing/landing-content";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import type { Locale } from "@/i18n/routing";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
+import { BASE_URL, getAlternates, getLocalizedUrl } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -26,17 +25,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: {
-      canonical: `${BASE_URL}/${locale}`,
-      languages: {
-        en: `${BASE_URL}/en`,
-        es: `${BASE_URL}/es`,
-      },
-    },
+    alternates: getAlternates(locale),
     openGraph: {
       title,
       description,
-      url: `${BASE_URL}/${locale}`,
+      url: getLocalizedUrl(locale),
       type: "website",
       images: [`${BASE_URL}/og-image.png`],
     },

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { locales } from "@/i18n/routing";
+import { defaultLocale, locales } from "@/i18n/routing";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
 
@@ -39,29 +39,34 @@ const routes = [
   },
 ];
 
+// Helper to get URL for a locale (default locale has no prefix)
+function getLocalizedUrl(locale: string, path: string): string {
+  if (locale === defaultLocale) {
+    return `${BASE_URL}${path}`;
+  }
+  return `${BASE_URL}/${locale}${path}`;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  // Generate entries for root (redirects to default locale)
-  const rootEntry = {
-    url: BASE_URL,
-    lastModified,
-    changeFrequency: "weekly" as const,
-    priority: 1,
-  };
-
-  // Generate entries for each locale and route
-  const localizedRoutes = locales.flatMap((locale) =>
-    routes.map((route) => ({
-      url: `${BASE_URL}/${locale}${route.path}`,
+  // Generate entries for each route
+  // For default locale (en): /path
+  // For other locales (es): /es/path
+  const sitemapEntries = routes.flatMap((route) => {
+    return locales.map((locale) => ({
+      url: getLocalizedUrl(locale, route.path),
       lastModified,
       changeFrequency: route.changeFrequency,
       priority: route.priority,
       alternates: {
-        languages: Object.fromEntries(locales.map((l) => [l, `${BASE_URL}/${l}${route.path}`])),
+        languages: {
+          ...Object.fromEntries(locales.map((l) => [l, getLocalizedUrl(l, route.path)])),
+          "x-default": getLocalizedUrl(defaultLocale, route.path),
+        },
       },
-    })),
-  );
+    }));
+  });
 
-  return [rootEntry, ...localizedRoutes];
+  return sitemapEntries;
 }

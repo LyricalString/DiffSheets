@@ -160,7 +160,7 @@ Verify data integrity after importing or exporting between systems.
 **Quality Assurance**
 Validate test results, compare expected vs actual outputs.
 
-[Compare Your Excel Files Now](${BASE_URL}/en/compare)
+[Compare Your Excel Files Now](${BASE_URL}/compare)
 `,
     },
     es: {
@@ -225,7 +225,7 @@ Compare log files, find configuration differences, track changes over time.
 **ETL Pipelines**
 Validate data transformations, verify ETL output, ensure data quality.
 
-[Compare Your CSV Files Now](${BASE_URL}/en/compare)
+[Compare Your CSV Files Now](${BASE_URL}/compare)
 `,
     },
     es: {
@@ -287,7 +287,7 @@ Compare old archived files with current data to track long-term changes.
 **Compliance Auditing**
 Audit historical records and ensure compliance with legacy document requirements.
 
-[Compare Your XLS Files Now](${BASE_URL}/en/compare)
+[Compare Your XLS Files Now](${BASE_URL}/compare)
 `,
     },
     es: {
@@ -346,7 +346,7 @@ Many government agencies require ODS format for compliance and archival purposes
 **Cross-Platform Teams**
 Compare files across different office suites - LibreOffice, OpenOffice, and Microsoft Excel.
 
-[Compare Your ODS Files Now](${BASE_URL}/en/compare)
+[Compare Your ODS Files Now](${BASE_URL}/compare)
 `,
     },
     es: {
@@ -426,7 +426,7 @@ Software specifically designed for spreadsheet comparison. Most efficient method
 | Beyond Compare | $60 | Local | Multiple |
 | Online Tools | Free-Paid | Upload Required | Varies |
 
-[Try DiffSheets Free](${BASE_URL}/en/compare)
+[Try DiffSheets Free](${BASE_URL}/compare)
 `,
     },
     es: {
@@ -501,7 +501,7 @@ Compare expected vs actual test results. Validate data outputs and catch discrep
 - ETL Validation: Verify data transformations produce expected output
 - API Response Testing: Compare API responses against expected values
 
-[Get Started with DiffSheets](${BASE_URL}/en/compare)
+[Get Started with DiffSheets](${BASE_URL}/compare)
 `,
     },
     es: {
@@ -604,7 +604,7 @@ ${availablePages}
         headers: {
           "Content-Type": "text/markdown; charset=utf-8",
         },
-      }
+      },
     );
   }
 

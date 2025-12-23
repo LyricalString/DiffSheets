@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Footer, Header } from "@/components/layout";
 import { Link } from "@/i18n/navigation";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
+import { BASE_URL, getAlternates, getLocalizedUrl } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -17,17 +16,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("title"),
     description: t("subtitle"),
-    alternates: {
-      canonical: `${BASE_URL}/${locale}/blog`,
-      languages: {
-        en: `${BASE_URL}/en/blog`,
-        es: `${BASE_URL}/es/blog`,
-      },
-    },
+    alternates: getAlternates(locale, "/blog"),
     openGraph: {
       title: t("title"),
       description: t("subtitle"),
-      url: `${BASE_URL}/${locale}/blog`,
+      url: getLocalizedUrl(locale, "/blog"),
       type: "website",
       images: [`${BASE_URL}/og-image.png`],
     },

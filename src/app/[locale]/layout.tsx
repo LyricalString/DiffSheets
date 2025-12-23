@@ -4,9 +4,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { JsonLd } from "@/components/seo/json-ld";
-import { type Locale, routing } from "@/i18n/routing";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
+import { defaultLocale, type Locale, routing } from "@/i18n/routing";
+import { BASE_URL, getLocalizedUrl } from "@/lib/utils";
 
 type Props = {
   children: React.ReactNode;
@@ -82,7 +81,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       locale: isSpanish ? "es_ES" : "en_US",
       alternateLocale: isSpanish ? "en_US" : "es_ES",
-      url: `${BASE_URL}/${locale}`,
+      url: getLocalizedUrl(locale),
       siteName: "DiffSheets",
       title: ogTitle,
       description: ogDescription,
@@ -115,11 +114,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     alternates: {
-      canonical: `${BASE_URL}/${locale}`,
+      canonical: getLocalizedUrl(locale),
       languages: {
-        en: `${BASE_URL}/en`,
-        es: `${BASE_URL}/es`,
-        "x-default": `${BASE_URL}/en`,
+        en: getLocalizedUrl("en"),
+        es: getLocalizedUrl("es"),
+        "x-default": getLocalizedUrl(defaultLocale),
       },
     },
   };

@@ -24,15 +24,15 @@ DiffSheets is a client-side spreadsheet comparison tool that helps users find di
 
 ## Main Pages
 
-- [Home](${BASE_URL}/en): Landing page with product overview
-- [Compare Tool](${BASE_URL}/en/compare): The main comparison application
-- [MCP Server](${BASE_URL}/en/mcp): CLI tool for Claude Code and Claude Desktop
-- [Excel Comparison](${BASE_URL}/en/compare-excel-files): Guide for comparing Excel files
-- [CSV Diff](${BASE_URL}/en/csv-diff): Guide for comparing CSV files
-- [XLS Diff](${BASE_URL}/en/xls-diff): Guide for legacy Excel format
-- [ODS Compare](${BASE_URL}/en/ods-compare): Guide for LibreOffice files
-- [Complete Guide](${BASE_URL}/en/guide/spreadsheet-comparison): Comprehensive comparison guide
-- [Use Cases](${BASE_URL}/en/use-cases): Detailed use case scenarios
+- [Home](${BASE_URL}): Landing page with product overview
+- [Compare Tool](${BASE_URL}/compare): The main comparison application
+- [MCP Server](${BASE_URL}/mcp): CLI tool for Claude Code and Claude Desktop
+- [Excel Comparison](${BASE_URL}/compare-excel-files): Guide for comparing Excel files
+- [CSV Diff](${BASE_URL}/csv-diff): Guide for comparing CSV files
+- [XLS Diff](${BASE_URL}/xls-diff): Guide for legacy Excel format
+- [ODS Compare](${BASE_URL}/ods-compare): Guide for LibreOffice files
+- [Complete Guide](${BASE_URL}/guide/spreadsheet-comparison): Comprehensive comparison guide
+- [Use Cases](${BASE_URL}/use-cases): Detailed use case scenarios
 
 ## Spanish Version
 

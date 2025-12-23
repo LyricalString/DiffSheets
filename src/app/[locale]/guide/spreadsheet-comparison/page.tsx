@@ -5,8 +5,7 @@ import { Footer, Header } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/prose";
 import { Link } from "@/i18n/navigation";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
+import { BASE_URL, getAlternates, getLocalizedUrl } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -23,17 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("title"),
     description: t("description"),
-    alternates: {
-      canonical: `${BASE_URL}/${locale}/guide/spreadsheet-comparison`,
-      languages: {
-        en: `${BASE_URL}/en/guide/spreadsheet-comparison`,
-        es: `${BASE_URL}/es/guide/spreadsheet-comparison`,
-      },
-    },
+    alternates: getAlternates(locale, "/guide/spreadsheet-comparison"),
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: `${BASE_URL}/${locale}/guide/spreadsheet-comparison`,
+      url: getLocalizedUrl(locale, "/guide/spreadsheet-comparison"),
       type: "article",
       images: [`${BASE_URL}/og-image.png`],
     },

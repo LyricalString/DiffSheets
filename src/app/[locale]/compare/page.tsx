@@ -4,12 +4,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { DynamicComparisonSection } from "@/components/landing/dynamic-comparison";
 import { CompareHeader } from "@/components/layout/compare-header";
 import type { Locale } from "@/i18n/routing";
+import { BASE_URL, getAlternates, getLocalizedUrl } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
@@ -18,17 +17,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("meta.title"),
     description: t("meta.description"),
-    alternates: {
-      canonical: `${BASE_URL}/${locale}/compare`,
-      languages: {
-        en: `${BASE_URL}/en/compare`,
-        es: `${BASE_URL}/es/compare`,
-      },
-    },
+    alternates: getAlternates(locale, "/compare"),
     openGraph: {
       title: t("meta.title"),
       description: t("meta.description"),
-      url: `${BASE_URL}/${locale}/compare`,
+      url: getLocalizedUrl(locale, "/compare"),
       type: "website",
       images: [`${BASE_URL}/og-image.png`],
     },

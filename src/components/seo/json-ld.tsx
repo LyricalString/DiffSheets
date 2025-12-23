@@ -1,6 +1,5 @@
-import type { Locale } from "@/i18n/routing";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
+import { defaultLocale, type Locale } from "@/i18n/routing";
+import { BASE_URL, getLocalizedUrl } from "@/lib/utils";
 
 interface JsonLdProps {
   locale?: Locale;
@@ -142,7 +141,7 @@ const content = {
 
 export function JsonLd({ locale = "en", page = "home" }: JsonLdProps) {
   const t = content[locale];
-  const url = `${BASE_URL}/${locale}`;
+  const url = getLocalizedUrl(locale);
   const otherLocale = locale === "en" ? "es" : "en";
 
   // WebApplication schema - Enhanced for AI discovery
@@ -165,7 +164,8 @@ export function JsonLd({ locale = "en", page = "home" }: JsonLdProps) {
       availability: "https://schema.org/InStock",
     },
     featureList: t.features,
-    browserRequirements: "Requires JavaScript. Works in modern browsers (Chrome, Firefox, Safari, Edge).",
+    browserRequirements:
+      "Requires JavaScript. Works in modern browsers (Chrome, Firefox, Safari, Edge).",
     permissions: "none",
     softwareVersion: "1.0.0",
     releaseNotes: "Initial release with Excel, CSV, and ODS comparison support.",
@@ -178,7 +178,7 @@ export function JsonLd({ locale = "en", page = "home" }: JsonLdProps) {
       name: locale === "es" ? "Comparar hojas de cálculo" : "Compare spreadsheets",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${BASE_URL}/${locale}/compare`,
+        urlTemplate: getLocalizedUrl(locale, "/compare"),
         actionPlatform: [
           "http://schema.org/DesktopWebPlatform",
           "http://schema.org/MobileWebPlatform",
@@ -205,17 +205,17 @@ export function JsonLd({ locale = "en", page = "home" }: JsonLdProps) {
       {
         "@type": "WebPage",
         name: "Compare Tool",
-        url: `${BASE_URL}/en/compare`,
+        url: getLocalizedUrl(defaultLocale, "/compare"),
       },
       {
         "@type": "WebPage",
         name: "Excel Comparison Guide",
-        url: `${BASE_URL}/en/compare-excel-files`,
+        url: getLocalizedUrl(defaultLocale, "/compare-excel-files"),
       },
       {
         "@type": "WebPage",
         name: "CSV Diff Tool",
-        url: `${BASE_URL}/en/csv-diff`,
+        url: getLocalizedUrl(defaultLocale, "/csv-diff"),
       },
     ],
   };
@@ -275,7 +275,7 @@ export function JsonLd({ locale = "en", page = "home" }: JsonLdProps) {
       position: index + 1,
       name: step.name,
       text: step.text,
-      url: `${BASE_URL}/${locale}/compare`,
+      url: getLocalizedUrl(locale, "/compare"),
     })),
     tool: [
       {
@@ -299,7 +299,7 @@ export function JsonLd({ locale = "en", page = "home" }: JsonLdProps) {
         "@type": "ListItem",
         position: 1,
         name: locale === "es" ? "Inicio" : "Home",
-        item: `${BASE_URL}/${locale}`,
+        item: getLocalizedUrl(locale),
       },
     ],
   };
@@ -315,7 +315,7 @@ export function JsonLd({ locale = "en", page = "home" }: JsonLdProps) {
         : "Free tool to compare Excel, CSV, and ODS files online. 100% privacy.",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
-    downloadUrl: `${BASE_URL}/${locale}/compare`,
+    downloadUrl: getLocalizedUrl(locale, "/compare"),
     softwareVersion: "1.0.0",
     datePublished: "2025-01-01",
     offers: {

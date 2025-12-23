@@ -6,8 +6,7 @@ import { Footer, Header } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/prose";
 import { Link } from "@/i18n/navigation";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.diffsheets.com";
+import { BASE_URL, getAlternates, getLocalizedUrl } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -40,17 +39,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t(`${slug}.title`),
     description: t(`${slug}.excerpt`),
-    alternates: {
-      canonical: `${BASE_URL}/${locale}/blog/${slug}`,
-      languages: {
-        en: `${BASE_URL}/en/blog/${slug}`,
-        es: `${BASE_URL}/es/blog/${slug}`,
-      },
-    },
+    alternates: getAlternates(locale, `/blog/${slug}`),
     openGraph: {
       title: t(`${slug}.title`),
       description: t(`${slug}.excerpt`),
-      url: `${BASE_URL}/${locale}/blog/${slug}`,
+      url: getLocalizedUrl(locale, `/blog/${slug}`),
       type: "article",
       images: [`${BASE_URL}/og-image.png`],
     },
