@@ -29,5 +29,5 @@ export default async function CsvDiffPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <LandingPage type="csv" />;
+  return <LandingPage format="csv" locale={locale} />;
 }

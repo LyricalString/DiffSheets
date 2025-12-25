@@ -29,5 +29,5 @@ export default async function OdsComparePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <LandingPage type="ods" />;
+  return <LandingPage format="ods" locale={locale} />;
 }

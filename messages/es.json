@@ -30,6 +30,7 @@
     "language": "Idioma",
     "nav": {
       "compare": "Comparar",
+      "merge": "Combinar",
       "guide": "Guía",
       "blog": "Blog"
     }
@@ -382,6 +383,58 @@
         }
       },
       "cta": "Compara tus Archivos ODS Ahora"
+    },
+    "merge": {
+      "meta": {
+        "title": "Combinar Archivos Excel Online - Herramienta Gratuita de Fusión",
+        "description": "Combina múltiples archivos Excel en uno. Fusiona hojas de cálculo XLSX, XLS, CSV y ODS. Sin subir a servidores - 100% privado."
+      },
+      "h1": "Combinar Archivos Excel Online",
+      "subtitle": "Fusiona múltiples hojas de cálculo en un solo archivo. Gratis, privado y funciona completamente en tu navegador.",
+      "badge": "Nueva Herramienta",
+      "benefits": {
+        "title": "¿Por qué usar DiffSheets para combinar Excel?",
+        "items": {
+          "privacy": {
+            "title": "Privacidad Total",
+            "description": "Tus archivos nunca salen de tu ordenador. Todo el procesamiento ocurre localmente en tu navegador."
+          },
+          "formats": {
+            "title": "Múltiples Formatos",
+            "description": "Combina archivos XLSX, XLS, CSV y ODS en un solo documento."
+          },
+          "modes": {
+            "title": "Modos Flexibles de Fusión",
+            "description": "Combina libros de trabajo, añade filas o columnas según tus necesidades."
+          },
+          "free": {
+            "title": "100% Gratis",
+            "description": "Sin registro, sin límites, sin marcas de agua. Úsalo tanto como necesites."
+          }
+        }
+      },
+      "useCases": {
+        "title": "Casos de Uso Comunes",
+        "items": {
+          "consolidation": {
+            "title": "Consolidación de Datos",
+            "description": "Combina reportes mensuales, datos de diferentes departamentos o exportaciones de múltiples sistemas."
+          },
+          "teamwork": {
+            "title": "Trabajo en Equipo",
+            "description": "Fusiona hojas de diferentes miembros del equipo en un documento consolidado."
+          },
+          "migration": {
+            "title": "Migración de Datos",
+            "description": "Combina datos de múltiples fuentes antes de importar a un nuevo sistema."
+          },
+          "reporting": {
+            "title": "Informes Consolidados",
+            "description": "Crea informes unificados combinando datos de múltiples hojas de cálculo."
+          }
+        }
+      },
+      "cta": "Combina tus Archivos Excel Ahora"
     }
   },
   "blog": {
@@ -821,6 +874,93 @@
       "subtitle": "Instala el servidor MCP y comienza a comparar hojas de cálculo desde tu terminal.",
       "npm": "Ver en npm",
       "github": "Ver en GitHub"
+    }
+  },
+  "merge": {
+    "meta": {
+      "title": "Combinar Excel - Fusiona Múltiples Hojas | DiffSheets",
+      "description": "Combina múltiples archivos Excel, CSV y ODS en uno. Sin subir a servidores, 100% privado. Fusión de hojas de cálculo gratis."
+    },
+    "title": "Combinar Hojas de Cálculo",
+    "subtitle": "Fusiona múltiples archivos en un solo documento. Soporta XLSX, XLS, CSV y ODS.",
+    "dropzone": {
+      "title": "Arrastra archivos aquí",
+      "subtitle": "o haz clic para buscar",
+      "formats": "Formatos: xlsx, xls, csv, ods",
+      "multiple": "Puedes subir múltiples archivos a la vez"
+    },
+    "fileList": {
+      "title": "Archivos a Combinar",
+      "empty": "Aún no hay archivos añadidos",
+      "reorderHint": "Arrastra para reordenar"
+    },
+    "fileCard": {
+      "loading": "Procesando...",
+      "sheets": "hojas",
+      "rows": "filas",
+      "cols": "cols",
+      "files": "archivos",
+      "selectSheet": "Seleccionar hoja",
+      "remove": "Eliminar archivo",
+      "dragHandle": "Arrastrar para reordenar"
+    },
+    "options": {
+      "title": "Opciones de Fusión",
+      "mode": {
+        "label": "Modo de fusión",
+        "combineWorkbooks": {
+          "label": "Combinar libros",
+          "description": "Cada archivo se convierte en una hoja separada"
+        },
+        "appendRows": {
+          "label": "Añadir filas",
+          "description": "Apilar filas de todos los archivos verticalmente"
+        },
+        "appendColumns": {
+          "label": "Añadir columnas",
+          "description": "Colocar columnas de archivos lado a lado"
+        }
+      },
+      "includeHeaders": {
+        "label": "Incluir encabezados",
+        "description": "Mantener la fila de encabezado de cada archivo"
+      },
+      "sheetNaming": {
+        "label": "Nombres de hojas",
+        "original": "Mantener nombres originales",
+        "numbered": "Numerado (Hoja 1, Hoja 2...)",
+        "filename": "Usar nombre de archivo"
+      },
+      "outputFilename": {
+        "label": "Nombre del archivo de salida",
+        "placeholder": "archivo_combinado.xlsx"
+      }
+    },
+    "preview": {
+      "title": "Vista Previa del Resultado",
+      "sheets": "Hojas",
+      "rows": "Filas",
+      "columns": "Columnas",
+      "loading": "Generando vista previa...",
+      "empty": "Añade archivos para ver la vista previa"
+    },
+    "result": {
+      "title": "Fusión Completada",
+      "success": "Archivos combinados exitosamente",
+      "fileSize": "Tamaño del archivo: {size}",
+      "download": "Descargar Archivo Combinado",
+      "startOver": "Comenzar de Nuevo"
+    },
+    "actions": {
+      "merge": "Combinar Archivos",
+      "merging": "Combinando...",
+      "download": "Descargar",
+      "clear": "Limpiar Todo",
+      "addMore": "Añadir Más Archivos"
+    },
+    "hints": {
+      "addMore": "Añade al menos un archivo más para combinar",
+      "privacy": "Todos los archivos se procesan localmente en tu navegador"
     }
   }
 }

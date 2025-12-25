@@ -6,10 +6,11 @@ import { Footer, Header } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 
-type LandingType = "excel" | "csv" | "xlsx" | "xls" | "ods";
+type LandingType = "excel" | "csv" | "xlsx" | "xls" | "ods" | "merge";
 
 interface LandingPageProps {
-  type: LandingType;
+  format: LandingType;
+  locale?: string;
 }
 
 const icons = {
@@ -26,6 +27,8 @@ const icons = {
   results: Zap,
   opensource: FileSpreadsheet,
   crossplatform: FileSpreadsheet,
+  multiple: FileSpreadsheet,
+  modes: FileSpreadsheet,
 };
 
 const useCaseIcons = {
@@ -45,6 +48,10 @@ const useCaseIcons = {
   governmentCompliance: Shield,
   crossplatformTeams: FileSpreadsheet,
   conversionVerification: CheckCircle,
+  reports: FileSpreadsheet,
+  departments: FileSpreadsheet,
+  surveys: FileSpreadsheet,
+  imports: FileSpreadsheet,
 };
 
 // Badge text based on type
@@ -54,47 +61,55 @@ const badgeText = {
   xlsx: { en: "XLSX & XLS Supported", es: "Compatible con XLSX y XLS" },
   xls: { en: "Legacy Excel Format", es: "Formato Excel Legado" },
   ods: { en: "LibreOffice & OpenOffice", es: "LibreOffice y OpenOffice" },
+  merge: { en: "Merge Multiple Files", es: "Combinar Múltiples Archivos" },
 };
 
-export function LandingPage({ type }: LandingPageProps) {
-  const t = useTranslations(`landing.${type}`);
+export function LandingPage({ format, locale }: LandingPageProps) {
+  const t = useTranslations(`landing.${format}`);
   const tCommon = useTranslations("common");
 
   const benefitKeys =
-    type === "excel"
+    format === "excel"
       ? (["visual", "privacy", "formats", "free"] as const)
-      : type === "csv"
+      : format === "csv"
         ? (["instant", "large", "delimiters", "export"] as const)
-        : type === "xlsx"
+        : format === "xlsx"
           ? (["visual", "privacy", "formats", "free"] as const)
-          : type === "xls"
+          : format === "xls"
             ? (["legacy", "compatibility", "privacy", "results"] as const)
-            : (["opensource", "formats", "privacy", "crossplatform"] as const); // ods
+            : format === "merge"
+              ? (["multiple", "modes", "privacy", "free"] as const)
+              : (["opensource", "formats", "privacy", "crossplatform"] as const); // ods
 
   const useCaseKeys =
-    type === "excel"
+    format === "excel"
       ? (["audit", "version", "migration", "qa"] as const)
-      : type === "csv"
+      : format === "csv"
         ? (["database", "api", "logs", "etl"] as const)
-        : type === "xlsx"
+        : format === "xlsx"
           ? (["audit", "version", "migration", "qa"] as const)
-          : type === "xls"
+          : format === "xls"
             ? ([
                 "legacyMigration",
                 "historicalComparison",
                 "complianceAuditing",
                 "archiveVerification",
               ] as const)
-            : ([
-                "opensourceWorkflows",
-                "governmentCompliance",
-                "crossplatformTeams",
-                "conversionVerification",
-              ] as const); // ods
+            : format === "merge"
+              ? (["reports", "departments", "surveys", "imports"] as const)
+              : ([
+                  "opensourceWorkflows",
+                  "governmentCompliance",
+                  "crossplatformTeams",
+                  "conversionVerification",
+                ] as const); // ods
 
-  // Detect locale from translation (simple heuristic)
-  const isSpanish = t("h1").includes("Compara") || t("h1").includes("compara");
-  const badge = isSpanish ? badgeText[type].es : badgeText[type].en;
+  // Detect locale from translation or prop
+  const isSpanish = locale === "es" || t("h1").includes("Compara") || t("h1").includes("Combina");
+  const badge = isSpanish ? badgeText[format].es : badgeText[format].en;
+
+  // Determine CTA link based on format
+  const ctaLink = format === "merge" ? "/merge" : "/compare";
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -138,7 +153,7 @@ export function LandingPage({ type }: LandingPageProps) {
               size="lg"
               className="gap-2 bg-green-500 hover:bg-green-400 text-slate-950 font-semibold px-8 shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all hover:-translate-y-0.5"
             >
-              <Link href="/compare">
+              <Link href={ctaLink}>
                 {t("cta")}
                 <ArrowRight className="h-5 w-5" />
               </Link>
@@ -224,7 +239,13 @@ export function LandingPage({ type }: LandingPageProps) {
         <section className="py-24 px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-display font-bold text-3xl md:text-4xl mb-6">
-              {isSpanish ? "¿Listo para comparar?" : "Ready to compare?"}
+              {format === "merge"
+                ? isSpanish
+                  ? "¿Listo para combinar?"
+                  : "Ready to merge?"
+                : isSpanish
+                  ? "¿Listo para comparar?"
+                  : "Ready to compare?"}
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">{t("subtitle")}</p>
             <Button
@@ -232,7 +253,7 @@ export function LandingPage({ type }: LandingPageProps) {
               size="lg"
               className="gap-2 bg-green-500 hover:bg-green-400 text-slate-950 font-semibold px-8 shadow-lg shadow-green-500/25 hover:shadow-green-500/40 transition-all hover:-translate-y-0.5"
             >
-              <Link href="/compare">
+              <Link href={ctaLink}>
                 {tCommon("tryNow")}
                 <ArrowRight className="h-5 w-5" />
               </Link>

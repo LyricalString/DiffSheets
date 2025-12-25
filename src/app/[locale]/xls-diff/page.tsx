@@ -29,5 +29,5 @@ export default async function XlsDiffPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <LandingPage type="xls" />;
+  return <LandingPage format="xls" locale={locale} />;
 }

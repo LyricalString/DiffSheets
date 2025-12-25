@@ -29,5 +29,5 @@ export default async function CompareExcelPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <LandingPage type="excel" />;
+  return <LandingPage format="excel" locale={locale} />;
 }

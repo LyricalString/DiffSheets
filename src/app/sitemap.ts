@@ -16,6 +16,10 @@ const routes = [
   { path: "/xls-diff", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/ods-compare", priority: 0.9, changeFrequency: "monthly" as const },
 
+  // Merge tool
+  { path: "/merge", priority: 0.9, changeFrequency: "weekly" as const },
+  { path: "/merge-excel-files", priority: 0.9, changeFrequency: "monthly" as const },
+
   // Pillar guide
   { path: "/guide/spreadsheet-comparison", priority: 0.85, changeFrequency: "monthly" as const },
 
